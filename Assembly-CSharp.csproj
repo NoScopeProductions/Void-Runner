@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_2_1;UNITY_4_2;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_2_0;UNITY_4_2;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,10 +46,12 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\TubeManager.cs" />
+     <Compile Include="Assets\Shader\0Scripts\CurvedControls.cs" />
      <Compile Include="Assets\iTween\Pixelplacement\iTweenPath\iTweenPath.cs" />
      <Compile Include="Assets\iTween\Plugins\iTween.cs" />
      <None Include="Assets\License Notes.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\Shader\0Scripts\Curved.shader" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
   </ItemGroup>
   <ItemGroup>
