@@ -44,7 +44,20 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\simplefracture_163.js" />
+     <Compile Include="Assets\Sources\CrumpleMesh.js" />
+     <Compile Include="Assets\Sources\ExtrudedMeshTrail.js" />
+     <Compile Include="Assets\Sources\FractalTexture.js" />
+     <Compile Include="Assets\Sources\HeightmapGenerator.js" />
+     <Compile Include="Assets\Sources\InitialRigidbodyVelocity.js" />
+     <Compile Include="Assets\Sources\MouseOrbit.js" />
+     <Compile Include="Assets\Sources\PaintVertices.js" />
+     <Compile Include="Assets\Sources\SinusCurveModifier.js" />
+     <Compile Include="Assets\Sources\SmoothRandomPosition.js" />
+     <Compile Include="Assets\Sources\TronTrail.js" />
+     <Compile Include="Assets\Sources\Twist.js" />
+     <Compile Include="Assets\Sources\~ControlScripts\DragTransform.js" />
+     <Compile Include="Assets\Sources\~ControlScripts\KeyboardOrbit.js" />
+     <Compile Include="Assets\Sources\~ControlScripts\VPS.js" />
      <None Include="Assets\License Notes.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Shader\0Scripts\Curved.shader" />
@@ -52,6 +65,10 @@
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{1A27722F-1CA7-ED9C-3051-29DDFF7B178E}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

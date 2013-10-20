@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{C09E1E13-8D77-115D-6817-A241C664BA53}") = "SBRT", "Assembly-CSharp-firstpass-vs.csproj", "{1A27722F-1CA7-ED9C-3051-29DDFF7B178E}"
+EndProject
 Project("{C09E1E13-8D77-115D-6817-A241C664BA53}") = "SBRT", "Assembly-CSharp-vs.csproj", "{8127130F-FA68-5D72-5A20-9BE0FEDE6C44}"
 EndProject
 Project("{C09E1E13-8D77-115D-6817-A241C664BA53}") = "SBRT", "Assembly-CSharp-Editor-vs.csproj", "{F23808E3-B4E8-80E5-8992-70E7DA3B92C7}"
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A27722F-1CA7-ED9C-3051-29DDFF7B178E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A27722F-1CA7-ED9C-3051-29DDFF7B178E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A27722F-1CA7-ED9C-3051-29DDFF7B178E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A27722F-1CA7-ED9C-3051-29DDFF7B178E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8127130F-FA68-5D72-5A20-9BE0FEDE6C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8127130F-FA68-5D72-5A20-9BE0FEDE6C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8127130F-FA68-5D72-5A20-9BE0FEDE6C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -23,7 +29,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																					GlobalSection(MonoDevelopProperties) = preSolution
+																																																				GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

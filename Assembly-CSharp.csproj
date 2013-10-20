@@ -44,8 +44,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\TubeManager.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\Player.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\TubeManager.cs" />
+     <Compile Include="Assets\Scripts\MenuScripts\CameraMove.cs" />
      <Compile Include="Assets\Shader\0Scripts\CurvedControls.cs" />
      <Compile Include="Assets\iTween\Pixelplacement\iTweenPath\iTweenPath.cs" />
      <Compile Include="Assets\iTween\Plugins\iTween.cs" />
@@ -55,6 +56,8 @@
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{1A27722F-1CA7-ED9C-3051-29DDFF7B178E}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
       <Project>{4F07AC12-5091-D38D-70ED-E71D319DE540}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
