@@ -30,6 +30,8 @@ public class TubeManager : MonoBehaviour {
 			Transform o = objectQueue.Dequeue();
 			o.localPosition = nextPosition;
 			nextPosition.z += zOffset;
+			//set random rotation?
+			o.transform.Rotate(new Vector3(0f,0f,Random.Range(-1, 2)*45));
 			objectQueue.Enqueue(o);
 		}
 	}
