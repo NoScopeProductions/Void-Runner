@@ -17,6 +17,7 @@ public class TubeManager : MonoBehaviour {
 		nextPosition = startPosition;
 		for (int i = 0; i < numberOfObjects; i++) {
 			Transform o = (Transform)Instantiate(prefabs[Random.Range(0,3)]);
+			o.parent = transform;
 			o.Rotate(0,0,22.5f);
 			//set random rotation here
 			o.localPosition = nextPosition;
