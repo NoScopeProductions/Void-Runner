@@ -4,7 +4,7 @@ using System.Collections;
 public class DebrisSpawner : MonoBehaviour 
 {
 	public Transform[] prefabs;
-	public int numberOfObjects;
+
 
 	// Use this for initialization
 	void Start () 
