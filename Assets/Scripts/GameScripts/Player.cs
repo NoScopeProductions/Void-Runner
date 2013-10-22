@@ -47,6 +47,12 @@ public class Player : MonoBehaviour {
 			case CameraRotate.RotationState.BOTTOM_RIGHT:
 				transform.Translate(-turnSpeed * Time.deltaTime, -turnSpeed * Time.deltaTime, 0f);
 				break;
+			case CameraRotate.RotationState.LEFT:
+				transform.Translate(0f, turnSpeed * Time.deltaTime, 0f);
+				break;
+			case CameraRotate.RotationState.RIGHT:
+				transform.Translate(0f, -turnSpeed * Time.deltaTime, 0f);
+				break;
 		}
 	}
 	
@@ -60,6 +66,12 @@ public class Player : MonoBehaviour {
 				break;
 			case CameraRotate.RotationState.BOTTOM_RIGHT:
 				transform.Translate(turnSpeed * Time.deltaTime, turnSpeed * Time.deltaTime, 0f);
+				break;
+			case CameraRotate.RotationState.LEFT:
+				transform.Translate(0f, -turnSpeed * Time.deltaTime, 0f);
+				break;
+			case CameraRotate.RotationState.RIGHT:
+				transform.Translate(0f, turnSpeed * Time.deltaTime, 0f);
 				break;
 		}	
 	}

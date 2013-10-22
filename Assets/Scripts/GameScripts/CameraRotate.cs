@@ -21,23 +21,43 @@ public class CameraRotate : MonoBehaviour {
 				if(rotation == RotationState.BOTTOM) Player.instance.setPos(-14f,-34.5f);
 				else if(rotation == RotationState.LEFT) Player.instance.setPos(-34.5f, -14f);
 				rotation = RotationState.BOTTOM_LEFT;
+				return;
 			}
 		}
-		else if(valueBetween(Player.playerPos.x, 14f, 34.5f) && Player.playerPos.y <= -14f) {
+		if(valueBetween(Player.playerPos.x, 14f, 34.5f) && Player.playerPos.y <= -14f) {
 			if(rotation != RotationState.BOTTOM_RIGHT) {
 				iTween.RotateTo(gameObject, iTween.Hash("z", 45, "time", 0.7f));
 				if(rotation == RotationState.BOTTOM) Player.instance.setPos(14f,-34.5f);
 				else if(rotation == RotationState.RIGHT) Player.instance.setPos(34.5f, -14f);
 				rotation = RotationState.BOTTOM_RIGHT;
+				return;
 			}
 		}
-		else if(valueBetween(Player.playerPos.x, -14f, 14f) && Player.playerPos.y <= -34f) {
+		if(valueBetween(Player.playerPos.x, -14f, 14f) && Player.playerPos.y <= -34f) {
 			if(rotation != RotationState.BOTTOM) {
 				iTween.RotateTo(gameObject, iTween.Hash("z", 0, "time", 0.7f));
 				if(rotation == RotationState.BOTTOM_LEFT) Player.instance.setPos(-14f,-34.5f);
 				else if(rotation == RotationState.BOTTOM_RIGHT) Player.instance.setPos(14f, -34.5f);
 				rotation = RotationState.BOTTOM;
-				
+				return;
+			}
+		}
+		if(Player.playerPos.x <= -34.5f && valueBetween(Player.playerPos.y, -14f, 14f)) {
+			if(rotation != RotationState.LEFT) {
+				iTween.RotateTo(gameObject, iTween.Hash("z", -90, "time", 0.7f));
+				if(rotation == RotationState.BOTTOM_LEFT) Player.instance.setPos(-34.5f, -14f);
+				else if(rotation == RotationState.TOP_LEFT) Player.instance.setPos(-34.5f, 14f);
+				rotation = RotationState.LEFT;
+				return;
+			}
+		}
+		if(Player.playerPos.x >= 34.5f && valueBetween(Player.playerPos.y, -14f, 14f)) {
+			if(rotation != RotationState.RIGHT) {
+				iTween.RotateTo(gameObject, iTween.Hash("z", 90, "time", 0.7f));
+				if(rotation == RotationState.BOTTOM_RIGHT) Player.instance.setPos(34.5f, -14f);
+				else if(rotation == RotationState.TOP_RIGHT) Player.instance.setPos(34.5f, 14f);
+				rotation = RotationState.RIGHT;
+				return;
 			}
 		}
 		
@@ -46,6 +66,6 @@ public class CameraRotate : MonoBehaviour {
 	
 	//for making the update checks a little easier
 	private bool valueBetween(float x, float min, float max) {
-		return (x > min && x < max);
+		return (x >= min && x <= max);
 	}
 }
