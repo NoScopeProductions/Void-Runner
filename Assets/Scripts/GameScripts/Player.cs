@@ -8,10 +8,12 @@ public class Player : MonoBehaviour {
 	public float speed;
 	public float turnSpeed;
 	
+	public static Player instance;
 	// Use this for initialization
 	void Start () {
 		distanceTraveled = 0;
 		playerPos = new Vector2(0f, 0f);
+		instance = this;
 	}
 	
 	// Update is called once per frame
@@ -30,7 +32,7 @@ public class Player : MonoBehaviour {
 			MoveLeft();
 		} else if(Input.GetKey(KeyCode.RightArrow)) {
 			//transform.RotateAround(Vector3.zero, transform.forward, Time.deltaTime * turnSpeed);	
-			MoveRight ();
+			MoveRight();
 		}
 	}
 	
@@ -60,6 +62,11 @@ public class Player : MonoBehaviour {
 				transform.Translate(turnSpeed * Time.deltaTime, turnSpeed * Time.deltaTime, 0f);
 				break;
 		}	
+	}
+	
+	public void setPos(float x, float y) {
+		Debug.Log("setting player Pos");
+		transform.localPosition = new Vector3(x, y, distanceTraveled);
 	}
 }
 
