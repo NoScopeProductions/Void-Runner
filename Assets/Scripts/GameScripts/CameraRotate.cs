@@ -33,7 +33,7 @@ public class CameraRotate : MonoBehaviour {
 				return;
 			}
 		}
-		if(valueBetween(Player.playerPos.x, -14f, 14f) && Player.playerPos.y <= -34f) {
+		if(valueBetween(Player.playerPos.x, -14f, 14f) && Player.playerPos.y <= -34.5f) {
 			if(rotation != RotationState.BOTTOM) {
 				iTween.RotateTo(gameObject, iTween.Hash("z", 0, "time", 0.7f));
 				if(rotation == RotationState.BOTTOM_LEFT) Player.instance.setPos(-14f,-34.5f);
@@ -61,6 +61,35 @@ public class CameraRotate : MonoBehaviour {
 			}
 		}
 		
+		if(valueBetween(Player.playerPos.x, 14f, 34.5f) && Player.playerPos.y >= 14f) {
+			if(rotation != RotationState.TOP_RIGHT) {
+				iTween.RotateTo(gameObject, iTween.Hash("z", 135, "time", 0.7f));
+				if(rotation == RotationState.RIGHT) Player.instance.setPos(34.5f, 14f);
+				else if(rotation == RotationState.TOP) Player.instance.setPos(14f, 34.5f);
+				rotation = RotationState.TOP_RIGHT;
+				return;
+			}
+		}
+		
+		if(valueBetween(Player.playerPos.x, -34.5f, -14f) && Player.playerPos.y >= 14f) {
+			if(rotation != RotationState.TOP_LEFT) {
+				iTween.RotateTo(gameObject, iTween.Hash("z", -135, "time", 0.7f));
+				if(rotation == RotationState.TOP) Player.instance.setPos(-14f, 34.5f);
+				else if(rotation == RotationState.LEFT) Player.instance.setPos(-34.5f, 14f);
+				rotation = RotationState.TOP_LEFT;
+				return;
+			}
+		}
+		
+		if(valueBetween(Player.playerPos.x, -14f, 14f) && Player.playerPos.y >= 34.5f) {
+			if(rotation != RotationState.TOP) {
+				iTween.RotateTo(gameObject, iTween.Hash("z", 180, "time", 0.7f));
+				if(rotation == RotationState.TOP_LEFT) Player.instance.setPos(-14f,34.5f);
+				else if(rotation == RotationState.TOP_RIGHT) Player.instance.setPos(14f, 34.5f);
+				rotation = RotationState.TOP;
+				return;
+			}
+		}
 		
 	}
 	

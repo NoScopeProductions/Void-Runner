@@ -53,6 +53,15 @@ public class Player : MonoBehaviour {
 			case CameraRotate.RotationState.RIGHT:
 				transform.Translate(0f, -turnSpeed * Time.deltaTime, 0f);
 				break;
+			case CameraRotate.RotationState.TOP_RIGHT:
+				transform.Translate(turnSpeed * Time.deltaTime, -turnSpeed * Time.deltaTime, 0f);
+				break;
+			case CameraRotate.RotationState.TOP_LEFT:
+				transform.Translate(turnSpeed * Time.deltaTime, turnSpeed * Time.deltaTime, 0f);
+				break;
+			case CameraRotate.RotationState.TOP:	
+				transform.Translate(turnSpeed * Time.deltaTime, 0f, 0f);
+				break;
 		}
 	}
 	
@@ -73,11 +82,20 @@ public class Player : MonoBehaviour {
 			case CameraRotate.RotationState.RIGHT:
 				transform.Translate(0f, turnSpeed * Time.deltaTime, 0f);
 				break;
+			case CameraRotate.RotationState.TOP_RIGHT:
+				transform.Translate(-turnSpeed * Time.deltaTime, turnSpeed * Time.deltaTime, 0f);
+				break;
+			case CameraRotate.RotationState.TOP_LEFT:
+				transform.Translate(-turnSpeed * Time.deltaTime, -turnSpeed * Time.deltaTime, 0f);
+				break;
+			case CameraRotate.RotationState.TOP:	
+				transform.Translate(-turnSpeed * Time.deltaTime, 0f, 0f);
+				break;
 		}	
 	}
 	
 	public void setPos(float x, float y) {
-		Debug.Log("setting player Pos");
+		//Debug.Log("setting player Pos");
 		transform.localPosition = new Vector3(x, y, distanceTraveled);
 	}
 }
