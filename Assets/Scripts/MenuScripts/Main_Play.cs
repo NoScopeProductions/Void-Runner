@@ -5,20 +5,22 @@ public class Main_Play : MonoBehaviour {
 	
 	private GameObject rockmain;
 	public Transform MultiExample;
-	private Vector3 farTo = new Vector3(-100.0f,00.0f,00.0f);
 	
 	void Awake() {
 	rockmain = GameObject.Find("Rock_Main");
 		
 	}
 
-	void moveBody(){
-		iTween.MoveBy(rockmain,farTo,1.0f);	
+	void moveBody(){	
+		iTween.MoveBy(rockmain,iTween.Hash("z",100,"time",3.0f,"space",Space.World));
 	}
 	
 	void boom(){
 		Instantiate(MultiExample,rockmain.transform.position,Quaternion.identity);
 		rockmain.renderer.enabled = false;
+		Destroy(GameObject.Find("TextCharSelect"));
+		Destroy(GameObject.Find("TextPlay"));
+		Destroy(GameObject.Find("TextSettings"));
 	}
 	
     IEnumerator DoMoving()
