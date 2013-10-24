@@ -16,10 +16,11 @@ public class TubeManager : MonoBehaviour {
 		objectQueue = new Queue<Transform>(numberOfObjects);
 		nextPosition = startPosition;
 		for (int i = 0; i < numberOfObjects; i++) {
-			Transform o = (Transform)Instantiate(prefabs[Random.Range(0,5)]);
+			Transform o = (Transform)Instantiate(prefabs[Random.Range(0,10)]);
 			o.parent = transform;
 			o.Rotate(0,0,22.5f);
 			//set random rotation here
+			o.transform.Rotate(new Vector3(0f,0f,Random.Range(-2, 2)*45));
 			o.localPosition = nextPosition;
 			nextPosition.z += zOffset;
 			objectQueue.Enqueue(o);
@@ -32,7 +33,7 @@ public class TubeManager : MonoBehaviour {
 			o.localPosition = nextPosition;
 			nextPosition.z += zOffset;
 			//set random rotation?
-			o.transform.Rotate(new Vector3(0f,0f,Random.Range(-1, 2)*45));
+			o.transform.Rotate(new Vector3(0f,0f,Random.Range(-2, 2)*45));
 			objectQueue.Enqueue(o);
 		}
 	}
