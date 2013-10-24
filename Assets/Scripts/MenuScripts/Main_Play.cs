@@ -17,7 +17,7 @@ public class Main_Play : MonoBehaviour {
 	}
 	
 	void boom(){
-		var exp = Instantiate(MultiExample,rockmain.transform.position,Quaternion.identity);
+		Instantiate(MultiExample,rockmain.transform.position,Quaternion.identity);
 		rockmain.renderer.enabled = false;
 	}
 	
@@ -27,7 +27,7 @@ public class Main_Play : MonoBehaviour {
 		yield return new WaitForSeconds(1.0f);
 		boom ();
 		yield return new WaitForSeconds(.5f);
-		Application.LoadLevel(1);
+		Application.LoadLevel("Game");
 	}
 	
 	void OnMouseUp() {
