@@ -26,7 +26,7 @@ public class Main_Play : MonoBehaviour {
 		moveBody();
 		yield return new WaitForSeconds(1.0f);
 		boom ();
-		yield return new WaitForSeconds(.5f);
+		yield return new WaitForSeconds(1.0f);
 		Application.LoadLevel("Game");
 	}
 	
