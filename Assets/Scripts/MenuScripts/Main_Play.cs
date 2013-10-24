@@ -19,6 +19,11 @@ public class Main_Play : MonoBehaviour {
 	void boom(){
 		Instantiate(MultiExample,rockmain.transform.position,Quaternion.identity);
 		rockmain.renderer.enabled = false;
+		Destroy(GameObject.Find ("Text CharSelect"));
+		Destroy(GameObject.Find ("Text Play"));
+		Destroy(GameObject.Find ("Text Settings"));
+		Destroy(GameObject.Find ("Title"));
+		
 	}
 	
     IEnumerator DoMoving()
