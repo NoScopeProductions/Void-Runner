@@ -9,9 +9,11 @@ public class CameraRotate : MonoBehaviour {
 	public float tweenTime;
 	private Vector3 newPos; //to determine how it should position itself in relation to the player
 	// Use this for initialization
+	private Vector3 newGrav;
 	void Start () {
 		rotation = RotationState.BOTTOM;
 		newPos = new Vector3();
+		newGrav = new Vector3(0f,-1f,0f);
 	}
 	
 	// Update is called once per frame
@@ -28,11 +30,14 @@ public class CameraRotate : MonoBehaviour {
 				iTween.MoveTo(gameObject, iTween.Hash("x", newPos.x, "y", newPos.y, "time", tweenTime, "islocal", true));
 				//Reposition the player so he doesn't accidentally go through the tube, depending on which state the player is coming from he position will be different
 				//Thankfully, we can only come into a state from two sides, so those are the only checks we need
-				if(rotation == RotationState.BOTTOM) Player.instance.setPos(-14f,-34.5f);
-				else if(rotation == RotationState.LEFT) Player.instance.setPos(-34.5f, -14f);
 				//Set the rotation state to bottom left so we don't continously call these tweens.
 				rotation = RotationState.BOTTOM_LEFT;
 				//Offset the camera position so it doesn't look weird on certain sides
+				
+				//Adjust the gravity now that we've rotated
+				newGrav.x = -10f;
+				newGrav.y = -10f;
+				Physics.gravity = newGrav;
 			}
 		}
 		//Same as above, for bottom right
@@ -42,9 +47,11 @@ public class CameraRotate : MonoBehaviour {
 				newPos.y = 4f;
 				iTween.RotateTo(gameObject, iTween.Hash("z", 45, "time", tweenTime));
 				iTween.MoveTo(gameObject, iTween.Hash("x", newPos.x, "y", newPos.y, "time", tweenTime, "islocal", true));
-				if(rotation == RotationState.BOTTOM) Player.instance.setPos(14f,-34.5f);
-				else if(rotation == RotationState.RIGHT) Player.instance.setPos(34.5f, -14f);
 				rotation = RotationState.BOTTOM_RIGHT;
+				
+				newGrav.x = 10f;
+				newGrav.y = -10f;
+				Physics.gravity = newGrav;
 			}
 		}
 		//Same as above, for bottom
@@ -54,9 +61,11 @@ public class CameraRotate : MonoBehaviour {
 				newPos.y = 4f;
 				iTween.RotateTo(gameObject, iTween.Hash("z", 0, "time", tweenTime));
 				iTween.MoveTo(gameObject, iTween.Hash("x", newPos.x, "y", newPos.y, "time", tweenTime, "islocal", true));
-				if(rotation == RotationState.BOTTOM_LEFT) Player.instance.setPos(-14f,-34.5f);
-				else if(rotation == RotationState.BOTTOM_RIGHT) Player.instance.setPos(14f, -34.5f);
 				rotation = RotationState.BOTTOM;
+				
+				newGrav.x = 0f;
+				newGrav.y = -10f;
+				Physics.gravity = newGrav;
 			}
 		}
 		//Same as above, for left
@@ -66,9 +75,11 @@ public class CameraRotate : MonoBehaviour {
 				newPos.y = 0f;
 				iTween.RotateTo(gameObject, iTween.Hash("z", -90, "time", tweenTime));
 				iTween.MoveTo(gameObject, iTween.Hash("x", newPos.x, "y", newPos.y, "time", tweenTime, "islocal", true));
-				if(rotation == RotationState.BOTTOM_LEFT) Player.instance.setPos(-34.5f, -14f);
-				else if(rotation == RotationState.TOP_LEFT) Player.instance.setPos(-34.5f, 14f);
 				rotation = RotationState.LEFT;
+				
+				newGrav.x = -10f;
+				newGrav.y = 0f;
+				Physics.gravity = newGrav;
 			}
 		}
 		
@@ -79,9 +90,11 @@ public class CameraRotate : MonoBehaviour {
 				newPos.y = 0f;
 				iTween.RotateTo(gameObject, iTween.Hash("z", 90, "time", tweenTime));
 				iTween.MoveTo(gameObject, iTween.Hash("x", newPos.x, "y", newPos.y, "time", tweenTime, "islocal", true));
-				if(rotation == RotationState.BOTTOM_RIGHT) Player.instance.setPos(34.5f, -14f);
-				else if(rotation == RotationState.TOP_RIGHT) Player.instance.setPos(34.5f, 14f);
 				rotation = RotationState.RIGHT;
+				
+				newGrav.x = 10f;
+				newGrav.y = 0f;
+				Physics.gravity = newGrav;
 			}
 		}
 		//Same as above, for bottom top right
@@ -91,9 +104,11 @@ public class CameraRotate : MonoBehaviour {
 				newPos.y = -4f;
 				iTween.RotateTo(gameObject, iTween.Hash("z", 135, "time", tweenTime));
 				iTween.MoveTo(gameObject, iTween.Hash("x", newPos.x, "y", newPos.y, "time", tweenTime, "islocal", true));
-				if(rotation == RotationState.RIGHT) Player.instance.setPos(34.5f, 14f);
-				else if(rotation == RotationState.TOP) Player.instance.setPos(14f, 34.5f);
 				rotation = RotationState.TOP_RIGHT;
+				
+				newGrav.x = 1f;
+				newGrav.y = 10f;
+				Physics.gravity = newGrav;
 			}
 		}
 		//Same as above, for top left
@@ -103,9 +118,11 @@ public class CameraRotate : MonoBehaviour {
 				newPos.y = -4f;
 				iTween.RotateTo(gameObject, iTween.Hash("z", -135, "time", tweenTime));
 				iTween.MoveTo(gameObject, iTween.Hash("x", newPos.x, "y", newPos.y, "time", tweenTime, "islocal", true));
-				if(rotation == RotationState.TOP) Player.instance.setPos(-14f, 34.5f);
-				else if(rotation == RotationState.LEFT) Player.instance.setPos(-34.5f, 14f);
 				rotation = RotationState.TOP_LEFT;
+				
+				newGrav.x = -1f;
+				newGrav.y = 10f;
+				Physics.gravity = newGrav;
 			}
 		}
 		//Same as above, for top
@@ -115,9 +132,11 @@ public class CameraRotate : MonoBehaviour {
 				newPos.y = -4f;
 				iTween.RotateTo(gameObject, iTween.Hash("z", 180, "time", tweenTime));
 				iTween.MoveTo(gameObject, iTween.Hash("x", newPos.x, "y", newPos.y, "time", tweenTime, "islocal", true));
-				if(rotation == RotationState.TOP_LEFT) Player.instance.setPos(-14f,34.5f);
-				else if(rotation == RotationState.TOP_RIGHT) Player.instance.setPos(14f, 34.5f);
 				rotation = RotationState.TOP;
+				
+				newGrav.x = 0f;
+				newGrav.y = 10f;
+				Physics.gravity = newGrav;
 			}
 		}
 	}
