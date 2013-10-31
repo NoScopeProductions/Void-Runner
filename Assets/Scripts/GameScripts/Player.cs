@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 	public static Vector2 playerPos;
 	public float speed;
 	public float turnSpeed;
+	private bool isGrounded = false;
 	
 	public static Player instance;
 	// Use this for initialization
@@ -26,6 +27,26 @@ public class Player : MonoBehaviour {
 		playerPos.x = transform.localPosition.x;
 		playerPos.y = transform.localPosition.y;
 		
+		
+		RaycastHit hit;
+		Ray landingRay = new Ray(transform.localPosition, transform.localRotation.eulerAngles);
+		
+		Debug.DrawRay(transform.position, -transform.up, Color.cyan);
+		if(Physics.Raycast(transform.position, -transform.up,out hit, 100))
+		{
+			if(hit.collider.tag == "Tunnel")
+			{
+				isGrounded = true;
+			}
+
+		}
+		else
+		{
+			isGrounded = false;
+			transform.Translate(-transform.up, Space.World);
+		}
+		
+		checkGrounded();
 	}
 	
 	void checkInput() {
@@ -120,6 +141,20 @@ public class Player : MonoBehaviour {
 		//Debug.Log("setting player Pos");
 		transform.localPosition = new Vector3(x, y, distanceTraveled);
 	}
+	
+	
+	void checkGrounded()
+	{
+		if(isGrounded)
+		{
+			Debug.Log("GROUNDED");
+		}
+		else
+		{
+			Debug.Log("NOT GROUNDED");
+		}
+	}
+	
 }
 
 
