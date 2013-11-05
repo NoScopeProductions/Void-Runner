@@ -29,7 +29,7 @@ Shader "Custom/Curved" {
 			    float zOff = vPos.z/_Dist;
 			    vPos += _QOffset*zOff*zOff;
 			    o.pos = mul (UNITY_MATRIX_P, vPos);
-			    o.uv = v.texcoord;
+			    o.uv = mul( UNITY_MATRIX_TEXTURE0, v.texcoord );
 			    return o;
 			}
 
