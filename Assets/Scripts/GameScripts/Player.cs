@@ -27,7 +27,7 @@ public class Player : MonoBehaviour {
 		playerPos.x = transform.localPosition.x;
 		playerPos.y = transform.localPosition.y;
 		
-		
+		/*
 		RaycastHit hit;	
 		Debug.DrawRay(transform.position, -transform.up, Color.cyan);
 		if(Physics.Raycast(transform.position, -transform.up,out hit, 100))
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour {
 		{
 			isGrounded = false;
 			transform.Translate(-transform.up, Space.World);
-		}
+		}*/
 		
 		//Uncomment this and checkgrounded below to do
 		// some kind of death / falling animation
