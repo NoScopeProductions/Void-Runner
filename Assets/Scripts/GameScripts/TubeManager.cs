@@ -22,7 +22,6 @@ public class TubeManager : MonoBehaviour {
 			if(i <= 1) nextTube = 0;
 			Transform o = (Transform)Instantiate(prefabs[nextTube]);
 			o.parent = transform;
-			o.Rotate(0,0,22.5f);
 			//set random rotation here
 			o.transform.Rotate(new Vector3(0f,0f,Random.Range(-2, 2)*45));
 			if(i % 2 == 0) nextPosition.y += offset;
