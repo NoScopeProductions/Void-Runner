@@ -64,6 +64,10 @@ public class Player : MonoBehaviour {
 			audio.Play();
 			score++;
 			Debug.Log("Hit Collectible");
+			//temp, move the collectible back so it looks like it disappears and get recycled.
+			Vector3 newPos = col.transform.localPosition;
+			newPos.z -= 50;
+			col.transform.localPosition = newPos;
 		}
 	}
 	
