@@ -96,6 +96,7 @@ public class Player : MonoBehaviour {
 			Vector3 newPos = col.transform.localPosition;
 			newPos.z -= 50;
 			col.transform.localPosition = newPos;
+			score += 125;
 		}
 	}
 	
