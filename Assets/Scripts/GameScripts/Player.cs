@@ -7,13 +7,17 @@ public class Player : MonoBehaviour {
 	public static Vector2 playerPos;
 	public float speed;
 	public float turnSpeed;
+	public int score;
 	
 	public static Player instance;
 	public enum PlayerState {ALIVE, DEAD};
 	public PlayerState state;
+	
+	public AudioClip pickUpSound;
 	// Use this for initialization
 	void Start () {
 		//transform.constantForce.relativeForce = new Vector3(0f,0f,speed);
+		score = 0;
 		state = PlayerState.ALIVE;
 		distanceTraveled = 0;
 		playerPos = new Vector2(0f, 0f);
@@ -54,88 +58,76 @@ public class Player : MonoBehaviour {
 		}
 	}
 	
-	void MoveLeft() {
-		//transform.Translate(-turnSpeed * Time.fixedDeltaTime, 0f, 0f);
-		
+	void OnTriggerEnter(Collider col) {
+		if(col.tag == "Collectible") {
+			audio.clip = pickUpSound;
+			audio.Play();
+			score++;
+			Debug.Log("Hit Collectible");
+		}
+	}
+	
+	void MoveLeft() {		
 		switch(CameraRotate.rotation) {
 			case CameraRotate.RotationState.BOTTOM:	
 				transform.Translate(-turnSpeed * Time.fixedDeltaTime, 0f, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(-turnSpeed, 0f, speed);
 				break;
 			case CameraRotate.RotationState.BOTTOM_LEFT:
 				transform.Translate(-turnSpeed * Time.fixedDeltaTime, turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(-turnSpeed, turnSpeed, speed);
 				break;
 			case CameraRotate.RotationState.BOTTOM_RIGHT:
 				transform.Translate(-turnSpeed * Time.fixedDeltaTime, -turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(-turnSpeed, -turnSpeed, speed);
 				break;
 			case CameraRotate.RotationState.LEFT:
 				transform.Translate(0f, turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(0f, turnSpeed, speed);
 				break;
 			case CameraRotate.RotationState.RIGHT:
 				transform.Translate(0f, -turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(0f, -turnSpeed, speed);
 				break;
 			case CameraRotate.RotationState.TOP_RIGHT:
 				transform.Translate(turnSpeed * Time.fixedDeltaTime, -turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(turnSpeed, -turnSpeed, speed);
 				break;
 			case CameraRotate.RotationState.TOP_LEFT:
 				transform.Translate(turnSpeed * Time.fixedDeltaTime, turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(turnSpeed, turnSpeed, speed);
 				break;
 			case CameraRotate.RotationState.TOP:	
 				transform.Translate(turnSpeed * Time.fixedDeltaTime, 0f, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(turnSpeed, 0f, speed);
 				break;
 		}
 		
 	}
 	
 	void MoveRight() {
-		//transform.Translate(turnSpeed * Time.fixedDeltaTime, 0f, 0f);
-		
 		switch(CameraRotate.rotation) {
 			case CameraRotate.RotationState.BOTTOM:	
 				transform.Translate(turnSpeed * Time.fixedDeltaTime, 0f, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(turnSpeed, 0f, speed);
 				break;
 			case CameraRotate.RotationState.BOTTOM_LEFT:
 				transform.Translate(turnSpeed * Time.fixedDeltaTime, -turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(turnSpeed, -turnSpeed, speed);
 				break;
 			case CameraRotate.RotationState.BOTTOM_RIGHT:
 				transform.Translate(turnSpeed * Time.fixedDeltaTime, turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(turnSpeed, turnSpeed, speed);
 				break;
 			case CameraRotate.RotationState.LEFT:
 				transform.Translate(0f, -turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(0f, -turnSpeed, speed);
 				break;
 			case CameraRotate.RotationState.RIGHT:
 				transform.Translate(0f, turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(0f, turnSpeed, speed);
 				break;
 			case CameraRotate.RotationState.TOP_RIGHT:
 				transform.Translate(-turnSpeed * Time.fixedDeltaTime, turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(-turnSpeed, turnSpeed, speed);
 				break;
 			case CameraRotate.RotationState.TOP_LEFT:
 				transform.Translate(-turnSpeed * Time.fixedDeltaTime, -turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(-turnSpeed, -turnSpeed, 0f);
 				break;
 			case CameraRotate.RotationState.TOP:	
 				transform.Translate(-turnSpeed * Time.fixedDeltaTime, 0f, 0f, Space.World);
-				//transform.constantForce.relativeForce = new Vector3(-turnSpeed, 0f, speed);
 				break;
 		}
 		
 	}
 	
 	public void setPos(float x, float y) {
-		//Debug.Log("setting player Pos");
 		transform.localPosition = new Vector3(x, y, distanceTraveled);
 	}	
 }
