@@ -22,21 +22,28 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		switch(state) {
-			case PlayerState.ALIVE:	
-				transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
-				distanceTraveled = transform.localPosition.z;
-				checkInput();
-				playerPos.x = transform.localPosition.x;
-				playerPos.y = transform.localPosition.y;		
-				break;
-			case PlayerState.DEAD:
-				//Trigger animation here?
-				transform.Translate(-transform.up, Space.World);
-				break;
+		transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
+		distanceTraveled = transform.localPosition.z;
+		
+		checkInput();
+		playerPos.x = transform.localPosition.x;
+		playerPos.y = transform.localPosition.y;
+		
+		
+		RaycastHit hit;	
+		Debug.DrawRay(transform.position, -transform.up, Color.cyan);
+		if(Physics.Raycast(transform.position, -transform.up,out hit, 100))
+		{
+			state = PlayerState.ALIVE;
+		}
+		else
+		{
+			state = PlayerState.DEAD;
+			transform.Translate(-transform.up, Space.World);
 		}
 		
-		checkGrounded();
+		//Uncomment this and checkgrounded below to do
+		// some kind of death / falling animation
 	}
 	
 	void checkInput() {
@@ -131,14 +138,6 @@ public class Player : MonoBehaviour {
 		//Debug.Log("setting player Pos");
 		transform.localPosition = new Vector3(x, y, distanceTraveled);
 	}	
-	
-	private void checkGrounded() {
-		RaycastHit hit;	
-		if(!Physics.Raycast(transform.position, -transform.up,out hit, 100))
-		{			
-			state = PlayerState.DEAD;
-		}	
-	}
 }
 
 
