@@ -7,11 +7,17 @@ public class Player : MonoBehaviour {
 	public static Vector2 playerPos;
 	public float speed;
 	public float turnSpeed;
+	private GameObject ship;
+	public Transform MultiExample;
+	
 	
 	public static Player instance;
 	public enum PlayerState {ALIVE, DEAD};
 	public PlayerState state;
 	// Use this for initialization
+	void Awake(){
+		ship = GameObject.Find("Mesh1");
+	}
 	void Start () {
 		//transform.constantForce.relativeForce = new Vector3(0f,0f,speed);
 		state = PlayerState.ALIVE;
@@ -25,27 +31,49 @@ public class Player : MonoBehaviour {
 		transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
 		distanceTraveled = transform.localPosition.z;
 		
-		checkInput();
-		playerPos.x = transform.localPosition.x;
-		playerPos.y = transform.localPosition.y;
+		if(intube() == true){
+			checkInput();
+			playerPos.x = transform.localPosition.x;
+			playerPos.y = transform.localPosition.y;
+		}
 		
+			RaycastHit hit;	
+			Debug.DrawRay(transform.position, -transform.up, Color.cyan);
+			if(Physics.Raycast(transform.position, -transform.up,out hit, 100)){
+				state = PlayerState.ALIVE;
+				}
+			else{
+				if (intube() == true){
+				transform.Translate(-transform.up, Space.World);
+				}
+				if(state != PlayerState.DEAD) {
+					if(intube() == false){
+						kill ();
+						state = PlayerState.DEAD;
+					}
+				}
+				}	
+	}
+	bool intube(){
 		
-		RaycastHit hit;	
-		Debug.DrawRay(transform.position, -transform.up, Color.cyan);
-		if(Physics.Raycast(transform.position, -transform.up,out hit, 100))
-		{
-			state = PlayerState.ALIVE;
+		if(playerPos.x > 50 || playerPos.x < -50){
+			return false;
+		}
+		if(playerPos.y > 50 || playerPos.y < -50){
+			return false;
 		}
 		else
-		{
-			state = PlayerState.DEAD;
-			transform.Translate(-transform.up, Space.World);
-		}
-		
-		//Uncomment this and checkgrounded below to do
-		// some kind of death / falling animation
+			return true;
+	
 	}
 	
+	void kill(){
+		
+		ship.renderer.active = false;
+		Instantiate(MultiExample,ship.transform.position,Quaternion.identity);
+		Destroy(GameObject.Find ("Mesh1"));
+		
+	}
 	void checkInput() {
 		if(Input.GetKey(KeyCode.LeftArrow)) {
 			MoveLeft();

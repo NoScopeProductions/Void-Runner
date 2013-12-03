@@ -14,7 +14,7 @@ public class DebrisSpawner : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		InvokeRepeating("SpawnDebris", 1.0f, 1.0f);
+		InvokeRepeating("SpawnDebris", 0.0f, 0.15f);
 	}
 	
 	// Update is called once per frame
