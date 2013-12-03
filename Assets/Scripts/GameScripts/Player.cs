@@ -7,13 +7,14 @@ public class Player : MonoBehaviour {
 	public static Vector2 playerPos;
 	public float speed;
 	public float turnSpeed;
-	private bool isGrounded = false;
 	
 	public static Player instance;
+	public enum PlayerState {ALIVE, DEAD};
+	public PlayerState state;
 	// Use this for initialization
 	void Start () {
 		//transform.constantForce.relativeForce = new Vector3(0f,0f,speed);
-		
+		state = PlayerState.ALIVE;
 		distanceTraveled = 0;
 		playerPos = new Vector2(0f, 0f);
 		instance = this;
@@ -21,32 +22,21 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
-		distanceTraveled = transform.localPosition.z;
-		checkInput();
-		playerPos.x = transform.localPosition.x;
-		playerPos.y = transform.localPosition.y;
-		
-		/*
-		RaycastHit hit;	
-		Debug.DrawRay(transform.position, -transform.up, Color.cyan);
-		if(Physics.Raycast(transform.position, -transform.up,out hit, 100))
-		{
-			if(hit.collider.tag == "Tunnel")
-			{
-				isGrounded = true;
-			}
-
+		switch(state) {
+			case PlayerState.ALIVE:	
+				transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
+				distanceTraveled = transform.localPosition.z;
+				checkInput();
+				playerPos.x = transform.localPosition.x;
+				playerPos.y = transform.localPosition.y;		
+				break;
+			case PlayerState.DEAD:
+				//Trigger animation here?
+				transform.Translate(-transform.up, Space.World);
+				break;
 		}
-		else
-		{
-			isGrounded = false;
-			transform.Translate(-transform.up, Space.World);
-		}*/
 		
-		//Uncomment this and checkgrounded below to do
-		// some kind of death / falling animation
-		//checkGrounded();
+		checkGrounded();
 	}
 	
 	void checkInput() {
@@ -140,21 +130,15 @@ public class Player : MonoBehaviour {
 	public void setPos(float x, float y) {
 		//Debug.Log("setting player Pos");
 		transform.localPosition = new Vector3(x, y, distanceTraveled);
+	}	
+	
+	private void checkGrounded() {
+		RaycastHit hit;	
+		if(!Physics.Raycast(transform.position, -transform.up,out hit, 100))
+		{			
+			state = PlayerState.DEAD;
+		}	
 	}
-	
-	/*
-	void checkGrounded()
-	{
-		if(isGrounded)
-		{
-			Debug.Log("GROUNDED");
-		}
-		else
-		{
-			Debug.Log("NOT GROUNDED");
-		}
-	}*/
-	
 }
 
 
