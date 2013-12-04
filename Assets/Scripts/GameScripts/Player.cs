@@ -52,8 +52,9 @@ public class Player : MonoBehaviour {
 				}
 				if(state != PlayerState.DEAD) {
 					if(intube() == false){
-						kill ();
 						state = PlayerState.DEAD;
+						kill ();
+						
 					}
 				}
 				}	
@@ -72,7 +73,8 @@ public class Player : MonoBehaviour {
 	}
 	
 	void kill(){
-		
+		Debug.Log ("kill called");
+		Destroy(rigidbody);
 		ship.renderer.active = false;
 		Instantiate(MultiExample,ship.transform.position,Quaternion.identity);
 		Destroy(GameObject.Find ("Mesh1"));
