@@ -11,6 +11,8 @@ public class Player : MonoBehaviour {
 	public Transform MultiExample;
 	
 	public int score;
+	public float fuel;
+	public float fuelDrain;
 	
 	public static Player instance;
 	public enum PlayerState {ALIVE, DEAD};
@@ -22,9 +24,9 @@ public class Player : MonoBehaviour {
 		ship = GameObject.Find("Mesh1");
 	}
 	void Start () {
-		//transform.constantForce.relativeForce = new Vector3(0f,0f,speed);
 		score = 0;
 		state = PlayerState.ALIVE;
+			
 		distanceTraveled = 0;
 		playerPos = new Vector2(0f, 0f);
 		instance = this;
@@ -32,34 +34,23 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
-		distanceTraveled = transform.localPosition.z;
 		
-		if(intube() == true){
+		if(state == PlayerState.ALIVE) {
+			transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
+			distanceTraveled = transform.localPosition.z;
 			checkInput();
 			playerPos.x = transform.localPosition.x;
 			playerPos.y = transform.localPosition.y;
+			fuel -= fuelDrain * Time.deltaTime;
+		} else {
+			return;	
 		}
 		
-			RaycastHit hit;	
-			Debug.DrawRay(transform.position, -transform.up, Color.cyan);
-			if(Physics.Raycast(transform.position, -transform.up,out hit, 100)){
-				state = PlayerState.ALIVE;
-				}
-			else{
-				if (intube() == true){
-				transform.Translate(-transform.up, Space.World);
-				}
-				if(state != PlayerState.DEAD) {
-					if(intube() == false){
-						state = PlayerState.DEAD;
-						kill ();
-						
-					}
-				}
-				}	
+		checkGrounded();
+		checkFuel();
 	}
-	bool intube(){
+	
+	bool isInTube(){
 		
 		if(playerPos.x > 50 || playerPos.x < -50){
 			return false;
@@ -72,11 +63,11 @@ public class Player : MonoBehaviour {
 	
 	}
 	
-	void kill(){
-		Debug.Log ("kill called");
+	void Kill(){
+		iTween.Stop();
 		Destroy(rigidbody);
 		ship.renderer.active = false;
-		Instantiate(MultiExample,ship.transform.position,Quaternion.identity);
+		Instantiate(MultiExample, ship.transform.position, Quaternion.identity);
 		Destroy(GameObject.Find ("Mesh1"));
 		
 	}
@@ -85,7 +76,7 @@ public class Player : MonoBehaviour {
 			MoveLeft();
 		} else if(Input.GetKey(KeyCode.RightArrow)) {
 			MoveRight();
-		}
+		} 	
 	}
 	
 	void OnTriggerEnter(Collider col) {
@@ -93,16 +84,45 @@ public class Player : MonoBehaviour {
 			audio.clip = pickUpSound;
 			audio.Play();
 			score++;
-			Debug.Log("Hit Collectible");
-			//temp, move the collectible back so it looks like it disappears and get recycled.
+			//Move the collectible back so it looks like it disappears and get recycled.
 			Vector3 newPos = col.transform.localPosition;
 			newPos.z -= 50;
 			col.transform.localPosition = newPos;
-			score += 125;
+			score += 124;
+			fuel += 4f;
+			if(fuel > 100) fuel = 100;
 		}
 	}
 	
-	void MoveLeft() {		
+	void checkGrounded() {
+		RaycastHit hit;	
+		Debug.DrawRay(transform.position, -transform.up, Color.cyan);
+		if(Physics.Raycast(transform.position, -transform.up,out hit, 100)){
+			state = PlayerState.ALIVE;
+			}
+		else{
+			if (isInTube() == true){
+				transform.Translate(-transform.up, Space.World);
+			}
+			if(state != PlayerState.DEAD) {
+				if(isInTube() == false){
+					state = PlayerState.DEAD;
+					Kill();
+				}
+			}
+		}	
+	}
+	
+	void checkFuel() {
+		if(fuel <= 0) {
+			if(state != PlayerState.DEAD) {
+				state = PlayerState.DEAD;
+				Kill();
+			}
+		}	
+	}
+	
+	void MoveLeft() {
 		switch(CameraRotate.rotation) {
 			case CameraRotate.RotationState.BOTTOM:	
 				transform.Translate(-turnSpeed * Time.fixedDeltaTime, 0f, 0f, Space.World);
