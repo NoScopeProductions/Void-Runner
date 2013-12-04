@@ -11,8 +11,12 @@ public class Player : MonoBehaviour {
 	public Transform MultiExample;
 	
 	public int score;
+	
 	public float fuel;
 	public float fuelDrain;
+	
+	public int collectibleScoreYield;
+	public float collectibleFuelYield;
 	
 	public static Player instance;
 	public enum PlayerState {ALIVE, DEAD};
@@ -83,13 +87,13 @@ public class Player : MonoBehaviour {
 		if(col.tag == "Collectible") {
 			audio.clip = pickUpSound;
 			audio.Play();
-			score++;
 			//Move the collectible back so it looks like it disappears and get recycled.
 			Vector3 newPos = col.transform.localPosition;
 			newPos.z -= 50;
 			col.transform.localPosition = newPos;
-			score += 124;
-			fuel += 4f;
+			
+			score += collectibleScoreYield;
+			fuel += collectibleFuelYield;
 			if(fuel > 100) fuel = 100;
 		}
 	}
