@@ -3,6 +3,8 @@ using System.Collections;
 
 public class DebrisSpawner : MonoBehaviour 
 {
+	public float invokeTime;
+	public float invokeRepeat;
 	public Transform[] prefabs;
 	public float distance;
 	public int min_X;
@@ -14,7 +16,8 @@ public class DebrisSpawner : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		InvokeRepeating("SpawnDebris", 0.0f, 0.15f);
+		InvokeRepeating("SpawnDebris", invokeTime, invokeRepeat);
+		InvokeRepeating("asd",
 	}
 	
 	// Update is called once per frame
