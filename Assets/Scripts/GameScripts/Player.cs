@@ -74,7 +74,14 @@ public class Player : MonoBehaviour {
 		Instantiate(MultiExample, ship.transform.position, Quaternion.identity);
 		Destroy(GameObject.Find ("Mesh1"));
 		
+		Invoke("loadMenu", 2f);
+		
 	}
+	
+	void loadMenu() {
+		Application.LoadLevel("Menu");	
+	}
+	
 	void checkInput() {
 		if(Input.GetKey(KeyCode.LeftArrow)) {
 			MoveLeft();
