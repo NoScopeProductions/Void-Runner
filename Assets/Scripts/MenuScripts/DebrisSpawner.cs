@@ -17,7 +17,6 @@ public class DebrisSpawner : MonoBehaviour
 	void Start () 
 	{
 		InvokeRepeating("SpawnDebris", invokeTime, invokeRepeat);
-		InvokeRepeating("asd",
 	}
 	
 	// Update is called once per frame
