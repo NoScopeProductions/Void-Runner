@@ -37,8 +37,16 @@ public class Player : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update () 
+	{
+
+		updatePlayer();
+		checkGrounded();
+		checkFuel();
+	}
+	
+	void updatePlayer()
+	{
 		if(state == PlayerState.ALIVE) {
 			transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
 			distanceTraveled = transform.localPosition.z;
@@ -49,9 +57,6 @@ public class Player : MonoBehaviour {
 		} else {
 			return;	
 		}
-		
-		checkGrounded();
-		checkFuel();
 	}
 	
 	bool isInTube(){

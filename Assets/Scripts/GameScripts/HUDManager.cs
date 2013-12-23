@@ -3,9 +3,13 @@ using System.Collections;
 
 public class HUDManager : MonoBehaviour 
 {
+	private int score;
 	private int maxFuel = 100;
-	public float currentFuel = 100;
+	private float currentFuel = 100;
 	private float fuelBarLength;
+	public Texture2D fuelBarGREEN;
+	public Texture2D fuelBarORANGE;
+	public Texture2D fuelBarRED;
 
 	// Use this for initialization
 	void Start () 
@@ -16,19 +20,49 @@ public class HUDManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		GetFuel();
+		GetScore();
+	}
+	
+	void GetScore()
+	{
+		score = Player.instance.score;
+	}
+	void GetFuel()
+	{
 		currentFuel = Player.instance.fuel;
 	}
 	
 	void OnGUI()
 	{
-		GUI.Box(new Rect(Screen.width / 2, 20, fuelBarLength, 20), Mathf.Round(currentFuel).ToString() + "/" + maxFuel);
-		GUI.backgroundColor = Color.yellow;
+		DrawFuelBar();
+		DrawScore();
+	}
+	
+	void DrawFuelBar()
+	{
+		
+		GUIStyle fuelBarStyle = new GUIStyle();
+		if(currentFuel > 50.0f)
+		{
+			fuelBarStyle.normal.background = fuelBarGREEN;
+		}
+		if(currentFuel < 50.0f)
+		{
+			fuelBarStyle.normal.background = fuelBarORANGE;
+		}
+		if(currentFuel < 30.0f)
+		{
+			fuelBarStyle.normal.background = fuelBarRED;
+		}
+		
+		GUI.Box(new Rect(Screen.width / 2, 20, fuelBarLength, 20), Mathf.Round(currentFuel).ToString() + "/" + maxFuel, fuelBarStyle);
+		GUI.contentColor = Color.yellow;
 		fuelBarLength = (Screen.width / 2) * (currentFuel / (float)maxFuel);
 	}
 	
-	public void AdjustCurrentFuel(float adjustment)
+	void DrawScore()
 	{
-		Player.instance.fuel += adjustment;
-		fuelBarLength = (Screen.width / 2) * (currentFuel / (float)maxFuel);
+		//Figure out how to draw the score here!
 	}
 }
