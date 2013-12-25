@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
 	public float speed;
 	public float turnSpeed;
 	private GameObject ship;
-	public Transform deathExplosion;
+	public Transform[] deathExplosions;
 	
 	public int score;
 	
@@ -76,7 +76,10 @@ public class Player : MonoBehaviour {
 		iTween.Stop();
 		Destroy(rigidbody);
 		ship.renderer.active = false;
-		Instantiate(deathExplosion, ship.transform.position, Quaternion.identity);
+		for(int i = 0; i < deathExplosions.Length; i++)
+		{
+			Instantiate(deathExplosions[i], ship.transform.position, Quaternion.identity);
+		}
 		Destroy(GameObject.Find ("Mesh1"));
 		
 		Invoke("loadMenu", 2f);
