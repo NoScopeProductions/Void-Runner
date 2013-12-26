@@ -19,15 +19,15 @@ public class Player : MonoBehaviour {
 	public float collectibleFuelYield;
 	
 	public static Player instance;
-	public enum PlayerState {ALIVE, DEAD};
+	public enum PlayerState {ALIVE, DEAD, FALLING};
 	public PlayerState state;
 	
 	public AudioClip pickUpSound;
 	// Use this for initialization
-	void Awake(){
-		ship = GameObject.Find("Mesh1");
-	}
+	
 	void Start () {
+		ship = GameObject.Find("Mesh1");
+		
 		score = 0;
 		state = PlayerState.ALIVE;
 			
@@ -39,49 +39,85 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-
-		updatePlayer();
-		checkGrounded();
-		checkFuel();
+		if(state != PlayerState.DEAD) {
+			updatePlayer();	
+		}
 	}
 	
 	void updatePlayer()
 	{
-		if(state == PlayerState.ALIVE) {
-			transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
-			distanceTraveled = transform.localPosition.z;
-			checkInput();
-			playerPos.x = transform.localPosition.x;
-			playerPos.y = transform.localPosition.y;
-			fuel -= fuelDrain * Time.deltaTime;
-		} else {
-			return;	
+		//update the state
+		state = checkAlive();
+		//move forward
+		transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
+		//keep track of position
+		distanceTraveled = transform.localPosition.z;
+		
+		checkInput();
+		
+		//update x and y positions
+		playerPos.x = transform.localPosition.x;
+		playerPos.y = transform.localPosition.y;
+		
+		//drain fuel
+		fuel -= fuelDrain * Time.deltaTime;
+	}
+	
+	
+	PlayerState checkAlive() {
+		//first check the fuel
+		if(fuel <= 0) {
+			Kill();
+			return PlayerState.DEAD;
+		}
+		
+		//next check if the player is still on the tube
+		RaycastHit hit;	
+		
+		//raycast downwards, if it hits, then the player is still in the tube.
+		if(Physics.Raycast(transform.position, -transform.up, out hit, 100)){
+			return PlayerState.ALIVE;
+		}
+		//if not, the player is falling, but the player has a bit of clearance to get back on the tube before his death.
+		else {
+			//the isInTube() function returns whether or not the player is within a bigger "box" than the tube itself
+			//once the player has fallen out of this box, he is no longer safe.
+			if (isInTube() == true){
+				transform.Translate(-transform.up, Space.World);
+				return PlayerState.FALLING;
+			}
+			else {
+				Kill();
+				return PlayerState.DEAD;
+			}
 		}
 	}
 	
+	
 	bool isInTube(){
-		
 		if(playerPos.x > 50 || playerPos.x < -50){
 			return false;
 		}
 		if(playerPos.y > 50 || playerPos.y < -50){
 			return false;
 		}
-		else
+		else {
 			return true;
-	
+		}
 	}
 	
 	void Kill(){
 		iTween.Stop();
-		Destroy(rigidbody);
-		ship.renderer.active = false;
-		for(int i = 0; i < deathExplosions.Length; i++)
-		{
+		
+		//create the explosion effects
+		for(int i = 0; i < deathExplosions.Length; i++) {
 			Instantiate(deathExplosions[i], ship.transform.position, Quaternion.identity);
 		}
-		Destroy(GameObject.Find ("Mesh1"));
 		
+		//stop rendering the ship model
+		Destroy(ship);
+		
+		//TEMP - return to main menu after 2 seconds, to be replaced with end game menu.
 		Invoke("loadMenu", 2f);
 		
 	}
@@ -109,36 +145,9 @@ public class Player : MonoBehaviour {
 			
 			score += collectibleScoreYield;
 			fuel += collectibleFuelYield;
+			//cap fuel at 100
 			if(fuel > 100) fuel = 100;
 		}
-	}
-	
-	void checkGrounded() {
-		RaycastHit hit;	
-		Debug.DrawRay(transform.position, -transform.up, Color.cyan);
-		if(Physics.Raycast(transform.position, -transform.up,out hit, 100)){
-			state = PlayerState.ALIVE;
-			}
-		else{
-			if (isInTube() == true){
-				transform.Translate(-transform.up, Space.World);
-			}
-			if(state != PlayerState.DEAD) {
-				if(isInTube() == false){
-					state = PlayerState.DEAD;
-					Kill();
-				}
-			}
-		}	
-	}
-	
-	void checkFuel() {
-		if(fuel <= 0) {
-			if(state != PlayerState.DEAD) {
-				state = PlayerState.DEAD;
-				Kill();
-			}
-		}	
 	}
 	
 	void MoveLeft() {
@@ -201,6 +210,7 @@ public class Player : MonoBehaviour {
 		
 	}
 	
+	//helper function for the camera rotation script
 	public void setPos(float x, float y) {
 		transform.localPosition = new Vector3(x, y, distanceTraveled);
 	}	
