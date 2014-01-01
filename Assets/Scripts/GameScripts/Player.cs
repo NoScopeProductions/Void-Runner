@@ -60,7 +60,11 @@ public class Player : MonoBehaviour {
 		playerPos.y = transform.localPosition.y;
 		
 		//drain fuel
-		fuel -= fuelDrain * Time.deltaTime;
+		if(state == PlayerState.FALLING) {
+			fuel -= fuelDrain * 10 * Time.deltaTime;	
+		} else {
+			fuel -= fuelDrain * Time.deltaTime;
+		}
 	}
 	
 	
@@ -83,7 +87,7 @@ public class Player : MonoBehaviour {
 			//the isInTube() function returns whether or not the player is within a bigger "box" than the tube itself
 			//once the player has fallen out of this box, he is no longer safe.
 			if (isInTube() == true){
-				transform.Translate(-transform.up, Space.World);
+				//transform.Translate(-transform.up, Space.World);
 				return PlayerState.FALLING;
 			}
 			else {
