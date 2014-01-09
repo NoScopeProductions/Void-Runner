@@ -26,7 +26,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	
 	void Start () {
-		ship = GameObject.Find("Mesh1");
+		ship = GameObject.Find("Body");
 		
 		score = 0;
 		state = PlayerState.ALIVE;
@@ -114,12 +114,15 @@ public class Player : MonoBehaviour {
 		iTween.Stop();
 		
 		//create the explosion effects
+
 		for(int i = 0; i < deathExplosions.Length; i++) {
-			Instantiate(deathExplosions[i], ship.transform.position, Quaternion.identity);
+			Instantiate(deathExplosions[i], ship.transform.parent.position, Quaternion.identity);
 		}
+
 		
 		//stop rendering the ship model
 		Destroy(ship);
+		//stop rendering propellers 
 		
 		//TEMP - return to main menu after 2 seconds, to be replaced with end game menu.
 		Invoke("loadMenu", 2f);
