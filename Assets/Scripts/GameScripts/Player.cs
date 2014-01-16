@@ -15,9 +15,6 @@ public class Player : MonoBehaviour {
 	public float fuel;
 	public float fuelDrain;
 	
-	public int collectibleScoreYield;
-	public float collectibleFuelYield;
-	
 	public static Player instance;
 	public enum PlayerState {ALIVE, DEAD, FALLING};
 	public PlayerState state;
@@ -65,6 +62,8 @@ public class Player : MonoBehaviour {
 		} else {
 			fuel -= fuelDrain * Time.deltaTime;
 		}
+
+		if(fuel > 100) fuel = 100;
 	}
 	
 	
@@ -102,29 +101,26 @@ public class Player : MonoBehaviour {
 		if(playerPos.x > 50 || playerPos.x < -50){
 			return false;
 		}
-		if(playerPos.y > 50 || playerPos.y < -50){
+		else if(playerPos.y > 50 || playerPos.y < -50){
 			return false;
 		}
-		else {
-			return true;
-		}
+
+		return true;
 	}
 	
 	void Kill(){
 		iTween.Stop();
 		
 		//create the explosion effects
-
 		for(int i = 0; i < deathExplosions.Length; i++) {
 			Instantiate(deathExplosions[i], ship.transform.parent.position, Quaternion.identity);
 		}
 
-		
 		//stop rendering the ship model
 		Destroy(ship);
-		//stop rendering propellers 
 		
 		//TEMP - return to main menu after 2 seconds, to be replaced with end game menu.
+		//TODO - Invoke end game menu here.
 		Invoke("loadMenu", 2f);
 		
 	}
@@ -142,18 +138,36 @@ public class Player : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider col) {
-		if(col.tag == "Collectible") {
+		CheckCollisionType(col);
+	}
+
+	private void CheckCollectibleType (string type) {
+		if (type == "Collectible_Fuel") {
+			fuel += CollectibleRewards.FUEL_GAIN;
+			score += CollectibleRewards.SCORE_FUEL;
+			Debug.Log ("Picked up Fuel");
+		}
+		else if (type == "Collectible_Speed") {
+			score += CollectibleRewards.SCORE_SHIELD;
+			Debug.Log ("Picked up Speed");
+		}
+		else if (type == "Collectible_Shield") {
+			score += CollectibleRewards.SCORE_SPEED;
+			Debug.Log ("Picked up Shield");
+		}
+	}
+
+	void CheckCollisionType (Collider col)
+	{
+		if (col.tag.Contains("Collectible")) {
+			Debug.Log ("Found Collectible");
+			//these actions are applied regardless of the type of pickup
 			audio.clip = pickUpSound;
-			audio.Play();
-			//Move the collectible back so it looks like it disappears and get recycled.
-			Vector3 newPos = col.transform.localPosition;
-			newPos.z -= 50;
-			col.transform.localPosition = newPos;
-			
-			score += collectibleScoreYield;
-			fuel += collectibleFuelYield;
-			//cap fuel at 100
-			if(fuel > 100) fuel = 100;
+			audio.Play ();
+
+			//TODO - Recycle the object here
+
+			CheckCollectibleType (col.tag);
 		}
 	}
 	
