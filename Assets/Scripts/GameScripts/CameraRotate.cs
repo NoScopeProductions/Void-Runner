@@ -8,7 +8,6 @@ public class CameraRotate : MonoBehaviour {
         public static RotationState rotation;
         public float tweenTime;
 		public float rotateTime;
-      //  private Vector3 newPos; //to determine how it should position itself in relation to the player
         // Use this for initialization
         void Start () {
                 rotation = RotationState.BOTTOM;
@@ -16,6 +15,9 @@ public class CameraRotate : MonoBehaviour {
         
         // Update is called once per frame
         void Update () {
+			//We round the x and y values to 1 decimal place to prevent errors
+			Player.playerPos.x = Mathf.Round(Player.playerPos.x * 1000f) / 1000f;
+			Player.playerPos.y = Mathf.Round(Player.playerPos.y * 1000f) / 1000f;
                 /*
                  * There is one if-statement for each side of the octagon (so 8)
                  * Each if statement only checks if the player is within the area required for that side of the tube*/
@@ -53,7 +55,7 @@ public class CameraRotate : MonoBehaviour {
                         }
                 }
                 //Same as above, for left
-                if(Player.playerPos.x <= -34.5f && valueBetween(Player.playerPos.y, -14f, 14f)) {
+				if(valueBetween(Player.playerPos.y, -14f, 14f) && Player.playerPos.x <= -34.5f) {
                         if(rotation != RotationState.LEFT) {
                                 iTween.RotateTo(gameObject, iTween.Hash("z", -90, "time", tweenTime));
                                 if(rotation == RotationState.BOTTOM_LEFT) Player.instance.setPos(-34.5f, -14f);
@@ -64,7 +66,7 @@ public class CameraRotate : MonoBehaviour {
                 }
                 
                 //Same as above, for right
-                if(Player.playerPos.x >= 34.5f && valueBetween(Player.playerPos.y, -14f, 14f)) {
+				if(valueBetween(Player.playerPos.y, -14f, 14f) && Player.playerPos.x >= 34.5f) {
                         if(rotation != RotationState.RIGHT) {
                                 iTween.RotateTo(gameObject, iTween.Hash("z", 90, "time", tweenTime));
                                 if(rotation == RotationState.BOTTOM_RIGHT) Player.instance.setPos(34.5f, -14f);

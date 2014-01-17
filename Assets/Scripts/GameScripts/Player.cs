@@ -16,21 +16,31 @@ public class Player : MonoBehaviour {
 	public float fuelDrain;
 	
 	public static Player instance;
-	public enum PlayerState {ALIVE, DEAD, FALLING};
+	public enum PlayerState {ALIVE, DEAD, FALLING, ACTIVATING_BOOST, DEACTIVATING_BOOST};
 	public PlayerState state;
+
+	public enum PowerUps {NONE, TURBO_BOOST, SHIELD};
+
+	public PowerUps activePowerUp;
+
+	public float boostDistance;
+	private Vector3 initialPos;
 	
 	public AudioClip pickUpSound;
 	// Use this for initialization
 	
 	void Start () {
-		ship = GameObject.Find("Body");
-		
+		init();
+	}
+
+	void init() {
+		ship = GameObject.Find ("Body");
 		score = 0;
 		state = PlayerState.ALIVE;
-			
 		distanceTraveled = 0;
-		playerPos = new Vector2(0f, 0f);
+		playerPos = new Vector2 (0f, 0f);
 		instance = this;
+		activePowerUp = PowerUps.NONE;
 	}
 	
 	// Update is called once per frame
@@ -49,25 +59,53 @@ public class Player : MonoBehaviour {
 		transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
 		//keep track of position
 		distanceTraveled = transform.localPosition.z;
-		
-		checkInput();
-		
+
+		if(state != PlayerState.ACTIVATING_BOOST) {
+			checkInput();
+		}
+
 		//update x and y positions
+		if(state == PlayerState.ACTIVATING_BOOST) {
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(0,0,transform.position.z), speed * Time.deltaTime);
+			boostDistance -= speed * Time.deltaTime;
+			transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
+
+			if(boostDistance <= 0) {
+				state = PlayerState.DEACTIVATING_BOOST;
+			}
+		}
+
+		if(state == PlayerState.DEACTIVATING_BOOST) {
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(initialPos.x, initialPos.y, transform.position.z), speed * Time.deltaTime);
+
+			if(transform.position.x == initialPos.x && transform.position.y == initialPos.y) {
+				state = PlayerState.ALIVE;
+				boostDistance = 300;
+			}
+		}
+
+
 		playerPos.x = transform.localPosition.x;
 		playerPos.y = transform.localPosition.y;
 		
 		//drain fuel
-		if(state == PlayerState.FALLING) {
-			fuel -= fuelDrain * 10 * Time.deltaTime;	
-		} else {
+		DrainFuel();
+	}
+
+	void DrainFuel() {
+		if (state == PlayerState.FALLING) {
+			fuel -= fuelDrain * 10 * Time.deltaTime;
+		}
+		else {
 			fuel -= fuelDrain * Time.deltaTime;
 		}
 
 		if(fuel > 100) fuel = 100;
-	}
-	
+	}	
 	
 	PlayerState checkAlive() {
+		if(state == PlayerState.ACTIVATING_BOOST) return PlayerState.ACTIVATING_BOOST;
+		if(state == PlayerState.DEACTIVATING_BOOST) return PlayerState.DEACTIVATING_BOOST;
 		//first check the fuel
 		if(fuel <= 0) {
 			Kill();
@@ -148,13 +186,22 @@ public class Player : MonoBehaviour {
 			Debug.Log ("Picked up Fuel");
 		}
 		else if (type == "Collectible_Speed") {
-			score += CollectibleRewards.SCORE_SHIELD;
+			ActivateBoost();
 			Debug.Log ("Picked up Speed");
 		}
 		else if (type == "Collectible_Shield") {
-			score += CollectibleRewards.SCORE_SPEED;
+			score += CollectibleRewards.SCORE_SHIELD;
 			Debug.Log ("Picked up Shield");
 		}
+	}
+
+	void ActivateBoost ()
+	{
+		state = PlayerState.ACTIVATING_BOOST;
+		initialPos = transform.position;
+		activePowerUp = PowerUps.TURBO_BOOST;
+
+		score += CollectibleRewards.SCORE_SPEED;
 	}
 
 	void CheckCollisionType (Collider col)
@@ -165,9 +212,11 @@ public class Player : MonoBehaviour {
 			audio.clip = pickUpSound;
 			audio.Play ();
 
-			//TODO - Recycle the object here
+			Vector3 newPos = col.transform.position;
+			newPos.z -= 100;
+			col.transform.position = newPos;
 
-			CheckCollectibleType (col.tag);
+			CheckCollectibleType(col.tag);
 		}
 	}
 	
