@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
 	public float fuelDrain;
 	
 	public static Player instance;
-	public enum PlayerState {ALIVE, DEAD, FALLING, ACTIVATING_BOOST, DEACTIVATING_BOOST};
+	public enum PlayerState {ALIVE, DEAD, FALLING, BOOSTING, DEACTIVATING_BOOST};
 	public PlayerState state;
 
 	public enum PowerUps {NONE, TURBO_BOOST, SHIELD};
@@ -60,17 +60,18 @@ public class Player : MonoBehaviour {
 		//keep track of position
 		distanceTraveled = transform.localPosition.z;
 
-		if(state != PlayerState.ACTIVATING_BOOST) {
+		if(state != PlayerState.BOOSTING) {
 			checkInput();
 		}
 
 		//update x and y positions
-		if(state == PlayerState.ACTIVATING_BOOST) {
+		if(state == PlayerState.BOOSTING) {
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(0,0,transform.position.z), speed * Time.deltaTime);
 			boostDistance -= speed * Time.deltaTime;
 			transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
 
 			if(boostDistance <= 0) {
+				//TODO - Check that player will land on tube.
 				state = PlayerState.DEACTIVATING_BOOST;
 			}
 		}
@@ -80,6 +81,7 @@ public class Player : MonoBehaviour {
 
 			if(transform.position.x == initialPos.x && transform.position.y == initialPos.y) {
 				state = PlayerState.ALIVE;
+				activePowerUp = PowerUps.NONE;
 				boostDistance = 300;
 			}
 		}
@@ -104,7 +106,7 @@ public class Player : MonoBehaviour {
 	}	
 	
 	PlayerState checkAlive() {
-		if(state == PlayerState.ACTIVATING_BOOST) return PlayerState.ACTIVATING_BOOST;
+		if(state == PlayerState.BOOSTING) return PlayerState.BOOSTING;
 		if(state == PlayerState.DEACTIVATING_BOOST) return PlayerState.DEACTIVATING_BOOST;
 		//first check the fuel
 		if(fuel <= 0) {
@@ -183,21 +185,19 @@ public class Player : MonoBehaviour {
 		if (type == "Collectible_Fuel") {
 			fuel += CollectibleRewards.FUEL_GAIN;
 			score += CollectibleRewards.SCORE_FUEL;
-			Debug.Log ("Picked up Fuel");
 		}
 		else if (type == "Collectible_Speed") {
 			ActivateBoost();
-			Debug.Log ("Picked up Speed");
 		}
 		else if (type == "Collectible_Shield") {
+			//TODO - ActivateShield();
 			score += CollectibleRewards.SCORE_SHIELD;
-			Debug.Log ("Picked up Shield");
 		}
 	}
 
 	void ActivateBoost ()
 	{
-		state = PlayerState.ACTIVATING_BOOST;
+		state = PlayerState.BOOSTING;
 		initialPos = transform.position;
 		activePowerUp = PowerUps.TURBO_BOOST;
 
