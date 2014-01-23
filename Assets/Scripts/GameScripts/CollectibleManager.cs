@@ -64,7 +64,7 @@ public class CollectibleManager : MonoBehaviour {
 		int chance = Random.Range(1,101);
 
 		//There is a 65% chance of the type being fuel.
-		if(chance < 65) {
+		if(chance < 75) {
 			return TYPE_FUEL;
 		}
 		else {

@@ -79,8 +79,10 @@ public class Player : MonoBehaviour {
 	}
 
 	private void DrainFuel() {
-		if(state == PlayerState.BOOSTING) return; //Don't drain fuel while boosting
-		if (state == PlayerState.FALLING) {
+		if(state == PlayerState.BOOSTING) {
+			fuel += fuelDrain/2;
+		}
+		else if (state == PlayerState.FALLING) {
 			fuel -= fuelDrain * 10 * Time.deltaTime;
 		}
 		else {
@@ -108,9 +110,7 @@ public class Player : MonoBehaviour {
 		}
 		//if not, the player is falling, but the player has a bit of clearance to get back on the tube before his death.
 		else {
-			//the isInTube() function returns whether or not the player is within a bigger "box" than the tube itself
-			//once the player has fallen out of this box, he is no longer safe.
-			if (isInTube() == true){
+			if (isInTube()) {
 				//transform.Translate(-transform.up, Space.World);
 				return PlayerState.FALLING;
 			}
