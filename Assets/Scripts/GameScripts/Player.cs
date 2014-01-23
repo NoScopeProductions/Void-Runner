@@ -27,13 +27,12 @@ public class Player : MonoBehaviour {
 	private Vector3 initialPos;
 	
 	public AudioClip pickUpSound;
-	// Use this for initialization
-	
-	void Start () {
+
+	public void Start () {
 		init();
 	}
 
-	void init() {
+	private void init() {
 		ship = GameObject.Find ("Body");
 		score = 0;
 		state = PlayerState.ALIVE;
@@ -44,49 +43,34 @@ public class Player : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	public void Update() 
 	{
 		if(state != PlayerState.DEAD) {
 			updatePlayer();	
 		}
 	}
 	
-	void updatePlayer()
-	{
+	private void updatePlayer() {
 		//update the state
 		state = checkAlive();
 		//move forward
 		transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
-		//keep track of position
-		distanceTraveled = transform.localPosition.z;
+		distanceTraveled = transform.localPosition.z; //keep track of position
 
-		if(state != PlayerState.BOOSTING) {
+		//don't allow input while boosting
+		if(state != PlayerState.BOOSTING || state != PlayerState.DEACTIVATING_BOOST) {
 			checkInput();
 		}
 
-		//update x and y positions
 		if(state == PlayerState.BOOSTING) {
-			transform.position = Vector3.MoveTowards(transform.position, new Vector3(0,0,transform.position.z), speed * Time.deltaTime);
-			boostDistance -= speed * Time.deltaTime;
-			transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
-
-			if(boostDistance <= 0) {
-				//TODO - Check that player will land on tube.
-				state = PlayerState.DEACTIVATING_BOOST;
-			}
+			Boost();
 		}
 
 		if(state == PlayerState.DEACTIVATING_BOOST) {
-			transform.position = Vector3.MoveTowards(transform.position, new Vector3(initialPos.x, initialPos.y, transform.position.z), speed * Time.deltaTime);
-
-			if(transform.position.x == initialPos.x && transform.position.y == initialPos.y) {
-				state = PlayerState.ALIVE;
-				activePowerUp = PowerUps.NONE;
-				boostDistance = 300;
-			}
+			DeactivateBoost();
 		}
 
-
+		//keep track of position
 		playerPos.x = transform.localPosition.x;
 		playerPos.y = transform.localPosition.y;
 		
@@ -94,7 +78,7 @@ public class Player : MonoBehaviour {
 		DrainFuel();
 	}
 
-	void DrainFuel() {
+	private void DrainFuel() {
 		if (state == PlayerState.FALLING) {
 			fuel -= fuelDrain * 10 * Time.deltaTime;
 		}
@@ -105,7 +89,7 @@ public class Player : MonoBehaviour {
 		if(fuel > 100) fuel = 100;
 	}	
 	
-	PlayerState checkAlive() {
+	private PlayerState checkAlive() {
 		if(state == PlayerState.BOOSTING) return PlayerState.BOOSTING;
 		if(state == PlayerState.DEACTIVATING_BOOST) return PlayerState.DEACTIVATING_BOOST;
 		//first check the fuel
@@ -137,7 +121,7 @@ public class Player : MonoBehaviour {
 	}
 	
 	
-	bool isInTube(){
+	private bool isInTube() {
 		if(playerPos.x > 50 || playerPos.x < -50){
 			return false;
 		}
@@ -148,7 +132,7 @@ public class Player : MonoBehaviour {
 		return true;
 	}
 	
-	void Kill(){
+	private void Kill() {
 		iTween.Stop();
 		
 		//create the explosion effects
@@ -165,11 +149,12 @@ public class Player : MonoBehaviour {
 		
 	}
 	
-	void loadMenu() {
+	private void loadMenu() {
 		Application.LoadLevel("Menu");	
 	}
 	
-	void checkInput() {
+	private void checkInput() {
+		//TODO - Implement Touch Controls Here
 		if(Input.GetKey(KeyCode.LeftArrow)) {
 			MoveLeft();
 		} else if(Input.GetKey(KeyCode.RightArrow)) {
@@ -177,7 +162,7 @@ public class Player : MonoBehaviour {
 		} 	
 	}
 	
-	void OnTriggerEnter(Collider col) {
+	public void OnTriggerEnter(Collider col) {
 		CheckCollisionType(col);
 	}
 
@@ -195,8 +180,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	void ActivateBoost ()
-	{
+	void ActivateBoost() {
 		state = PlayerState.BOOSTING;
 		initialPos = transform.position;
 		activePowerUp = PowerUps.TURBO_BOOST;
@@ -204,14 +188,33 @@ public class Player : MonoBehaviour {
 		score += CollectibleRewards.SCORE_SPEED;
 	}
 
-	void CheckCollisionType (Collider col)
-	{
+	private void DeactivateBoost() {
+		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (initialPos.x, initialPos.y, transform.position.z), speed * Time.deltaTime);
+		if (transform.position.x == initialPos.x && transform.position.y == initialPos.y) {
+			state = PlayerState.ALIVE;
+			activePowerUp = PowerUps.NONE;
+			boostDistance = 300;
+		}
+	}
+
+	private void Boost() {
+		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (0, 0, transform.position.z), speed * Time.deltaTime);
+		boostDistance -= speed * Time.deltaTime;
+		transform.Translate (0f, 0f, speed * Time.fixedDeltaTime);
+		if (boostDistance <= 0) {
+			//TODO - Check that player will land on tube.
+			state = PlayerState.DEACTIVATING_BOOST;
+		}
+	}
+
+	void CheckCollisionType(Collider col) {
 		if (col.tag.Contains("Collectible")) {
-			Debug.Log ("Found Collectible");
 			//these actions are applied regardless of the type of pickup
 			audio.clip = pickUpSound;
 			audio.Play ();
 
+			//recycle the collectible
+			//TODO - Perhaps this recycling needs to be defined in the collectible's class, as opposed to here.
 			Vector3 newPos = col.transform.position;
 			newPos.z -= 100;
 			col.transform.position = newPos;
