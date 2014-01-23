@@ -3,30 +3,24 @@ using System.Collections;
 
 public class CameraRotate : MonoBehaviour {
         
-public enum RotationState {BOTTOM, TOP, LEFT, RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT, TOP_LEFT, TOP_RIGHT};
+	public enum RotationState {BOTTOM, TOP, LEFT, RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT, TOP_LEFT, TOP_RIGHT};
 
-public static RotationState rotation;
-public float tweenTime;
+	public static RotationState rotation;
+	public float tweenTime;
 	public float rotateTime;
-// Use this for initialization
-void Start () {
-        rotation = RotationState.BOTTOM;
-}
 
-// Update is called once per frame
-void Update () {
-		//We round the x and y values to 1 decimal place to prevent errors
+	public void Start () {
+	        rotation = RotationState.BOTTOM;
+	}
+
+	public void Update () {
+		//Round the x and y values to 1 decimal place to prevent errors
 		Player.playerPos.x = Mathf.Round(Player.playerPos.x * 1000f) / 1000f;
 		Player.playerPos.y = Mathf.Round(Player.playerPos.y * 1000f) / 1000f;
 
-        checkCameraPosition();
-}
-
-	//for making the update checks a little easier
-	private bool valueBetween(float x, float min, float max) {
-	        return (x >= min && x <= max);
+		checkCameraPosition();
 	}
-	
+
 	private void checkCameraPosition() {
 		checkBottomLeft();
 		checkBottomRight();
@@ -36,6 +30,11 @@ void Update () {
 		checkTopRight();
 		checkTopLeft();
 		checkTop();
+	}
+
+	//for making the position checks a little easier
+	private bool valueBetween(float x, float min, float max) {
+		return (x >= min && x <= max);
 	}
 
 	/************************/
