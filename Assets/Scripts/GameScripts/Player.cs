@@ -93,6 +93,7 @@ public class Player : MonoBehaviour {
 	}	
 	
 	private PlayerState checkAlive() {
+		//don't need to check the state while we're boosting.
 		if(state == PlayerState.BOOSTING) return PlayerState.BOOSTING;
 		if(state == PlayerState.DEACTIVATING_BOOST) return PlayerState.DEACTIVATING_BOOST;
 		//first check the fuel
