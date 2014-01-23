@@ -79,6 +79,7 @@ public class Player : MonoBehaviour {
 	}
 
 	private void DrainFuel() {
+		if(state == PlayerState.BOOSTING) return; //Don't drain fuel while boosting
 		if (state == PlayerState.FALLING) {
 			fuel -= fuelDrain * 10 * Time.deltaTime;
 		}

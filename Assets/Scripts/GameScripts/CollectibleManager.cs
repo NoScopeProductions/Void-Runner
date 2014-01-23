@@ -26,6 +26,7 @@ public class CollectibleManager : MonoBehaviour {
 	void Start () {
 		objectQueue = new Queue<Transform>(numberOfObjects);
 		nextPosition = startPosition;
+
 		for (int i = 0; i < numberOfObjects; i++) {
 			int index = getPowerupType();
 
@@ -60,8 +61,6 @@ public class CollectibleManager : MonoBehaviour {
 	}
 
 	private int getPowerupType() {
-		return TYPE_SPEED;
-
 		int chance = Random.Range(1,101);
 
 		//There is a 65% chance of the type being fuel.
