@@ -80,7 +80,7 @@ public class Player : MonoBehaviour {
 
 	private void DrainFuel() {
 		if(state == PlayerState.BOOSTING) {
-			fuel += fuelDrain/2;
+			fuel += fuelDrain * Time.deltaTime;
 		}
 		else if (state == PlayerState.FALLING) {
 			fuel -= fuelDrain * 10 * Time.deltaTime;
