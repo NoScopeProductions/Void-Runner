@@ -57,10 +57,7 @@ public class Player : MonoBehaviour {
 		transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
 		distanceTraveled = transform.localPosition.z; //keep track of position
 
-		//don't allow input while boosting
-		if(state != PlayerState.BOOSTING || state != PlayerState.DEACTIVATING_BOOST) {
-			checkInput();
-		}
+		checkInput();		
 
 		if(state == PlayerState.BOOSTING) {
 			Boost();
@@ -156,6 +153,10 @@ public class Player : MonoBehaviour {
 	}
 	
 	private void checkInput() {
+		//don't check input when the players is boosting.
+		if(state == PlayerState.BOOSTING) return;
+		if(state == PlayerState.DEACTIVATING_BOOST) return;
+
 		//TODO - Implement Touch Controls Here
 		if(Input.GetKey(KeyCode.LeftArrow)) {
 			MoveLeft();
