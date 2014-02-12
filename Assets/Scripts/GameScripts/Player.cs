@@ -9,7 +9,8 @@ public class Player : MonoBehaviour {
 	public float turnSpeed;
 	private GameObject ship;
 	public Transform[] deathExplosions;
-	
+
+	public GameObject playerCamera;
 	public int score;
 	
 	public float fuel;
@@ -24,7 +25,12 @@ public class Player : MonoBehaviour {
 	public PowerUps activePowerUp;
 
 	public float boostDistance;
+
+	public Vector3 boostIntensity;
+
 	private Vector3 initialPos;
+
+	private Vector3 initialCameraPos;
 	
 	public AudioClip pickUpSound;
 
@@ -186,13 +192,17 @@ public class Player : MonoBehaviour {
 	void ActivateBoost() {
 		state = PlayerState.BOOSTING;
 		initialPos = transform.position;
+		initialCameraPos = playerCamera.transform.localPosition;
 		activePowerUp = PowerUps.TURBO_BOOST;
 
 		score += CollectibleRewards.SCORE_SPEED;
+
+		iTween.ShakeRotation(playerCamera, boostIntensity, 6f);
 	}
 
 	private void DeactivateBoost() {
-		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (initialPos.x, initialPos.y, transform.position.z), speed * Time.deltaTime);
+		transform.position = Vector3.MoveTowards(transform.position, new Vector3 (initialPos.x, initialPos.y, transform.position.z), speed * Time.deltaTime);
+		playerCamera.transform.localPosition = Vector3.MoveTowards(playerCamera.transform.localPosition, new Vector3(initialCameraPos.x, initialCameraPos.y, playerCamera.transform.localPosition.z), Time.deltaTime);
 		if (transform.position.x == initialPos.x && transform.position.y == initialPos.y) {
 			state = PlayerState.ALIVE;
 			activePowerUp = PowerUps.NONE;
@@ -201,9 +211,11 @@ public class Player : MonoBehaviour {
 	}
 
 	private void Boost() {
-		transform.position = Vector3.MoveTowards (transform.position, new Vector3 (0, 0, transform.position.z), speed * Time.deltaTime);
+		transform.position = Vector3.MoveTowards(transform.position, new Vector3 (0, 0, transform.position.z), speed * Time.deltaTime);
 		boostDistance -= speed * Time.deltaTime;
 		transform.Translate (0f, 0f, speed * Time.fixedDeltaTime);
+		float noise = Mathf.PerlinNoise(Time.time, Time.time);
+		playerCamera.transform.localPosition = Vector3.MoveTowards(playerCamera.transform.localPosition, new Vector3 (noise-0.5f, noise+1f, playerCamera.transform.localPosition.z), Time.deltaTime);
 		if (boostDistance <= 0) {
 			//TODO - Check that player will land on tube.
 			state = PlayerState.DEACTIVATING_BOOST;
