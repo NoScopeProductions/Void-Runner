@@ -19,6 +19,5 @@ public class Button_Play_Script : MonoBehaviour
 	void OnMouseUp()
 	{
 		Application.LoadLevel("Game");
-		Debug.Log("Clicked Play!");
 	}
 }
