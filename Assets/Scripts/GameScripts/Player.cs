@@ -34,33 +34,38 @@ public class Player : MonoBehaviour {
 	
 	public AudioClip pickUpSound;
 
-	public float dist;
+	const float LANDING_DISTANCE = 36f;
 
-	public void Start () {
+	public void Start () 
+	{
 		init();
 	}
 
 
 	private void init() {
-		ship = GameObject.Find ("Body");
+		ship = GameObject.Find ("Body"); //This needs to be decoupled
+
 		score = 0;
 		state = PlayerState.ALIVE;
 		distanceTraveled = 0;
-		playerPos = new Vector2 (0f, 0f);
-		instance = this;
+
+		playerPos = new Vector2 (0f, 0f); //this needs to be removed
+		instance = this; //this needs to be removed
+
 		activePowerUp = PowerUps.NONE;
-		dist = 0f;
 	}
 	
 	// Update is called once per frame
 	public void Update() 
 	{
-		if(state != PlayerState.DEAD) {
+		if(state != PlayerState.DEAD) 
+		{
 			updatePlayer();	
 		}
 	}
 	
-	private void updatePlayer() {
+	private void updatePlayer() 
+	{
 		//update the state
 		state = checkAlive();
 		//move forward
@@ -69,11 +74,13 @@ public class Player : MonoBehaviour {
 
 		checkInput();		
 
-		if(state == PlayerState.BOOSTING) {
+		if(state == PlayerState.BOOSTING) 
+		{
 			Boost();
 		}
 
-		if(state == PlayerState.DEACTIVATING_BOOST) {
+		if(state == PlayerState.DEACTIVATING_BOOST) 
+		{
 			DeactivateBoost();
 		}
 
@@ -86,25 +93,30 @@ public class Player : MonoBehaviour {
 	}
 
 	private void DrainFuel() {
-		if(state == PlayerState.BOOSTING) {
+		if(state == PlayerState.BOOSTING) 
+		{
 			fuel += fuelDrain * Time.deltaTime;
 		}
-		else if (state == PlayerState.FALLING) {
+		else if (state == PlayerState.FALLING) 
+		{
 			fuel -= fuelDrain * 10 * Time.deltaTime;
 		}
-		else {
+		else 
+		{
 			fuel -= fuelDrain * Time.deltaTime;
 		}
 
 		if(fuel > 100) fuel = 100;
 	}	
 	
-	private PlayerState checkAlive() {
+	private PlayerState checkAlive() 
+	{
 		//don't need to check the state while we're boosting.
 		if(state == PlayerState.BOOSTING) return PlayerState.BOOSTING;
 		if(state == PlayerState.DEACTIVATING_BOOST) return PlayerState.DEACTIVATING_BOOST;
 		//first check the fuel
-		if(fuel <= 0) {
+		if(fuel <= 0) 
+		{
 			Kill();
 			return PlayerState.DEAD;
 		}
@@ -113,16 +125,20 @@ public class Player : MonoBehaviour {
 		RaycastHit hit;	
 		
 		//raycast downwards, if it hits, then the player is still in the tube.
-		if(Physics.Raycast(transform.position, -transform.up, out hit, 100)){
+		if(Physics.Raycast(transform.position, -transform.up, out hit, 100))
+		{
 			return PlayerState.ALIVE;
 		}
 		//if not, the player is falling, but the player has a bit of clearance to get back on the tube before his death.
-		else {
-			if (isInTube()) {
+		else 
+		{
+			if (isInTube()) 
+			{
 				//transform.Translate(-transform.up, Space.World);
 				return PlayerState.FALLING;
 			}
-			else {
+			else 
+			{
 				Kill();
 				return PlayerState.DEAD;
 			}
@@ -131,10 +147,12 @@ public class Player : MonoBehaviour {
 	
 	
 	private bool isInTube() {
-		if(playerPos.x > 50 || playerPos.x < -50){
+		if(playerPos.x > 50 || playerPos.x < -50)
+		{
 			return false;
 		}
-		else if(playerPos.y > 50 || playerPos.y < -50){
+		else if(playerPos.y > 50 || playerPos.y < -50)
+		{
 			return false;
 		}
 
@@ -145,7 +163,8 @@ public class Player : MonoBehaviour {
 		iTween.Stop();
 		
 		//create the explosion effects
-		for(int i = 0; i < deathExplosions.Length; i++) {
+		for(int i = 0; i < deathExplosions.Length; i++) 
+		{
 			Instantiate(deathExplosions[i], ship.transform.parent.position, Quaternion.identity);
 		}
 
@@ -158,7 +177,8 @@ public class Player : MonoBehaviour {
 		
 	}
 	
-	private void loadMenu() {
+	private void loadMenu() 
+	{
 		Application.LoadLevel("Menu");	
 	}
 	
@@ -168,33 +188,39 @@ public class Player : MonoBehaviour {
 		if(state == PlayerState.DEACTIVATING_BOOST) return;
 
 		//TODO - Implement Touch Controls Here
-		if(Input.GetKey(KeyCode.LeftArrow)) {
+		if(Input.GetKey(KeyCode.LeftArrow)) 
+		{
 			MoveLeft();
-		} else if(Input.GetKey(KeyCode.RightArrow)) {
+		} 
+		else if(Input.GetKey(KeyCode.RightArrow)) 
+		{
 			MoveRight();
 		} 	
 	}
 	
-	public void OnTriggerEnter(Collider col) {
+	public void OnTriggerEnter(Collider col) 
+	{
 		CheckCollisionType(col);
 	}
 
 	private void CheckCollectibleType (string type) {
-		if (type == "Collectible_Fuel") {
+		if (type == "Collectible_Fuel") 
+		{
 			fuel += CollectibleRewards.FUEL_GAIN;
 			score += CollectibleRewards.SCORE_FUEL;
 		}
-		else if (type == "Collectible_Speed") {
+		else if (type == "Collectible_Speed") 
+		{
 			ActivateBoost();
 		}
-		else if (type == "Collectible_Shield") {
+		else if (type == "Collectible_Shield") 
+		{
 			//TODO - ActivateShield();
 			score += CollectibleRewards.SCORE_SHIELD;
 		}
 	}
 
 	void ActivateBoost() {
-		dist = 0;
 		state = PlayerState.BOOSTING;
 		initialPos = transform.position;
 		initialCameraPos = playerCamera.transform.localPosition;
@@ -207,45 +233,59 @@ public class Player : MonoBehaviour {
 
 	private void DeactivateBoost() {
 		transform.position = Vector3.MoveTowards(transform.position, new Vector3 (initialPos.x, initialPos.y, transform.position.z), speed * Time.deltaTime);
-		playerCamera.transform.localPosition = Vector3.MoveTowards(playerCamera.transform.localPosition, new Vector3(initialCameraPos.x, initialCameraPos.y, playerCamera.transform.localPosition.z), Time.deltaTime);
-		dist += speed * Time.fixedDeltaTime;
-		if (transform.position.x == initialPos.x && transform.position.y == initialPos.y) {
-			Debug.Log("Distance: " + dist);
+		ResetCamera();
+		if (transform.position.x == initialPos.x && transform.position.y == initialPos.y) 
+		{
 			state = PlayerState.ALIVE;
 			activePowerUp = PowerUps.NONE;
 			boostDistance = 300;
 		}
 	}
 
-	private void Boost() {
+	private void Boost() 
+	{
 		transform.position = Vector3.MoveTowards(transform.position, new Vector3 (0, 0, transform.position.z), speed * Time.deltaTime);
 		boostDistance -= speed * Time.deltaTime;
 		transform.Translate (0f, 0f, speed * Time.deltaTime);
-		float noise = Mathf.PerlinNoise(Time.time, Time.time);
-		playerCamera.transform.localPosition = Vector3.MoveTowards(playerCamera.transform.localPosition, new Vector3 (noise-0.5f, noise+1f, playerCamera.transform.localPosition.z), Time.deltaTime);
-		if (boostDistance <= 0 && CanLand()) {
-			//TODO - Check that player will land on tube.
+		WoobleCamera();
+
+		if (boostDistance <= 0 && CanLand()) 
+		{
 			state = PlayerState.DEACTIVATING_BOOST;
 		}
 	}
 
-	private bool CanLand ()
+	private bool CanLand()
 	{
 		RaycastHit hit;
 		Vector3 aheadPos = transform.position;
-		aheadPos.z += 39;
-		if(Physics.Raycast(aheadPos, -transform.up, out hit, 100)){
+		aheadPos.z += LANDING_DISTANCE;
+		if(Physics.Raycast(aheadPos, -transform.up, out hit, 100))
+		{
 			return true;
 		}
 
 		return false;
 	}
 
-	void CheckCollisionType(Collider col) {
-		if (col.tag.Contains("Collectible")) {
+	private void WoobleCamera()
+	{
+		float noise = Mathf.PerlinNoise(Time.time, Time.time);
+		playerCamera.transform.localPosition = Vector3.MoveTowards (playerCamera.transform.localPosition, new Vector3 (noise - 0.5f, noise + 1f, playerCamera.transform.localPosition.z), Time.deltaTime);
+	}
+
+	void ResetCamera()
+	{
+		playerCamera.transform.localPosition = Vector3.MoveTowards (playerCamera.transform.localPosition, new Vector3 (initialCameraPos.x, initialCameraPos.y, playerCamera.transform.localPosition.z), Time.deltaTime);
+	}
+
+	void CheckCollisionType(Collider col) 
+	{
+		if (col.tag.Contains("Collectible")) 
+		{
 			//these actions are applied regardless of the type of pickup
 			audio.clip = pickUpSound;
-			audio.Play ();
+			audio.Play();
 
 			//recycle the collectible
 			//TODO - Perhaps this recycling needs to be defined in the collectible's class, as opposed to here.
@@ -257,8 +297,10 @@ public class Player : MonoBehaviour {
 		}
 	}
 	
-	void MoveLeft() {
-		switch(CameraRotate.rotation) {
+	void MoveLeft() 
+	{
+		switch(CameraRotate.rotation) 
+		{
 			case CameraRotate.RotationState.BOTTOM:	
 				transform.Translate(-turnSpeed * Time.fixedDeltaTime, 0f, 0f, Space.World);
 				break;
@@ -287,8 +329,10 @@ public class Player : MonoBehaviour {
 		
 	}
 	
-	void MoveRight() {
-		switch(CameraRotate.rotation) {
+	void MoveRight() 
+	{
+		switch(CameraRotate.rotation) 
+		{
 			case CameraRotate.RotationState.BOTTOM:	
 				transform.Translate(turnSpeed * Time.fixedDeltaTime, 0f, 0f, Space.World);
 				break;
@@ -318,7 +362,8 @@ public class Player : MonoBehaviour {
 	}
 	
 	//helper function for the camera rotation script
-	public void setPos(float x, float y) {
+	public void setPos(float x, float y) 
+	{
 		transform.localPosition = new Vector3(x, y, distanceTraveled);
 	}	
 }
