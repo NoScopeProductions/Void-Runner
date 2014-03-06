@@ -34,9 +34,12 @@ public class Player : MonoBehaviour {
 	
 	public AudioClip pickUpSound;
 
+	public float dist;
+
 	public void Start () {
 		init();
 	}
+
 
 	private void init() {
 		ship = GameObject.Find ("Body");
@@ -46,6 +49,7 @@ public class Player : MonoBehaviour {
 		playerPos = new Vector2 (0f, 0f);
 		instance = this;
 		activePowerUp = PowerUps.NONE;
+		dist = 0f;
 	}
 	
 	// Update is called once per frame
@@ -60,7 +64,7 @@ public class Player : MonoBehaviour {
 		//update the state
 		state = checkAlive();
 		//move forward
-		transform.Translate(0f,0f, speed * Time.fixedDeltaTime);
+		transform.Translate(0f,0f, speed * Time.deltaTime);
 		distanceTraveled = transform.localPosition.z; //keep track of position
 
 		checkInput();		
@@ -190,6 +194,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void ActivateBoost() {
+		dist = 0;
 		state = PlayerState.BOOSTING;
 		initialPos = transform.position;
 		initialCameraPos = playerCamera.transform.localPosition;
@@ -203,7 +208,9 @@ public class Player : MonoBehaviour {
 	private void DeactivateBoost() {
 		transform.position = Vector3.MoveTowards(transform.position, new Vector3 (initialPos.x, initialPos.y, transform.position.z), speed * Time.deltaTime);
 		playerCamera.transform.localPosition = Vector3.MoveTowards(playerCamera.transform.localPosition, new Vector3(initialCameraPos.x, initialCameraPos.y, playerCamera.transform.localPosition.z), Time.deltaTime);
+		dist += speed * Time.fixedDeltaTime;
 		if (transform.position.x == initialPos.x && transform.position.y == initialPos.y) {
+			Debug.Log("Distance: " + dist);
 			state = PlayerState.ALIVE;
 			activePowerUp = PowerUps.NONE;
 			boostDistance = 300;
@@ -213,13 +220,25 @@ public class Player : MonoBehaviour {
 	private void Boost() {
 		transform.position = Vector3.MoveTowards(transform.position, new Vector3 (0, 0, transform.position.z), speed * Time.deltaTime);
 		boostDistance -= speed * Time.deltaTime;
-		transform.Translate (0f, 0f, speed * Time.fixedDeltaTime);
+		transform.Translate (0f, 0f, speed * Time.deltaTime);
 		float noise = Mathf.PerlinNoise(Time.time, Time.time);
 		playerCamera.transform.localPosition = Vector3.MoveTowards(playerCamera.transform.localPosition, new Vector3 (noise-0.5f, noise+1f, playerCamera.transform.localPosition.z), Time.deltaTime);
-		if (boostDistance <= 0) {
+		if (boostDistance <= 0 && CanLand()) {
 			//TODO - Check that player will land on tube.
 			state = PlayerState.DEACTIVATING_BOOST;
 		}
+	}
+
+	private bool CanLand ()
+	{
+		RaycastHit hit;
+		Vector3 aheadPos = transform.position;
+		aheadPos.z += 39;
+		if(Physics.Raycast(aheadPos, -transform.up, out hit, 100)){
+			return true;
+		}
+
+		return false;
 	}
 
 	void CheckCollisionType(Collider col) {
