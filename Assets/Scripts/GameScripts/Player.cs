@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 	
-	public static float distanceTraveled;
+	public float distanceTraveled;
 	public float speed;
 	public float turnSpeed;
 	public GameObject ShipBody;

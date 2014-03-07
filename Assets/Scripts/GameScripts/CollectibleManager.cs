@@ -21,6 +21,8 @@ public class CollectibleManager : MonoBehaviour {
 	private const int TYPE_SHIELD = 1;
 	private const int TYPE_SPEED = 2;
 
+    public Player PlayerObject;
+
 
 	// Use this for initialization
 	void Start () {
@@ -48,7 +50,7 @@ public class CollectibleManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if (objectQueue.Peek().localPosition.z + recycleOffset < Player.distanceTraveled) {
+		if (objectQueue.Peek().localPosition.z + recycleOffset < PlayerObject.distanceTraveled) {
 			Transform o = objectQueue.Dequeue();
 			o.localPosition = nextPosition;
 			//select one of the 8 spawn points and place this collectible there.

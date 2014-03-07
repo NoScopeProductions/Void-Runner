@@ -12,6 +12,8 @@ public class TubeManager : MonoBehaviour {
 	private Vector3 nextPosition;
 	private Queue<Transform> objectQueue;
 
+    public Player PlayerObject;
+
 	void Start () {
 		objectQueue = new Queue<Transform>(numberOfObjects);
 		nextPosition = startPosition;
@@ -27,7 +29,8 @@ public class TubeManager : MonoBehaviour {
 	}
 
 	void Update () {
-		if (objectQueue.Peek().localPosition.z + recycleOffset < Player.distanceTraveled) {
+        if (objectQueue.Peek().localPosition.z + recycleOffset < PlayerObject.distanceTraveled)
+        {
 			Transform o = objectQueue.Dequeue();
 			o.localPosition = nextPosition;
 			nextPosition.z += zOffset;
