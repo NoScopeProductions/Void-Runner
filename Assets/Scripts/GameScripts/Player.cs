@@ -15,14 +15,12 @@ public class Player : MonoBehaviour {
 	public float Fuel;
 	public float FuelDrain;
 	
-	//public static Player instance;
 	public enum PlayerState {ALIVE, DEAD, FALLING, BOOSTING, DEACTIVATING_BOOST};
     public enum PowerUps { NONE, TURBO_BOOST, SHIELD };
 
 	public PlayerState State;
 
 	public PowerUps ActivePowerUp;
-
     
 	public const float BOOST_DISTANCE = 300;
 
