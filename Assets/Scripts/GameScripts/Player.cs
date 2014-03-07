@@ -23,9 +23,11 @@ public class Player : MonoBehaviour {
 
 	public PowerUps ActivePowerUp;
 
-	public float BoostDistance;
+    
+	public const float BOOST_DISTANCE = 300;
 
-	public Vector3 BoostIntensity;
+    private float BoostDistanceTraveled;
+    public Vector3 BoostIntensity;
 
 	private Vector3 BoostInitialPos;
 	private Vector3 BoostInitialCameraPos;
@@ -36,19 +38,17 @@ public class Player : MonoBehaviour {
 
 	public void Start () 
 	{
-		init();
+		Init();
 	}
 
-
-	private void init() {
+	private void Init() {
 		Score = 0;
 		State = PlayerState.ALIVE;
         distanceTraveled = 0;
-
+        BoostDistanceTraveled = 0;
 		ActivePowerUp = PowerUps.NONE;
 	}
-	
-	// Update is called once per frame
+
 	public void Update() 
 	{
 		if(State != PlayerState.DEAD) 
@@ -59,11 +59,11 @@ public class Player : MonoBehaviour {
 	
 	private void updatePlayer() 
 	{
-		//update the state
 		State = checkAlive();
-		//move forward
+		
 		transform.Translate(0f,0f, speed * Time.deltaTime);
-		distanceTraveled = transform.localPosition.z; //keep track of position
+
+		distanceTraveled = transform.localPosition.z;
 
 		checkInput();		
 
@@ -77,11 +77,6 @@ public class Player : MonoBehaviour {
 			DeactivateBoost();
 		}
 
-		//keep track of position
-		//playerPos.x = transform.localPosition.x;
-		//playerPos.y = transform.localPosition.y;
-		
-		//drain fuel
 		DrainFuel();
 	}
 
@@ -137,7 +132,6 @@ public class Player : MonoBehaviour {
 			}
 		}
 	}
-	
 	
 	private bool isInTube() {
         if (transform.localPosition.x > 50 || transform.localPosition.x < -50)
@@ -216,16 +210,49 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	void ActivateBoost() 
+    private void CheckCollisionType(Collider col)
     {
+        if (col.tag.Contains("Collectible"))
+        {
+            //these actions are applied regardless of the type of pickup
+            audio.clip = PickUpSound;
+            audio.Play();
+
+            //recycle the collectible
+            //TODO - Perhaps this recycling needs to be defined in the collectible's class, as opposed to here.
+            Vector3 newPos = col.transform.position;
+            newPos.z -= 100;
+            col.transform.position = newPos;
+
+            CheckCollectibleType(col.tag);
+        }
+    }
+
+    private void Boost()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 0, transform.position.z), speed * Time.deltaTime);
+        BoostDistanceTraveled -= speed * Time.deltaTime;
+        transform.Translate(0f, 0f, speed * Time.deltaTime);
+        WobbleCamera();
+
+        if (BoostDistanceTraveled <= 0 && CanLand())
+        {
+            State = PlayerState.DEACTIVATING_BOOST;
+        }
+    }
+
+	private void ActivateBoost() 
+    {
+        BoostDistanceTraveled = BOOST_DISTANCE;
 		State = PlayerState.BOOSTING;
+        ActivePowerUp = PowerUps.TURBO_BOOST;
+
 		BoostInitialPos = transform.position;
 		BoostInitialCameraPos = PlayerCamera.transform.localPosition;
-		ActivePowerUp = PowerUps.TURBO_BOOST;
-
+		
 		Score += CollectibleRewards.SCORE_SPEED;
 
-		iTween.ShakeRotation(PlayerCamera, BoostIntensity, 6f);
+		iTween.ShakeRotation(PlayerCamera, BoostIntensity, 6f); //Maybe not needed after particles are implemented
 	}
 
 	private void DeactivateBoost() 
@@ -236,20 +263,6 @@ public class Player : MonoBehaviour {
 		{
 			State = PlayerState.ALIVE;
 			ActivePowerUp = PowerUps.NONE;
-			BoostDistance = 300;
-		}
-	}
-
-	private void Boost() 
-	{
-		transform.position = Vector3.MoveTowards(transform.position, new Vector3 (0, 0, transform.position.z), speed * Time.deltaTime);
-		BoostDistance -= speed * Time.deltaTime;
-		transform.Translate (0f, 0f, speed * Time.deltaTime);
-		WoobleCamera();
-
-		if (BoostDistance <= 0 && CanLand()) 
-		{
-			State = PlayerState.DEACTIVATING_BOOST;
 		}
 	}
 
@@ -266,36 +279,18 @@ public class Player : MonoBehaviour {
 		return false;
 	}
 
-	private void WoobleCamera()
+	private void WobbleCamera()
 	{
 		float noise = Mathf.PerlinNoise(Time.time, Time.time);
 		PlayerCamera.transform.localPosition = Vector3.MoveTowards (PlayerCamera.transform.localPosition, new Vector3 (noise - 0.5f, noise + 1f, PlayerCamera.transform.localPosition.z), Time.deltaTime);
 	}
 
-	void ResetCamera()
+	private void ResetCamera()
 	{
 		PlayerCamera.transform.localPosition = Vector3.MoveTowards (PlayerCamera.transform.localPosition, new Vector3 (BoostInitialCameraPos.x, BoostInitialCameraPos.y, PlayerCamera.transform.localPosition.z), Time.deltaTime);
 	}
-
-	void CheckCollisionType(Collider col) 
-	{
-		if (col.tag.Contains("Collectible")) 
-		{
-			//these actions are applied regardless of the type of pickup
-			audio.clip = PickUpSound;
-			audio.Play();
-
-			//recycle the collectible
-			//TODO - Perhaps this recycling needs to be defined in the collectible's class, as opposed to here.
-			Vector3 newPos = col.transform.position;
-			newPos.z -= 100;
-			col.transform.position = newPos;
-
-			CheckCollectibleType(col.tag);
-		}
-	}
 	
-	void MoveLeft() 
+	private void MoveLeft() 
 	{
 		switch(CameraRotate.rotation) 
 		{
@@ -327,7 +322,7 @@ public class Player : MonoBehaviour {
 		
 	}
 	
-	void MoveRight() 
+	private void MoveRight() 
 	{
 		switch(CameraRotate.rotation) 
 		{
@@ -359,11 +354,8 @@ public class Player : MonoBehaviour {
 		
 	}
 	
-	//helper function for the camera rotation script
 	public void setPos(float x, float y) 
 	{
 		transform.localPosition = new Vector3(x, y, distanceTraveled);
 	}	
 }
-
-
