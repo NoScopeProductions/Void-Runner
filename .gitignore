@@ -12,3 +12,4 @@ Library
 Temp
 *.pidb
 *.userprefs
+*.suo
