@@ -11,6 +11,8 @@ public class HUDManager : MonoBehaviour
 	public Texture2D fuelBarORANGE;
 	public Texture2D fuelBarRED;
 
+    public Player PlayerObject;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -26,11 +28,11 @@ public class HUDManager : MonoBehaviour
 	
 	void GetScore()
 	{
-		score = Player.instance.score;
+        score = PlayerObject.Score;
 	}
 	void GetFuel()
 	{
-		currentFuel = Player.instance.fuel;
+        currentFuel = PlayerObject.Fuel;
 	}
 	
 	void OnGUI()

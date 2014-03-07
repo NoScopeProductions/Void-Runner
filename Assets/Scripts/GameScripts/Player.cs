@@ -4,35 +4,33 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	
 	public static float distanceTraveled;
-	public static Vector2 playerPos;
 	public float speed;
 	public float turnSpeed;
-	private GameObject ship;
-	public Transform[] deathExplosions;
+	public GameObject ShipBody;
+	public Transform[] DeathExplosions;
 
-	public GameObject playerCamera;
-	public int score;
+	public GameObject PlayerCamera;
+	public int Score;
 	
-	public float fuel;
-	public float fuelDrain;
+	public float Fuel;
+	public float FuelDrain;
 	
-	public static Player instance;
+	//public static Player instance;
 	public enum PlayerState {ALIVE, DEAD, FALLING, BOOSTING, DEACTIVATING_BOOST};
-	public PlayerState state;
+    public enum PowerUps { NONE, TURBO_BOOST, SHIELD };
 
-	public enum PowerUps {NONE, TURBO_BOOST, SHIELD};
+	public PlayerState State;
 
-	public PowerUps activePowerUp;
+	public PowerUps ActivePowerUp;
 
-	public float boostDistance;
+	public float BoostDistance;
 
-	public Vector3 boostIntensity;
+	public Vector3 BoostIntensity;
 
-	private Vector3 initialPos;
-
-	private Vector3 initialCameraPos;
+	private Vector3 BoostInitialPos;
+	private Vector3 BoostInitialCameraPos;
 	
-	public AudioClip pickUpSound;
+	public AudioClip PickUpSound;
 
 	const float LANDING_DISTANCE = 36f;
 
@@ -43,22 +41,17 @@ public class Player : MonoBehaviour {
 
 
 	private void init() {
-		ship = GameObject.Find ("Body"); //This needs to be decoupled
+		Score = 0;
+		State = PlayerState.ALIVE;
+        distanceTraveled = 0;
 
-		score = 0;
-		state = PlayerState.ALIVE;
-		distanceTraveled = 0;
-
-		playerPos = new Vector2 (0f, 0f); //this needs to be removed
-		instance = this; //this needs to be removed
-
-		activePowerUp = PowerUps.NONE;
+		ActivePowerUp = PowerUps.NONE;
 	}
 	
 	// Update is called once per frame
 	public void Update() 
 	{
-		if(state != PlayerState.DEAD) 
+		if(State != PlayerState.DEAD) 
 		{
 			updatePlayer();	
 		}
@@ -67,55 +60,55 @@ public class Player : MonoBehaviour {
 	private void updatePlayer() 
 	{
 		//update the state
-		state = checkAlive();
+		State = checkAlive();
 		//move forward
 		transform.Translate(0f,0f, speed * Time.deltaTime);
 		distanceTraveled = transform.localPosition.z; //keep track of position
 
 		checkInput();		
 
-		if(state == PlayerState.BOOSTING) 
+		if(State == PlayerState.BOOSTING) 
 		{
 			Boost();
 		}
 
-		if(state == PlayerState.DEACTIVATING_BOOST) 
+		if(State == PlayerState.DEACTIVATING_BOOST) 
 		{
 			DeactivateBoost();
 		}
 
 		//keep track of position
-		playerPos.x = transform.localPosition.x;
-		playerPos.y = transform.localPosition.y;
+		//playerPos.x = transform.localPosition.x;
+		//playerPos.y = transform.localPosition.y;
 		
 		//drain fuel
 		DrainFuel();
 	}
 
 	private void DrainFuel() {
-		if(state == PlayerState.BOOSTING) 
+		if(State == PlayerState.BOOSTING) 
 		{
-			fuel += fuelDrain * Time.deltaTime;
+			Fuel += FuelDrain * Time.deltaTime;
 		}
-		else if (state == PlayerState.FALLING) 
+		else if (State == PlayerState.FALLING) 
 		{
-			fuel -= fuelDrain * 10 * Time.deltaTime;
+			Fuel -= FuelDrain * 10 * Time.deltaTime;
 		}
 		else 
 		{
-			fuel -= fuelDrain * Time.deltaTime;
+			Fuel -= FuelDrain * Time.deltaTime;
 		}
 
-		if(fuel > 100) fuel = 100;
+		if(Fuel > 100) Fuel = 100;
 	}	
 	
 	private PlayerState checkAlive() 
 	{
 		//don't need to check the state while we're boosting.
-		if(state == PlayerState.BOOSTING) return PlayerState.BOOSTING;
-		if(state == PlayerState.DEACTIVATING_BOOST) return PlayerState.DEACTIVATING_BOOST;
+		if(State == PlayerState.BOOSTING) return PlayerState.BOOSTING;
+		if(State == PlayerState.DEACTIVATING_BOOST) return PlayerState.DEACTIVATING_BOOST;
 		//first check the fuel
-		if(fuel <= 0) 
+		if(Fuel <= 0) 
 		{
 			Kill();
 			return PlayerState.DEAD;
@@ -147,11 +140,11 @@ public class Player : MonoBehaviour {
 	
 	
 	private bool isInTube() {
-		if(playerPos.x > 50 || playerPos.x < -50)
+        if (transform.localPosition.x > 50 || transform.localPosition.x < -50)
 		{
 			return false;
 		}
-		else if(playerPos.y > 50 || playerPos.y < -50)
+        else if (transform.localPosition.y > 50 || transform.localPosition.y < -50)
 		{
 			return false;
 		}
@@ -159,17 +152,18 @@ public class Player : MonoBehaviour {
 		return true;
 	}
 	
-	private void Kill() {
+	private void Kill() 
+    {
 		iTween.Stop();
 		
 		//create the explosion effects
-		for(int i = 0; i < deathExplosions.Length; i++) 
+		for(int i = 0; i < DeathExplosions.Length; i++) 
 		{
-			Instantiate(deathExplosions[i], ship.transform.parent.position, Quaternion.identity);
+			Instantiate(DeathExplosions[i], ShipBody.transform.parent.position, Quaternion.identity);
 		}
 
 		//stop rendering the ship model
-		Destroy(ship);
+		Destroy(ShipBody);
 		
 		//TEMP - return to main menu after 2 seconds, to be replaced with end game menu.
 		//TODO - Invoke end game menu here.
@@ -182,10 +176,11 @@ public class Player : MonoBehaviour {
 		Application.LoadLevel("Menu");	
 	}
 	
-	private void checkInput() {
+	private void checkInput() 
+    {
 		//don't check input when the players is boosting.
-		if(state == PlayerState.BOOSTING) return;
-		if(state == PlayerState.DEACTIVATING_BOOST) return;
+		if(State == PlayerState.BOOSTING) return;
+		if(State == PlayerState.DEACTIVATING_BOOST) return;
 
 		//TODO - Implement Touch Controls Here
 		if(Input.GetKey(KeyCode.LeftArrow)) 
@@ -203,11 +198,12 @@ public class Player : MonoBehaviour {
 		CheckCollisionType(col);
 	}
 
-	private void CheckCollectibleType (string type) {
+	private void CheckCollectibleType (string type) 
+    {
 		if (type == "Collectible_Fuel") 
 		{
-			fuel += CollectibleRewards.FUEL_GAIN;
-			score += CollectibleRewards.SCORE_FUEL;
+			Fuel += CollectibleRewards.FUEL_GAIN;
+			Score += CollectibleRewards.SCORE_FUEL;
 		}
 		else if (type == "Collectible_Speed") 
 		{
@@ -216,42 +212,44 @@ public class Player : MonoBehaviour {
 		else if (type == "Collectible_Shield") 
 		{
 			//TODO - ActivateShield();
-			score += CollectibleRewards.SCORE_SHIELD;
+			Score += CollectibleRewards.SCORE_SHIELD;
 		}
 	}
 
-	void ActivateBoost() {
-		state = PlayerState.BOOSTING;
-		initialPos = transform.position;
-		initialCameraPos = playerCamera.transform.localPosition;
-		activePowerUp = PowerUps.TURBO_BOOST;
+	void ActivateBoost() 
+    {
+		State = PlayerState.BOOSTING;
+		BoostInitialPos = transform.position;
+		BoostInitialCameraPos = PlayerCamera.transform.localPosition;
+		ActivePowerUp = PowerUps.TURBO_BOOST;
 
-		score += CollectibleRewards.SCORE_SPEED;
+		Score += CollectibleRewards.SCORE_SPEED;
 
-		iTween.ShakeRotation(playerCamera, boostIntensity, 6f);
+		iTween.ShakeRotation(PlayerCamera, BoostIntensity, 6f);
 	}
 
-	private void DeactivateBoost() {
-		transform.position = Vector3.MoveTowards(transform.position, new Vector3 (initialPos.x, initialPos.y, transform.position.z), speed * Time.deltaTime);
+	private void DeactivateBoost() 
+    {
+		transform.position = Vector3.MoveTowards(transform.position, new Vector3 (BoostInitialPos.x, BoostInitialPos.y, transform.position.z), speed * Time.deltaTime);
 		ResetCamera();
-		if (transform.position.x == initialPos.x && transform.position.y == initialPos.y) 
+		if (transform.position.x == BoostInitialPos.x && transform.position.y == BoostInitialPos.y) 
 		{
-			state = PlayerState.ALIVE;
-			activePowerUp = PowerUps.NONE;
-			boostDistance = 300;
+			State = PlayerState.ALIVE;
+			ActivePowerUp = PowerUps.NONE;
+			BoostDistance = 300;
 		}
 	}
 
 	private void Boost() 
 	{
 		transform.position = Vector3.MoveTowards(transform.position, new Vector3 (0, 0, transform.position.z), speed * Time.deltaTime);
-		boostDistance -= speed * Time.deltaTime;
+		BoostDistance -= speed * Time.deltaTime;
 		transform.Translate (0f, 0f, speed * Time.deltaTime);
 		WoobleCamera();
 
-		if (boostDistance <= 0 && CanLand()) 
+		if (BoostDistance <= 0 && CanLand()) 
 		{
-			state = PlayerState.DEACTIVATING_BOOST;
+			State = PlayerState.DEACTIVATING_BOOST;
 		}
 	}
 
@@ -271,12 +269,12 @@ public class Player : MonoBehaviour {
 	private void WoobleCamera()
 	{
 		float noise = Mathf.PerlinNoise(Time.time, Time.time);
-		playerCamera.transform.localPosition = Vector3.MoveTowards (playerCamera.transform.localPosition, new Vector3 (noise - 0.5f, noise + 1f, playerCamera.transform.localPosition.z), Time.deltaTime);
+		PlayerCamera.transform.localPosition = Vector3.MoveTowards (PlayerCamera.transform.localPosition, new Vector3 (noise - 0.5f, noise + 1f, PlayerCamera.transform.localPosition.z), Time.deltaTime);
 	}
 
 	void ResetCamera()
 	{
-		playerCamera.transform.localPosition = Vector3.MoveTowards (playerCamera.transform.localPosition, new Vector3 (initialCameraPos.x, initialCameraPos.y, playerCamera.transform.localPosition.z), Time.deltaTime);
+		PlayerCamera.transform.localPosition = Vector3.MoveTowards (PlayerCamera.transform.localPosition, new Vector3 (BoostInitialCameraPos.x, BoostInitialCameraPos.y, PlayerCamera.transform.localPosition.z), Time.deltaTime);
 	}
 
 	void CheckCollisionType(Collider col) 
@@ -284,7 +282,7 @@ public class Player : MonoBehaviour {
 		if (col.tag.Contains("Collectible")) 
 		{
 			//these actions are applied regardless of the type of pickup
-			audio.clip = pickUpSound;
+			audio.clip = PickUpSound;
 			audio.Play();
 
 			//recycle the collectible
