@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class CollectibleManager : MonoBehaviour {
+public class CollectibleManager : MonoBehaviour 
+{
 	
 	public Transform[] prefabs;
 	public int numberOfObjects;
@@ -25,11 +26,13 @@ public class CollectibleManager : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		objectQueue = new Queue<Transform>(numberOfObjects);
 		nextPosition = startPosition;
 
-		for (int i = 0; i < numberOfObjects; i++) {
+		for (int i = 0; i < numberOfObjects; i++) 
+		{
 			int index = getPowerupType();
 
 			Transform o = (Transform)Instantiate(prefabs[index]);
@@ -48,9 +51,11 @@ public class CollectibleManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		
-		if (objectQueue.Peek().localPosition.z + recycleOffset < PlayerObject.distanceTraveled) {
+		if (objectQueue.Peek().localPosition.z + recycleOffset < PlayerObject.distanceTraveled) 
+		{
 			Transform o = objectQueue.Dequeue();
 			o.localPosition = nextPosition;
 			//select one of the 8 spawn points and place this collectible there.
@@ -62,20 +67,23 @@ public class CollectibleManager : MonoBehaviour {
 		}
 	}
 
-	private int getPowerupType() {
-		return TYPE_SPEED;
+	private int getPowerupType() 
+	{
 		int chance = Random.Range(1,101);
 
 		//There is a 65% chance of the type being fuel.
-		if(chance < 75) {
+		if(chance < 75) 
+		{
 			return TYPE_FUEL;
 		}
-		else {
+		else 
+		{
 			//otherwise, we roll the dice again
 			chance = Random.Range(1,101);
 
 			//There is now a 10% chance of the type being a speed boost
-			if(chance < 10) {
+			if(chance < 10) 
+			{
 				return TYPE_SPEED;
 			}
 			//otherwise, we give a shield.
