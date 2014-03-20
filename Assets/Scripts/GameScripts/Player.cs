@@ -63,7 +63,8 @@ public class Player : MonoBehaviour {
 
 		distanceTraveled = transform.localPosition.z;
 
-		checkInput();		
+		checkInput();
+		GetTouchInput();
 
 		if(State == PlayerState.BOOSTING) 
 		{
@@ -173,8 +174,7 @@ public class Player : MonoBehaviour {
 		//don't check input when the players is boosting.
 		if(State == PlayerState.BOOSTING) return;
 		if(State == PlayerState.DEACTIVATING_BOOST) return;
-
-		//TODO - Implement Touch Controls Here
+		
 		if(Input.GetKey(KeyCode.LeftArrow)) 
 		{
 			MoveLeft();
@@ -183,6 +183,28 @@ public class Player : MonoBehaviour {
 		{
 			MoveRight();
 		} 	
+	}
+
+	private void GetTouchInput ()
+	{
+		//don't check input when the players is boosting.
+		if(State == PlayerState.BOOSTING) { return; }
+		if (State == PlayerState.DEACTIVATING_BOOST) { return; }
+				
+		var touchCount = Input.touchCount;
+
+		for ( var i = 0 ; i < touchCount ; i++ ) 
+		{			
+			var touch = Input.GetTouch (i);
+			if(touch.position.x > Screen.width*0.5)
+			{				
+				MoveRight();
+			}
+			if(touch.position.x < Screen.width*0.5)
+			{				
+				MoveLeft();				
+			}								
+		}
 	}
 	
 	public void OnTriggerEnter(Collider col) 
