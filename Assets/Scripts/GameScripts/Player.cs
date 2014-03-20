@@ -101,7 +101,7 @@ public class Player : MonoBehaviour {
 		//don't need to check the state while we're boosting.
 		if(State == PlayerState.BOOSTING) return PlayerState.BOOSTING;
 		if(State == PlayerState.DEACTIVATING_BOOST) return PlayerState.DEACTIVATING_BOOST;
-		//first check the fuel
+		
 		if(Fuel <= 0) 
 		{
 			Kill();
@@ -116,7 +116,6 @@ public class Player : MonoBehaviour {
 		{
 			return PlayerState.ALIVE;
 		}
-		//if not, the player is falling, but the player has a bit of clearance to get back on the tube before his death.
 		else 
 		{
 			if (isInTube()) 
@@ -212,24 +211,6 @@ public class Player : MonoBehaviour {
 		CheckCollisionType(col);
 	}
 
-	private void CheckCollectibleType (string type) 
-    {
-		if (type == "Collectible_Fuel") 
-		{
-			Fuel += CollectibleRewards.FUEL_GAIN;
-			Score += CollectibleRewards.SCORE_FUEL;
-		}
-		else if (type == "Collectible_Speed") 
-		{
-			ActivateBoost();
-		}
-		else if (type == "Collectible_Shield") 
-		{
-			//TODO - ActivateShield();
-			Score += CollectibleRewards.SCORE_SHIELD;
-		}
-	}
-
     private void CheckCollisionType(Collider col)
     {
         if (col.tag.Contains("Collectible"))
@@ -247,6 +228,24 @@ public class Player : MonoBehaviour {
             CheckCollectibleType(col.tag);
         }
     }
+
+	private void CheckCollectibleType (string type) 
+    {
+		if (type == "Collectible_Fuel") 
+		{
+			Fuel += CollectibleRewards.FUEL_GAIN;
+			Score += CollectibleRewards.SCORE_FUEL;
+		}
+		else if (type == "Collectible_Speed") 
+		{
+			ActivateBoost();
+		}
+		else if (type == "Collectible_Shield") 
+		{
+			//TODO - ActivateShield();
+			Score += CollectibleRewards.SCORE_SHIELD;
+		}
+	}
 
     private void Boost()
     {
