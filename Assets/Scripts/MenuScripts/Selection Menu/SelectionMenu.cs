@@ -23,20 +23,20 @@ public class SelectionMenu : MonoBehaviour
 		GUILayout.BeginArea (new Rect(0, screenHeight/2, screenWidth, screenHeight/4));
 		GUILayout.BeginHorizontal ("");
 
-		if(GUILayout.Button ("Left")) 
+		if(GUILayout.Button ("Default")) 
 		{
-			PlayerPreferences.shipSelected = 1;
+			PlayerPreferences.shipSelected = PlayerPreferences.SHIP.DEFAULT;
 			Application.LoadLevel("Game");
 		}
-		if(GUILayout.Button ("Middle"))
+		if(GUILayout.Button ("Remaker"))
 		{
-			PlayerPreferences.shipSelected = 2;
+            PlayerPreferences.shipSelected = PlayerPreferences.SHIP.REMAKER;
 			Application.LoadLevel("Game");
 		}
 
-		if(GUILayout.Button ("Right"))
+		if(GUILayout.Button ("DSK"))
 		{
-			PlayerPreferences.shipSelected = 3;
+            PlayerPreferences.shipSelected = PlayerPreferences.SHIP.DSK;
 			Application.LoadLevel("Game");
 		}
 		GUILayout.EndHorizontal ();

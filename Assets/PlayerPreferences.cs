@@ -3,7 +3,9 @@ using System.Collections;
 
 public class PlayerPreferences : MonoBehaviour 
 {
-	public static int shipSelected;
+    public enum SHIP { REMAKER, DSK, DEFAULT };
+
+	public static SHIP shipSelected = SHIP.DEFAULT;
 
 
 	void Awake()

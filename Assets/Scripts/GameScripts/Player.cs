@@ -2,11 +2,22 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
+
+    public enum PlayerState { ALIVE, DEAD, FALLING, BOOSTING, DEACTIVATING_BOOST };
+    public enum PowerUps { NONE, TURBO_BOOST, SHIELD };
+
+    private const float LANDING_DISTANCE = 36f;
+    public const float BOOST_DISTANCE = 300;    
 	
 	public float distanceTraveled;
 	public float speed;
 	public float turnSpeed;
-	public GameObject ShipBody;
+    public GameObject ShipBody_Remaker;
+    public GameObject ShipBody_Default;
+    public GameObject ShipBody_DSK;
+
+	private GameObject SelectedShipBody;
+
 	public Transform[] DeathExplosions;
 
 	public GameObject PlayerCamera;
@@ -15,15 +26,9 @@ public class Player : MonoBehaviour {
 	public float Fuel;
 	public float FuelDrain;
 	
-	public enum PlayerState {ALIVE, DEAD, FALLING, BOOSTING, DEACTIVATING_BOOST};
-    public enum PowerUps { NONE, TURBO_BOOST, SHIELD };
-
 	public PlayerState State;
-
 	public PowerUps ActivePowerUp;
     
-	public const float BOOST_DISTANCE = 300;
-
     private float BoostDistanceTraveled;
     public Vector3 BoostIntensity;
 
@@ -31,8 +36,6 @@ public class Player : MonoBehaviour {
 	private Vector3 BoostInitialCameraPos;
 	
 	public AudioClip PickUpSound;
-
-	const float LANDING_DISTANCE = 36f;
 
 	public void Start () 
 	{
@@ -45,6 +48,24 @@ public class Player : MonoBehaviour {
         distanceTraveled = 0;
         BoostDistanceTraveled = 0;
 		ActivePowerUp = PowerUps.NONE;
+
+        switch (PlayerPreferences.shipSelected)
+        {
+            case PlayerPreferences.SHIP.DEFAULT:
+                SelectedShipBody = ShipBody_Default;
+                break;
+            case PlayerPreferences.SHIP.DSK:
+                SelectedShipBody = ShipBody_DSK;
+                break;
+            case PlayerPreferences.SHIP.REMAKER:
+                SelectedShipBody = ShipBody_Remaker;
+                break;
+            default:
+                SelectedShipBody = ShipBody_Default;
+                break;
+        }
+
+        SelectedShipBody.SetActive(true);
 	}
 
 	public void Update() 
@@ -151,11 +172,11 @@ public class Player : MonoBehaviour {
 		//create the explosion effects
 		for(int i = 0; i < DeathExplosions.Length; i++) 
 		{
-			Instantiate(DeathExplosions[i], ShipBody.transform.parent.position, Quaternion.identity);
+			Instantiate(DeathExplosions[i], SelectedShipBody.transform.parent.position, Quaternion.identity);
 		}
 
 		//stop rendering the ship model
-		Destroy(ShipBody);
+		Destroy(SelectedShipBody);
 		
 		//TEMP - return to main menu after 2 seconds, to be replaced with end game menu.
 		//TODO - Invoke end game menu here.
