@@ -3,8 +3,9 @@ using System.Collections;
 
 public class Button_Back_Script : MonoBehaviour 
 {
-	public GameObject MainMenuGameObject;
+	public GameObject MainMenu;
 	public GameObject SettingsMenu;
+    public GameObject SelectionMenu;
 	// Use this for initialization
 	void Start () 
 	{
@@ -12,8 +13,9 @@ public class Button_Back_Script : MonoBehaviour
 
 	void OnMouseUp()
 	{
-		MainMenuGameObject.SetActive(true);
+		MainMenu.SetActive(true);
 		SettingsMenu.SetActive(false);
+        SelectionMenu.SetActive(false);
 	}
 
 }

@@ -8,3 +8,12 @@ FONT
 Freeware font. 
 copyright © Fenotypefaces 2002, Emil Bertell.
 http://fenotype.com
+
+Explosion Sounds
+http://opengameart.org/content/space-battle-game-sounds-astromenace
+
+Rocket Sound
+http://opengameart.org/content/rocket-launch-0
+
+Boost Deactivate
+http://opengameart.org/content/platformer-sounds-terminal-interaction-door-shots-bang-and-footsteps

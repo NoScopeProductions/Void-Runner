@@ -69,7 +69,7 @@ public class CollectibleManager : MonoBehaviour
 
 	private int getPowerupType() 
 	{
-        return TYPE_SPEED;
+        //return TYPE_SPEED;
 		int chance = Random.Range(1,101);
 
 		//There is a 65% chance of the type being fuel.

@@ -4,24 +4,39 @@ using System.Collections;
 public class LightSpawner : MonoBehaviour 
 {
 	public Transform[] lights;
+    public Player PlayerObject;
 
-	// Use this for initialization
-	void Start () 
+    private bool sendingLights = false;
+	// use this for initialization
+	void Start() 
 	{
-		InvokeRepeating("SpawnLight", 1.5f, 1.5f);
+		
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-	
-	}
-	
+
+    void Update()
+    {
+        if (PlayerObject.State == Player.PlayerState.BOOSTING)
+        {
+            if (!sendingLights)
+            {
+                sendingLights = true;
+                InvokeRepeating("SpawnLight", .5f, 1.5f);
+            }
+        }
+        else
+        {
+            if (sendingLights)
+            {
+                sendingLights = false;
+                CancelInvoke("SpawnLight");
+            }
+        }
+    }
+
 	void SpawnLight()
 	{
 		Vector3 newPosition = Camera.main.transform.position + Camera.main.transform.forward;
-		Transform light = (Transform)Instantiate(lights[Random.Range(0,3)], newPosition, transform.rotation);
-		//debris.transform.position = Vector3(Random.Range(-20,20) , Random.Range(-20, 20), 0);
+		Transform light = (Transform)Instantiate(lights[Random.Range(0, lights.Length)], newPosition, transform.rotation);
 		light.parent = transform;
 	}
 }

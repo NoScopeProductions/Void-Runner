@@ -4,6 +4,7 @@ using System.Collections;
 public class Button_Play_Script : MonoBehaviour 
 {
 	public GameObject SelectionMenu;
+    public GameObject MainMenu;
 
 	// Use this for initialization
 	void Start () 
@@ -20,5 +21,6 @@ public class Button_Play_Script : MonoBehaviour
 	void OnMouseUp()
 	{
 		SelectionMenu.SetActive (true);
+        MainMenu.SetActive(false);
 	}
 }

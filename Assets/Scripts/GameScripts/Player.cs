@@ -7,11 +7,17 @@ public class Player : MonoBehaviour {
     public enum PowerUps { NONE, TURBO_BOOST, SHIELD };
 
     private const float LANDING_DISTANCE = 36f;
-    public const float BOOST_DISTANCE = 300;    
+    public const float BOOST_TIME = 3f;
+    public const float TUTORIAL_DISTANCE = 750f;
 	
 	public float distanceTraveled;
+
+    public float speedUpRate;
+    public const float MAX_SPEED = 60f;
+
 	public float speed;
 	public float turnSpeed;
+
     public GameObject ShipBody_Remaker;
     public GameObject ShipBody_Default;
     public GameObject ShipBody_DSK;
@@ -29,13 +35,19 @@ public class Player : MonoBehaviour {
 	public PlayerState State;
 	public PowerUps ActivePowerUp;
     
-    private float BoostDistanceTraveled;
+    private float BoostTimeTraveled;
     public Vector3 BoostIntensity;
 
 	private Vector3 BoostInitialPos;
 	private Vector3 BoostInitialCameraPos;
 	
-	public AudioClip PickUpSound;
+	public AudioClip Sound_PickUp;
+    public AudioClip Sound_DeactivateBoost;
+    public AudioClip Sound_ActivateBoost;
+    public AudioClip Sound_Explode;
+
+    public AudioSource SoundManager;
+    
 
 	public void Start () 
 	{
@@ -46,7 +58,7 @@ public class Player : MonoBehaviour {
 		Score = 0;
 		State = PlayerState.ALIVE;
         distanceTraveled = 0;
-        BoostDistanceTraveled = 0;
+        BoostTimeTraveled = 0;
 		ActivePowerUp = PowerUps.NONE;
 
         switch (PlayerPreferences.shipSelected)
@@ -79,14 +91,29 @@ public class Player : MonoBehaviour {
 	private void updatePlayer() 
 	{
 		State = checkAlive();
-		
+
+        if (speed < MAX_SPEED)
+        {
+            if (distanceTraveled > TUTORIAL_DISTANCE + 200)
+            {
+                speed *= speedUpRate;
+            }
+        }
+        else
+        {
+            speed = MAX_SPEED;
+        }
+
 		transform.Translate(0f,0f, speed * Time.deltaTime);
 
 		distanceTraveled = transform.localPosition.z;
 
-		checkInput();
-		GetTouchInput();
-
+        if (distanceTraveled > TUTORIAL_DISTANCE)
+        {
+            checkInput();
+            GetTouchInput();
+        }
+		
 		if(State == PlayerState.BOOSTING) 
 		{
 			Boost();
@@ -98,6 +125,7 @@ public class Player : MonoBehaviour {
 		}
 
 		DrainFuel();
+        Score += 1;
 	}
 
 	private void DrainFuel() {
@@ -122,11 +150,11 @@ public class Player : MonoBehaviour {
 		//don't need to check the state while we're boosting.
 		if(State == PlayerState.BOOSTING) return PlayerState.BOOSTING;
 		if(State == PlayerState.DEACTIVATING_BOOST) return PlayerState.DEACTIVATING_BOOST;
+        if (State == PlayerState.DEAD) return PlayerState.DEAD;
 		
 		if(Fuel <= 0) 
 		{
-			Kill();
-			return PlayerState.DEAD;
+            return Kill();
 		}
 		
 		//next check if the player is still on the tube
@@ -146,8 +174,7 @@ public class Player : MonoBehaviour {
 			}
 			else 
 			{
-				Kill();
-				return PlayerState.DEAD;
+				return Kill();
 			}
 		}
 	}
@@ -165,7 +192,7 @@ public class Player : MonoBehaviour {
 		return true;
 	}
 	
-	private void Kill() 
+	private PlayerState Kill() 
     {
 		iTween.Stop();
 		
@@ -180,7 +207,11 @@ public class Player : MonoBehaviour {
 		
 		//TEMP - return to main menu after 2 seconds, to be replaced with end game menu.
 		//TODO - Invoke end game menu here.
-		Invoke("loadMenu", 2f);
+		Invoke("loadMenu", 3f);
+
+        SoundManager.PlayOneShot(Sound_Explode);
+
+        return PlayerState.DEAD;
 		
 	}
 	
@@ -237,8 +268,7 @@ public class Player : MonoBehaviour {
         if (col.tag.Contains("Collectible"))
         {
             //these actions are applied regardless of the type of pickup
-            audio.clip = PickUpSound;
-            audio.Play();
+            SoundManager.PlayOneShot(Sound_PickUp, 5);
 
             //recycle the collectible
             //TODO - Perhaps this recycling needs to be defined in the collectible's class, as opposed to here.
@@ -248,6 +278,14 @@ public class Player : MonoBehaviour {
 
             CheckCollectibleType(col.tag);
         }
+        else if(col.tag.Contains("Rock"))
+        {
+            if (State != PlayerState.BOOSTING && State != PlayerState.DEACTIVATING_BOOST)
+            {
+                State = Kill();
+            }
+        }
+
     }
 
 	private void CheckCollectibleType (string type) 
@@ -271,28 +309,31 @@ public class Player : MonoBehaviour {
     private void Boost()
     {
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 0, transform.position.z), speed * Time.deltaTime);
-        BoostDistanceTraveled -= speed * Time.deltaTime;
-        transform.Translate(0f, 0f, speed * Time.deltaTime);
+        BoostTimeTraveled -= Time.deltaTime;
+        transform.Translate(0f, 0f, 1.75f * speed * Time.deltaTime);
         WobbleCamera();
 
-        if (BoostDistanceTraveled <= 0 && CanLand())
+        if (BoostTimeTraveled <= 0 && CanLand())
         {
             State = PlayerState.DEACTIVATING_BOOST;
+            SoundManager.PlayOneShot(Sound_DeactivateBoost);
         }
     }
 
 	private void ActivateBoost() 
     {
-        BoostDistanceTraveled = BOOST_DISTANCE;
+        BoostTimeTraveled = BOOST_TIME;
 		State = PlayerState.BOOSTING;
         ActivePowerUp = PowerUps.TURBO_BOOST;
+
+        SoundManager.PlayOneShot(Sound_ActivateBoost);
 
 		BoostInitialPos = transform.position;
 		BoostInitialCameraPos = PlayerCamera.transform.localPosition;
 		
 		Score += CollectibleRewards.SCORE_SPEED;
 
-		iTween.ShakeRotation(PlayerCamera, BoostIntensity, 6f); //Maybe not needed after particles are implemented
+		iTween.ShakeRotation(PlayerCamera, BoostIntensity, 5.5f); //Maybe not needed after particles are implemented
 	}
 
 	private void DeactivateBoost() 
@@ -308,12 +349,21 @@ public class Player : MonoBehaviour {
 
 	private bool CanLand()
 	{
-		RaycastHit hit;
 		Vector3 aheadPos = transform.position;
 		aheadPos.z += LANDING_DISTANCE;
+
+        RaycastHit hit;
+
 		if(Physics.Raycast(aheadPos, -transform.up, out hit, 100))
 		{
-			return true;
+            if (hit.transform.tag == "Tunnel")
+            {
+                return true;
+            }
+            else
+            {
+                Debug.Log(hit.collider.gameObject.tag);
+            }
 		}
 
 		return false;
@@ -322,12 +372,12 @@ public class Player : MonoBehaviour {
 	private void WobbleCamera()
 	{
 		float noise = Mathf.PerlinNoise(Time.time, Time.time);
-		PlayerCamera.transform.localPosition = Vector3.MoveTowards (PlayerCamera.transform.localPosition, new Vector3 (noise - 0.5f, noise + 1f, PlayerCamera.transform.localPosition.z), Time.deltaTime);
+		PlayerCamera.transform.localPosition = Vector3.MoveTowards (PlayerCamera.transform.localPosition, new Vector3 (noise - 0.5f, noise + 1f, PlayerCamera.transform.localPosition.z), 4 * Time.deltaTime);
 	}
 
 	private void ResetCamera()
 	{
-		PlayerCamera.transform.localPosition = Vector3.MoveTowards (PlayerCamera.transform.localPosition, new Vector3 (BoostInitialCameraPos.x, BoostInitialCameraPos.y, PlayerCamera.transform.localPosition.z), Time.deltaTime);
+		PlayerCamera.transform.localPosition = Vector3.MoveTowards (PlayerCamera.transform.localPosition, new Vector3 (BoostInitialCameraPos.x, BoostInitialCameraPos.y, PlayerCamera.transform.localPosition.z), 4 * Time.deltaTime);
 	}
 	
 	private void MoveLeft() 
@@ -397,5 +447,5 @@ public class Player : MonoBehaviour {
 	public void setPos(float x, float y) 
 	{
 		transform.localPosition = new Vector3(x, y, distanceTraveled);
-	}	
+	}
 }
