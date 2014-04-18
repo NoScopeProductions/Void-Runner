@@ -13,7 +13,11 @@ public class Player : MonoBehaviour {
 	public float distanceTraveled;
 
     public float speedUpRate;
+    public float turnRate;
+
     public const float MAX_SPEED = 60f;
+    public const float MAX_TURN_RATE = 45f;
+    public const float TURN_RATE_STARTING = 30f;
 
 	public float speed;
 	public float turnSpeed;
@@ -96,7 +100,7 @@ public class Player : MonoBehaviour {
         {
             if (distanceTraveled > TUTORIAL_DISTANCE + 200)
             {
-                speed *= speedUpRate;
+                speed += speedUpRate * Time.deltaTime;
             }
         }
         else
@@ -228,12 +232,23 @@ public class Player : MonoBehaviour {
 		
 		if(Input.GetKey(KeyCode.LeftArrow)) 
 		{
+            if (turnSpeed < MAX_TURN_RATE) turnSpeed += turnRate * Time.deltaTime;
+            else turnSpeed = MAX_TURN_RATE;
+
 			MoveLeft();
 		} 
 		else if(Input.GetKey(KeyCode.RightArrow)) 
 		{
+            if (turnSpeed < MAX_TURN_RATE) turnSpeed += turnRate * Time.deltaTime;
+            else turnSpeed = MAX_TURN_RATE;
+
 			MoveRight();
-		} 	
+		}
+
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            turnSpeed = TURN_RATE_STARTING;
+        }
 	}
 
 	private void GetTouchInput ()
@@ -248,13 +263,24 @@ public class Player : MonoBehaviour {
 		{			
 			var touch = Input.GetTouch (i);
 			if(touch.position.x > Screen.width*0.5)
-			{				
+			{
+                if (turnSpeed < MAX_TURN_RATE) turnSpeed += turnRate * Time.deltaTime;
+                else turnSpeed = MAX_TURN_RATE;
+
 				MoveRight();
 			}
 			if(touch.position.x < Screen.width*0.5)
-			{				
+			{
+                if (turnSpeed < MAX_TURN_RATE) turnSpeed += turnRate * Time.deltaTime;
+                else turnSpeed = MAX_TURN_RATE;
+
 				MoveLeft();				
-			}								
+			}
+
+            if (touch.phase == TouchPhase.Ended)
+            {
+                turnSpeed = TURN_RATE_STARTING;
+            }
 		}
 	}
 	
