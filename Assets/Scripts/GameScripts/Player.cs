@@ -17,7 +17,8 @@ public class Player : MonoBehaviour {
 
     public const float MAX_SPEED = 60f;
     public const float MAX_TURN_RATE = 45f;
-    public const float TURN_RATE_STARTING = 30f;
+
+    public const float TURN_RATE_STARTING = 20f;
 
 	public float speed;
 	public float turnSpeed;
@@ -29,6 +30,8 @@ public class Player : MonoBehaviour {
 	private GameObject SelectedShipBody;
 
 	public Transform[] DeathExplosions;
+
+    public GameObject Shield;
 
 	public GameObject PlayerCamera;
 	public int Score;
@@ -308,6 +311,11 @@ public class Player : MonoBehaviour {
         {
             if (State != PlayerState.BOOSTING && State != PlayerState.DEACTIVATING_BOOST)
             {
+                if (ActivePowerUp == PowerUps.SHIELD)
+                {
+                    DeactivateShield();
+                    return;
+                }
                 State = Kill();
             }
         }
@@ -327,10 +335,22 @@ public class Player : MonoBehaviour {
 		}
 		else if (type == "Collectible_Shield") 
 		{
-			//TODO - ActivateShield();
+			ActivateShield();
 			Score += CollectibleRewards.SCORE_SHIELD;
 		}
 	}
+
+    private void ActivateShield()
+    {
+        ActivePowerUp = PowerUps.SHIELD;
+        Shield.SetActive(true);
+    }
+
+    private void DeactivateShield()
+    {
+        ActivePowerUp = PowerUps.NONE;
+        Shield.SetActive(false);
+    }
 
     private void Boost()
     {
@@ -369,7 +389,7 @@ public class Player : MonoBehaviour {
 		if (transform.position.x == BoostInitialPos.x && transform.position.y == BoostInitialPos.y) 
 		{
 			State = PlayerState.ALIVE;
-			ActivePowerUp = PowerUps.NONE;
+            DeactivateShield();
 		}
 	}
 

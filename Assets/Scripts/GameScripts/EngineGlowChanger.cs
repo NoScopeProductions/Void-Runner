@@ -24,7 +24,8 @@ public class EngineGlowChanger : MonoBehaviour {
     public void CheckTexture()
     {
         if (player.State == Player.PlayerState.BOOSTING ||
-            player.State == Player.PlayerState.DEACTIVATING_BOOST)
+            player.State == Player.PlayerState.DEACTIVATING_BOOST ||
+            player.State == Player.PlayerState.FALLING)
         {
             if (Current != BoostGlow)
             {
