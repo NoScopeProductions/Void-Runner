@@ -16,9 +16,9 @@ public class Player : MonoBehaviour {
     public float turnRate;
 
     public const float MAX_SPEED = 60f;
-    public const float MAX_TURN_RATE = 45f;
+    public const float MAX_TURN_RATE = 55f;
 
-    public const float TURN_RATE_STARTING = 20f;
+    public const float TURN_RATE_STARTING = 35f;
 
 	public float speed;
 	public float turnSpeed;
@@ -431,28 +431,28 @@ public class Player : MonoBehaviour {
 		switch(CameraRotate.rotation) 
 		{
 			case CameraRotate.RotationState.BOTTOM:	
-				transform.Translate(-turnSpeed * Time.fixedDeltaTime, 0f, 0f, Space.World);
+				transform.Translate(-turnSpeed * Time.deltaTime, 0f, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.BOTTOM_LEFT:
-				transform.Translate(-turnSpeed * Time.fixedDeltaTime, turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
+				transform.Translate(-turnSpeed * Time.deltaTime, turnSpeed * Time.deltaTime, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.BOTTOM_RIGHT:
-				transform.Translate(-turnSpeed * Time.fixedDeltaTime, -turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
+				transform.Translate(-turnSpeed * Time.deltaTime, -turnSpeed * Time.deltaTime, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.LEFT:
-				transform.Translate(0f, turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
+				transform.Translate(0f, turnSpeed * Time.deltaTime, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.RIGHT:
-				transform.Translate(0f, -turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
+				transform.Translate(0f, -turnSpeed * Time.deltaTime, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.TOP_RIGHT:
-				transform.Translate(turnSpeed * Time.fixedDeltaTime, -turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
+				transform.Translate(turnSpeed * Time.deltaTime, -turnSpeed * Time.deltaTime, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.TOP_LEFT:
-				transform.Translate(turnSpeed * Time.fixedDeltaTime, turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
+				transform.Translate(turnSpeed * Time.deltaTime, turnSpeed * Time.deltaTime, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.TOP:	
-				transform.Translate(turnSpeed * Time.fixedDeltaTime, 0f, 0f, Space.World);
+				transform.Translate(turnSpeed * Time.deltaTime, 0f, 0f, Space.World);
 				break;
 		}
 		
@@ -463,28 +463,28 @@ public class Player : MonoBehaviour {
 		switch(CameraRotate.rotation) 
 		{
 			case CameraRotate.RotationState.BOTTOM:	
-				transform.Translate(turnSpeed * Time.fixedDeltaTime, 0f, 0f, Space.World);
+				transform.Translate(turnSpeed * Time.deltaTime, 0f, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.BOTTOM_LEFT:
-				transform.Translate(turnSpeed * Time.fixedDeltaTime, -turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
+				transform.Translate(turnSpeed * Time.deltaTime, -turnSpeed * Time.deltaTime, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.BOTTOM_RIGHT:
-				transform.Translate(turnSpeed * Time.fixedDeltaTime, turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
+				transform.Translate(turnSpeed * Time.deltaTime, turnSpeed * Time.deltaTime, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.LEFT:
-				transform.Translate(0f, -turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
+				transform.Translate(0f, -turnSpeed * Time.deltaTime, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.RIGHT:
-				transform.Translate(0f, turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
+				transform.Translate(0f, turnSpeed * Time.deltaTime, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.TOP_RIGHT:
-				transform.Translate(-turnSpeed * Time.fixedDeltaTime, turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
+				transform.Translate(-turnSpeed * Time.deltaTime, turnSpeed * Time.deltaTime, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.TOP_LEFT:
-				transform.Translate(-turnSpeed * Time.fixedDeltaTime, -turnSpeed * Time.fixedDeltaTime, 0f, Space.World);
+				transform.Translate(-turnSpeed * Time.deltaTime, -turnSpeed * Time.deltaTime, 0f, Space.World);
 				break;
 			case CameraRotate.RotationState.TOP:	
-				transform.Translate(-turnSpeed * Time.fixedDeltaTime, 0f, 0f, Space.World);
+				transform.Translate(-turnSpeed * Time.deltaTime, 0f, 0f, Space.World);
 				break;
 		}
 		
