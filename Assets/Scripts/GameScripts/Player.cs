@@ -15,10 +15,10 @@ public class Player : MonoBehaviour {
     public float speedUpRate;
     public float turnRate;
 
-    public const float MAX_SPEED = 70f;
-    public const float MAX_TURN_RATE = 55f;
+    public const float MAX_SPEED = 60f;
+    public const float MAX_TURN_RATE = 45f;
 
-    public const float TURN_RATE_STARTING = 30f;
+    public const float TURN_RATE_STARTING = 20f;
 
 	public float speed;
 	public float turnSpeed;
