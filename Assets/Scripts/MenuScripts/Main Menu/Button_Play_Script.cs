@@ -5,6 +5,7 @@ public class Button_Play_Script : MonoBehaviour
 {
 	public GameObject SelectionMenu;
     public GameObject MainMenu;
+    public DebrisSpawner DebrisManager;
 
 	// Use this for initialization
 	void Start () 
@@ -22,5 +23,7 @@ public class Button_Play_Script : MonoBehaviour
 	{
 		SelectionMenu.SetActive (true);
         MainMenu.SetActive(false);
+        DebrisManager.active = false;
+        
 	}
 }

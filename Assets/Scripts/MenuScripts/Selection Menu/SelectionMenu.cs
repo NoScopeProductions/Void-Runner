@@ -3,8 +3,9 @@ using System.Collections;
 
 public class SelectionMenu : MonoBehaviour 
 {
-	float screenWidth;
-	float screenHeight;
+	private float screenWidth;
+	private float screenHeight;
+    private Color invisible = new Color(1, 1, 1, 0);
 
 	// Use this for initialization
 	void Start () 
@@ -20,21 +21,24 @@ public class SelectionMenu : MonoBehaviour
 
 	void DrawButtons ()
 	{
-		GUILayout.BeginArea (new Rect(0, screenHeight/2, screenWidth, screenHeight/4));
+
+        GUI.color = invisible;
+
+		GUILayout.BeginArea (new Rect(0, screenHeight/2 - screenHeight/10, screenWidth, screenHeight));
 		GUILayout.BeginHorizontal ("");
 
-		if(GUILayout.Button ("Default")) 
-		{
-			PlayerPreferences.shipSelected = PlayerPreferences.SHIP.DEFAULT;
-			Application.LoadLevel("Game");
-		}
-		if(GUILayout.Button ("Remaker"))
+		if(GUILayout.Button("Remaker", GUILayout.Height(screenHeight/4))) 
 		{
             PlayerPreferences.shipSelected = PlayerPreferences.SHIP.REMAKER;
 			Application.LoadLevel("Game");
 		}
+        if (GUILayout.Button("Default", GUILayout.Height(screenHeight / 4)))
+		{
+            PlayerPreferences.shipSelected = PlayerPreferences.SHIP.DEFAULT;
+			Application.LoadLevel("Game");
+		}
 
-		if(GUILayout.Button ("DSK"))
+        if (GUILayout.Button("DSK", GUILayout.Height(screenHeight / 4)))
 		{
             PlayerPreferences.shipSelected = PlayerPreferences.SHIP.DSK;
 			Application.LoadLevel("Game");
