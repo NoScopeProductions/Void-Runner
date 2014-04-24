@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
     public enum PlayerState { ALIVE, DEAD, FALLING, BOOSTING, DEACTIVATING_BOOST };
-    public enum PowerUps { NONE, TURBO_BOOST, SHIELD };
+    public enum PowerUps { NONE, SHIELD };
 
     private const float LANDING_DISTANCE = 36f;
     public const float BOOST_TIME = 3f;
@@ -20,6 +20,8 @@ public class Player : MonoBehaviour {
 
     public const float TURN_RATE_STARTING = 35f;
 
+    public float SCORE_PER_SECOND;
+
 	public float speed;
 	public float turnSpeed;
 
@@ -34,7 +36,7 @@ public class Player : MonoBehaviour {
     public GameObject Shield;
 
 	public GameObject PlayerCamera;
-	public int Score;
+	public float Score;
 	
 	public float Fuel;
 	public float FuelDrain;
@@ -52,9 +54,10 @@ public class Player : MonoBehaviour {
     public AudioClip Sound_DeactivateBoost;
     public AudioClip Sound_ActivateBoost;
     public AudioClip Sound_Explode;
+    public AudioClip Sound_ShieldExplode;
+    public AudioClip Sound_ShieldActivate;
 
     public AudioSource SoundManager;
-    
 
 	public void Start () 
 	{
@@ -132,7 +135,8 @@ public class Player : MonoBehaviour {
 		}
 
 		DrainFuel();
-        Score += 1;
+
+        if (distanceTraveled > 760) { Score += SCORE_PER_SECOND * Time.deltaTime; }
 	}
 
 	private void DrainFuel() {
@@ -343,12 +347,14 @@ public class Player : MonoBehaviour {
     private void ActivateShield()
     {
         ActivePowerUp = PowerUps.SHIELD;
+        SoundManager.PlayOneShot(Sound_ShieldActivate);
         Shield.SetActive(true);
     }
 
     private void DeactivateShield()
     {
         ActivePowerUp = PowerUps.NONE;
+        SoundManager.PlayOneShot(Sound_ShieldExplode);
         Shield.SetActive(false);
     }
 
@@ -370,7 +376,6 @@ public class Player : MonoBehaviour {
     {
         BoostTimeTraveled = BOOST_TIME;
 		State = PlayerState.BOOSTING;
-        ActivePowerUp = PowerUps.TURBO_BOOST;
 
         SoundManager.PlayOneShot(Sound_ActivateBoost);
 
@@ -389,7 +394,6 @@ public class Player : MonoBehaviour {
 		if (transform.position.x == BoostInitialPos.x && transform.position.y == BoostInitialPos.y) 
 		{
 			State = PlayerState.ALIVE;
-            DeactivateShield();
 		}
 	}
 

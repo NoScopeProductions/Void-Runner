@@ -20,3 +20,10 @@ http://opengameart.org/content/platformer-sounds-terminal-interaction-door-shots
 
 Electric Exodus
 http://opengameart.org/content/electric-exodus
+
+Shield Effects
+http://opengameart.org/content/collaboration-sound-effects-fx-010
+http://opengameart.org/content/collaboration-sound-effects-fx-005
+
+Music
+http://opengameart.org/content/szymon-matuszewski-space-chase

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HUDManager : MonoBehaviour 
 {
-	private int score;
+	private float score;
 	private int maxFuel = 100;
 	private float currentFuel = 100;
 	private float fuelBarLength;
@@ -110,6 +110,6 @@ public class HUDManager : MonoBehaviour
 	
 	void DrawScore()
 	{
-        GUI_scoreText.text = "Score: " + PlayerObject.Score.ToString();
+        GUI_scoreText.text = "Score: " + Mathf.Round(PlayerObject.Score).ToString();
 	}
 }
