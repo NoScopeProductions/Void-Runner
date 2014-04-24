@@ -20,6 +20,8 @@ public class HUDManager : MonoBehaviour
     public GUIText Tutorial_GoodLuck;
     public GUIText Tutorial_Welcome;
 
+    public GameObject Tutorial_Tunnel;
+
     public GUIText GUI_scoreText;
 
     public Player PlayerObject;
@@ -79,6 +81,7 @@ public class HUDManager : MonoBehaviour
         {
             Tutorial_GoodLuck.gameObject.SetActive(false);
             TutorialEnabled = false;
+            Destroy(Tutorial_Tunnel);
         }
     }
 	
