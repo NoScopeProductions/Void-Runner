@@ -142,7 +142,7 @@ public class Player : MonoBehaviour {
 	private void DrainFuel() {
 		if(State == PlayerState.BOOSTING) 
 		{
-			Fuel += FuelDrain * Time.deltaTime;
+			Fuel += 2 * FuelDrain * Time.deltaTime;
 		}
 		else if (State == PlayerState.FALLING) 
 		{
@@ -222,6 +222,7 @@ public class Player : MonoBehaviour {
 
         SoundManager.PlayOneShot(Sound_Explode);
 
+        DeactivateShield(false);
         return PlayerState.DEAD;
 		
 	}
@@ -351,10 +352,10 @@ public class Player : MonoBehaviour {
         Shield.SetActive(true);
     }
 
-    private void DeactivateShield()
+    private void DeactivateShield(bool playSound = true)
     {
         ActivePowerUp = PowerUps.NONE;
-        SoundManager.PlayOneShot(Sound_ShieldExplode);
+        if (playSound) { SoundManager.PlayOneShot(Sound_ShieldExplode); }
         Shield.SetActive(false);
     }
 
