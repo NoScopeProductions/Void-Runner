@@ -118,11 +118,8 @@ public class Player : MonoBehaviour {
 
 		distanceTraveled = transform.localPosition.z;
 
-        if (distanceTraveled > TUTORIAL_DISTANCE)
-        {
-            checkInput();
-            GetTouchInput();
-        }
+        checkInput();
+        GetTouchInput();
 		
 		if(State == PlayerState.BOOSTING) 
 		{

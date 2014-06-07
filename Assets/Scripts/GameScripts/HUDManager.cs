@@ -14,14 +14,6 @@ public class HUDManager : MonoBehaviour
 
     public Texture2D energyIcon;
 
-    public GUIText Tutorial_Fuel;
-    public GUIText Tutorial_Shield;
-    public GUIText Tutorial_Speed;
-    public GUIText Tutorial_GoodLuck;
-    public GUIText Tutorial_Welcome;
-
-    public GameObject Tutorial_Tunnel;
-
     public GUIText GUI_scoreText;
 
     public Player PlayerObject;
@@ -45,46 +37,8 @@ public class HUDManager : MonoBehaviour
 	{
 		DrawFuelBar();
 		DrawScore();
-
-        DrawTutorial();
 	}
 
-    private void DrawTutorial()
-    {
-        if (!TutorialEnabled) { return; }
-
-        if (PlayerObject.distanceTraveled > 185)
-        {
-            Tutorial_Welcome.gameObject.SetActive(false);
-            Tutorial_Fuel.gameObject.SetActive(true);
-        }
-
-        if (PlayerObject.distanceTraveled > 300)
-        {
-            Tutorial_Fuel.gameObject.SetActive(false);
-            Tutorial_Shield.gameObject.SetActive(true);
-        }
-
-        if (PlayerObject.distanceTraveled > 395)
-        {
-            Tutorial_Shield.gameObject.SetActive(false);
-            Tutorial_Speed.gameObject.SetActive(true);
-        }
-
-        if (PlayerObject.distanceTraveled > 575)
-        {
-            Tutorial_Speed.gameObject.SetActive(false);
-            Tutorial_GoodLuck.gameObject.SetActive(true);
-        }
-
-        if (PlayerObject.distanceTraveled > 740)
-        {
-            Tutorial_GoodLuck.gameObject.SetActive(false);
-            TutorialEnabled = false;
-            Destroy(Tutorial_Tunnel);
-        }
-    }
-	
 	void DrawFuelBar()
 	{
 		
