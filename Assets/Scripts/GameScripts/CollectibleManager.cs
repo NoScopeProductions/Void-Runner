@@ -72,7 +72,7 @@ public class CollectibleManager : MonoBehaviour
         //return TYPE_SPEED;
 		int chance = Random.Range(1,101);
 
-		//There is a 65% chance of the type being fuel.
+		//There is a 75% chance of the type being fuel.
 		if(chance < 75) 
 		{
 			return TYPE_FUEL;

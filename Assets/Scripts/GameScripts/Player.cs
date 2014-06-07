@@ -395,6 +395,7 @@ public class Player : MonoBehaviour {
 		if (transform.position.x == BoostInitialPos.x && transform.position.y == BoostInitialPos.y) 
 		{
 			State = PlayerState.ALIVE;
+            iTween.Stop(); //Stop all iTweens to prevent camera snap bug after landing from boost
 		}
 	}
 
