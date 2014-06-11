@@ -88,6 +88,11 @@ public class Player : MonoBehaviour {
         }
 
         SelectedShipBody.SetActive(true);
+
+        if (PlayerPreferences.SkipTutorial)
+        {
+            transform.position = new Vector3(0, -34.5f, 365f);
+        }
 	}
 
 	public void Update() 

@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class DisplayTextTrigger : MonoBehaviour {
+public class TimedTextTrigger : MonoBehaviour {
 
 
     public GameObject[] Messages;
 
 
-    void OnTriggerEnter(Collider col) 
+    void OnTriggerEnter(Collider col)
     {
         if (col.tag != "Player") { return; }
+
+        Time.timeScale = 0.2f;
         foreach (GameObject gameObj in Messages)
         {
             gameObj.SetActive(true);
@@ -19,6 +22,8 @@ public class DisplayTextTrigger : MonoBehaviour {
     void OnTriggerExit(Collider col)
     {
         if (col.tag != "Player") { return; }
+
+        Time.timeScale = 1f;
         foreach (GameObject gameObj in Messages)
         {
             gameObj.SetActive(false);

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e246ee0f7882102479f01050fbc4a160
+guid: 9d6892f8f3504b145aba57d4f4e9a84b
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -20,7 +20,7 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 4
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
@@ -38,7 +38,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  textureType: 2
+  textureType: 5
   buildTargetSettings: []
   spriteSheet:
     sprites: []

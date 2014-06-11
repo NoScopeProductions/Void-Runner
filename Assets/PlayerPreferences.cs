@@ -7,6 +7,8 @@ public class PlayerPreferences : MonoBehaviour
 
 	public static SHIP shipSelected = SHIP.DEFAULT;
 
+    public static bool SkipTutorial = false;
+
 
 	void Awake()
 	{
