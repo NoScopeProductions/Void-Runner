@@ -36,7 +36,7 @@ public class EnemyManager : MonoBehaviour
             curEnemy.localPosition = nextPosition;
             nextPosition.z += zOffset;
 
-            SetNewRotation(curEnemy);
+            StartCoroutine(SetNewRotation(curEnemy));
             objectQueue.Enqueue(curEnemy);
         }
 
@@ -53,31 +53,31 @@ public class EnemyManager : MonoBehaviour
             nextEnemy.localPosition = nextPosition;
             nextPosition.z += zOffset;
 
-            SetNewRotation(nextEnemy);
+            StartCoroutine(SetNewRotation(nextEnemy));
             objectQueue.Enqueue(nextEnemy);
         }
     }
 
-    private void SetNewRotation(Transform Enemy)
+    private IEnumerator SetNewRotation(Transform Enemy)
     {
-        curRotation = spawnRotations[Random.Range(0, 8)];
-        Enemy.transform.rotation = Quaternion.identity;
-        Enemy.transform.Rotate(0f, 0f, curRotation, Space.World);
+        while (true)
+        {
+            curRotation = spawnRotations[Random.Range(0, 8)];
+            Enemy.transform.rotation = Quaternion.identity;
+            Enemy.transform.Rotate(0f, 180f, curRotation, Space.World);
+
+            RaycastHit hitInfo;
+            if (Physics.Raycast(Enemy.position, -Enemy.up, out hitInfo))
+            {
+                if (hitInfo.transform.tag == "Tunnel") break;
+            }
+
+            yield return null;
+        }
     }
 }
 
 
 /*
- * while (true)
-            {
-                RaycastHit hitInfo;
-                if (Physics.Raycast(curEnemy.position, -curEnemy.up, out hitInfo))
-                {
-                    if (hitInfo.transform.tag == "Tunnel") break;
-                }
-                else
-                {
-
-                }
-            }
+ * 
 */
