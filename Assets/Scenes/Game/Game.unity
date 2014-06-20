@@ -1964,6 +1964,7 @@ MonoBehaviour:
   Fuel: 100
   FuelDrain: 4
   FuelDrainWhenFalling: 50
+  EnableGodMode: 1
   State: 0
   ActivePowerUp: 0
   BoostIntensity: {x: 1, y: 1, z: 1}
@@ -10805,8 +10806,8 @@ MonoBehaviour:
   - {fileID: 400040, guid: 480f6a6416f90a243a7886a1dc292853, type: 2}
   - {fileID: 400040, guid: 96a743cccb8d5db4f9f7db471eaa547d, type: 2}
   - {fileID: 400040, guid: 96a743cccb8d5db4f9f7db471eaa547d, type: 2}
-  numberOfObjects: 5
-  recycleOffset: 600
+  numberOfObjects: 6
+  recycleOffset: 400
   startPosition: {x: 0, y: 0, z: 750}
   zOffset: 400
   PlayerObject: {fileID: 261040504}
@@ -18360,7 +18361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 400016, guid: 7065cb780b300f54091f6e8ed2512208, type: 2}
-  numberOfObjects: 10
+  numberOfObjects: 7
   recycleOffset: 20
   startPosition: {x: 0, y: 0, z: 1000}
   zOffset: 250

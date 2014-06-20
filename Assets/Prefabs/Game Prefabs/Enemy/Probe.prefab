@@ -11,7 +11,7 @@ GameObject:
   - 15: {fileID: 1500008}
   - 12: {fileID: 1200008}
   - 26: {fileID: 2600008}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LargeLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 15: {fileID: 1500000}
   - 12: {fileID: 1200000}
   - 26: {fileID: 2600000}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpreadLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 15: {fileID: 1500002}
   - 12: {fileID: 1200002}
   - 26: {fileID: 2600002}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - 15: {fileID: 1500004}
   - 12: {fileID: 1200004}
   - 26: {fileID: 2600004}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - 15: {fileID: 1500010}
   - 12: {fileID: 1200010}
   - 26: {fileID: 2600010}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - 15: {fileID: 1500012}
   - 12: {fileID: 1200012}
   - 26: {fileID: 2600012}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - 15: {fileID: 1500006}
   - 12: {fileID: 1200006}
   - 26: {fileID: 2600006}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpreadLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400014}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Beam
   m_TagString: Effect
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - 4: {fileID: 400016}
   - 135: {fileID: 13500000}
   - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Probe
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 111: {fileID: 11100000}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: probe
   m_TagString: Untagged
   m_Icon: {fileID: 0}

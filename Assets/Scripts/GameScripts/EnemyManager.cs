@@ -29,16 +29,15 @@ public class EnemyManager : MonoBehaviour
 
         for (int i = 0; i < numberOfObjects; i++)
         {
-            Transform o = (Transform)Instantiate(Enemy);
+            Transform curEnemy = (Transform)Instantiate(Enemy);
 
-            o.parent = transform;
-            //select one of the 8 spawn points and place this collectible there.
-            curRotation = spawnRotations[Random.Range(0, 8)];
-
-            o.localPosition = nextPosition;
+            curEnemy.parent = transform;
+            
+            curEnemy.localPosition = nextPosition;
             nextPosition.z += zOffset;
-            o.transform.Rotate(0f, 0f, curRotation, Space.World);
-            objectQueue.Enqueue(o);
+
+            SetNewRotation(curEnemy);
+            objectQueue.Enqueue(curEnemy);
         }
 
     }
@@ -48,16 +47,37 @@ public class EnemyManager : MonoBehaviour
     {
         if (objectQueue.Peek().localPosition.z + recycleOffset < PlayerObject.transform.position.z)
         {
-            Transform o = objectQueue.Dequeue();
-            o.localPosition = nextPosition;
-            //select one of the 8 spawn points and place this collectible there.
-            curRotation = spawnRotations[Random.Range(0, 8)];
-
-            o.transform.rotation = Quaternion.identity;
-            o.localPosition = nextPosition;
+            Transform nextEnemy = objectQueue.Dequeue();
+            nextEnemy.localPosition = nextPosition;
+            
+            nextEnemy.localPosition = nextPosition;
             nextPosition.z += zOffset;
-            o.transform.Rotate(0f, 0f, curRotation, Space.World);
-            objectQueue.Enqueue(o);
+
+            SetNewRotation(nextEnemy);
+            objectQueue.Enqueue(nextEnemy);
         }
     }
+
+    private void SetNewRotation(Transform Enemy)
+    {
+        curRotation = spawnRotations[Random.Range(0, 8)];
+        Enemy.transform.rotation = Quaternion.identity;
+        Enemy.transform.Rotate(0f, 0f, curRotation, Space.World);
+    }
 }
+
+
+/*
+ * while (true)
+            {
+                RaycastHit hitInfo;
+                if (Physics.Raycast(curEnemy.position, -curEnemy.up, out hitInfo))
+                {
+                    if (hitInfo.transform.tag == "Tunnel") break;
+                }
+                else
+                {
+
+                }
+            }
+*/
