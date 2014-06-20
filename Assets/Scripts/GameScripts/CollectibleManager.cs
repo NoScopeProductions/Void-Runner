@@ -54,7 +54,7 @@ public class CollectibleManager : MonoBehaviour
 	void Update () 
 	{
 		
-		if (objectQueue.Peek().localPosition.z + recycleOffset < PlayerObject.distanceTraveled) 
+		if (objectQueue.Peek().localPosition.z + recycleOffset < PlayerObject.transform.position.z) 
 		{
 			Transform o = objectQueue.Dequeue();
 			o.localPosition = nextPosition;
