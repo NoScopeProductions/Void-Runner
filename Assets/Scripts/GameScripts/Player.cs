@@ -102,13 +102,13 @@ public class Player : MonoBehaviour {
 	{
 		if(State != PlayerState.DEAD) 
 		{
-			updatePlayer();	
+			UpdatePlayer();	
 		}
 	}
 	
-	private void updatePlayer() 
+	private void UpdatePlayer() 
 	{
-		State = checkAlive();
+		State = CheckAlive();
 
         if (speed < MAX_SPEED)
         {
@@ -145,7 +145,9 @@ public class Player : MonoBehaviour {
 	}
 
 	private void DrainFuel() {
+
         if (EnableGodMode) return;
+
 		if(State == PlayerState.BOOSTING) 
 		{
 			Fuel += 2 * FuelDrain * Time.deltaTime;
@@ -162,7 +164,7 @@ public class Player : MonoBehaviour {
 		if(Fuel > 100) Fuel = 100;
 	}	
 	
-	private PlayerState checkAlive() 
+	private PlayerState CheckAlive() 
 	{
 		//don't need to check the state while we're boosting.
 		if(State == PlayerState.BOOSTING) return PlayerState.BOOSTING;
@@ -184,7 +186,7 @@ public class Player : MonoBehaviour {
 		}
 		else 
 		{
-			if (isInTube()) 
+			if (IsInTube()) 
 			{
 				//transform.Translate(-transform.up, Space.World);
 				return PlayerState.FALLING;
@@ -196,7 +198,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 	
-	private bool isInTube() {
+	private bool IsInTube() {
         if (transform.localPosition.x > 50 || transform.localPosition.x < -50)
 		{
 			return false;
