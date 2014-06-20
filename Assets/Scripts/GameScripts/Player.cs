@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
     public enum PlayerState { ALIVE, DEAD, FALLING, BOOSTING, DEACTIVATING_BOOST };
     public enum PowerUps { NONE, SHIELD };
 
-    private const float LANDING_DISTANCE = 36f;
+    private const float LANDING_DISTANCE = 32f;
     public const float BOOST_TIME = 3f;
     public const float TUTORIAL_DISTANCE = 750f;
 	
