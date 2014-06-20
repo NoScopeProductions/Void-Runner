@@ -109,7 +109,7 @@ public class Player : MonoBehaviour {
 
         if (speed < MAX_SPEED)
         {
-            if (distanceTraveled > TUTORIAL_DISTANCE + 200)
+            if (transform.position.z > TUTORIAL_DISTANCE)
             {
                 speed += speedUpRate * Time.deltaTime;
             }
@@ -138,7 +138,7 @@ public class Player : MonoBehaviour {
 
 		DrainFuel();
 
-        if (distanceTraveled > 760) { Score += SCORE_PER_SECOND * Time.deltaTime; }
+        if (transform.position.z > TUTORIAL_DISTANCE) { Score += SCORE_PER_SECOND * Time.deltaTime; }
 	}
 
 	private void DrainFuel() {
