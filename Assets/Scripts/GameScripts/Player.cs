@@ -40,7 +40,10 @@ public class Player : MonoBehaviour {
 	
 	public float Fuel;
 	public float FuelDrain;
-	
+    public float FuelDrainWhenFalling;
+
+    public bool EnableGodMode;
+
 	public PlayerState State;
 	public PowerUps ActivePowerUp;
     
@@ -142,13 +145,14 @@ public class Player : MonoBehaviour {
 	}
 
 	private void DrainFuel() {
+        if (EnableGodMode) return;
 		if(State == PlayerState.BOOSTING) 
 		{
 			Fuel += 2 * FuelDrain * Time.deltaTime;
 		}
 		else if (State == PlayerState.FALLING) 
 		{
-			Fuel -= FuelDrain * 10 * Time.deltaTime;
+            Fuel -= FuelDrainWhenFalling * Time.deltaTime;
 		}
 		else 
 		{
@@ -207,6 +211,8 @@ public class Player : MonoBehaviour {
 	
 	private PlayerState Kill() 
     {
+        if (EnableGodMode) return PlayerState.ALIVE;
+
 		iTween.Stop();
 		
 		//create the explosion effects
