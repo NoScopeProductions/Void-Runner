@@ -82,8 +82,8 @@ public class CollectibleManager : MonoBehaviour
 			//otherwise, we roll the dice again
 			chance = Random.Range(1,101);
 
-			//There is now a 10% chance of the type being a speed boost
-			if(chance < 10) 
+			//There is now a 20% chance of the type being a speed boost
+			if(chance < 20) 
 			{
 				return TYPE_SPEED;
 			}
