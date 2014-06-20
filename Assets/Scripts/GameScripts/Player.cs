@@ -314,7 +314,7 @@ public class Player : MonoBehaviour {
 
             CheckCollectibleType(col.tag);
         }
-        else if(col.tag.Contains("Rock"))
+        else if(col.tag.Contains("Rock") || col.tag.Contains("Enemy"))
         {
             if (State != PlayerState.BOOSTING && State != PlayerState.DEACTIVATING_BOOST)
             {
@@ -326,7 +326,6 @@ public class Player : MonoBehaviour {
                 State = Kill();
             }
         }
-
     }
 
 	private void CheckCollectibleType (string type) 

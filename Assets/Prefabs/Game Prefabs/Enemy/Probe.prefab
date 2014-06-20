@@ -150,6 +150,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400016}
   - 135: {fileID: 13500000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Probe
   m_TagString: Enemy
@@ -230,7 +231,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: .685923398, z: 0, w: .727673769}
-  m_LocalPosition: {x: 0, y: 20.054081, z: 0}
+  m_LocalPosition: {x: 0, y: 12.9399033, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400014}
@@ -266,7 +267,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -22.3195496, z: 0}
+  m_LocalPosition: {x: 0, y: -22.7909641, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400012}
@@ -284,7 +285,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 1.94707184e-07}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -537,7 +538,7 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
@@ -564,7 +565,7 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
@@ -591,7 +592,7 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
@@ -618,7 +619,7 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
@@ -645,9 +646,9 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
-  m_Ellipsoid: {x: 2, y: 6.44000006, z: 2}
+  m_Ellipsoid: {x: 2, y: -12.1499996, z: 2}
   m_MinEmitterRange: 0
 --- !u!15 &1500010
 EllipsoidParticleEmitter:
@@ -672,7 +673,7 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
@@ -699,7 +700,7 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
@@ -954,6 +955,21 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12544e3fda1dbe14eae4c53d57470ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0
+  toggle: 1
+  travelDistance: 13
+  localX: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

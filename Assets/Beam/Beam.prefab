@@ -159,6 +159,7 @@ Transform:
   - {fileID: 400012}
   - {fileID: 400014}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
@@ -170,6 +171,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
+  m_RootOrder: 0
 --- !u!4 &400004
 Transform:
   m_ObjectHideFlags: 1
@@ -181,6 +183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
+  m_RootOrder: 1
 --- !u!4 &400006
 Transform:
   m_ObjectHideFlags: 1
@@ -192,6 +195,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
+  m_RootOrder: 2
 --- !u!4 &400008
 Transform:
   m_ObjectHideFlags: 1
@@ -203,6 +207,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
+  m_RootOrder: 3
 --- !u!4 &400010
 Transform:
   m_ObjectHideFlags: 1
@@ -214,6 +219,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
+  m_RootOrder: 4
 --- !u!4 &400012
 Transform:
   m_ObjectHideFlags: 1
@@ -225,6 +231,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
+  m_RootOrder: 5
 --- !u!4 &400014
 Transform:
   m_ObjectHideFlags: 1
@@ -236,6 +243,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
+  m_RootOrder: 6
 --- !u!12 &1200000
 ParticleAnimator:
   m_ObjectHideFlags: 1
@@ -469,7 +477,7 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
@@ -496,7 +504,7 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
@@ -550,7 +558,7 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
@@ -577,7 +585,7 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
@@ -604,7 +612,7 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
@@ -631,7 +639,7 @@ EllipsoidParticleEmitter:
   angularVelocity: 0
   rndAngularVelocity: 0
   rndRotation: 0
-  Simulate in Worldspace?: 1
+  Simulate in Worldspace?: 0
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
@@ -653,9 +661,8 @@ ParticleRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   serializedVersion: 2
   m_CameraVelocityScale: 0
   m_StretchParticles: 0
@@ -684,9 +691,8 @@ ParticleRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   serializedVersion: 2
   m_CameraVelocityScale: 0
   m_StretchParticles: 0
@@ -715,9 +721,8 @@ ParticleRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   serializedVersion: 2
   m_CameraVelocityScale: 0
   m_StretchParticles: 3
@@ -746,9 +751,8 @@ ParticleRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   serializedVersion: 2
   m_CameraVelocityScale: 0
   m_StretchParticles: 3
@@ -777,9 +781,8 @@ ParticleRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   serializedVersion: 2
   m_CameraVelocityScale: 0
   m_StretchParticles: 0
@@ -808,9 +811,8 @@ ParticleRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   serializedVersion: 2
   m_CameraVelocityScale: 0
   m_StretchParticles: 0
@@ -839,9 +841,8 @@ ParticleRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   serializedVersion: 2
   m_CameraVelocityScale: 0
   m_StretchParticles: 3
