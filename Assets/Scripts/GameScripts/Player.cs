@@ -121,7 +121,7 @@ public class Player : MonoBehaviour {
 
 		transform.Translate(0f,0f, speed * Time.deltaTime);
 
-		distanceTraveled = transform.localPosition.z;
+		distanceTraveled += speed * Time.deltaTime;
 
         checkInput();
         GetTouchInput();
@@ -500,6 +500,6 @@ public class Player : MonoBehaviour {
 	
 	public void setPos(float x, float y) 
 	{
-		transform.localPosition = new Vector3(x, y, distanceTraveled);
+		transform.localPosition = new Vector3(x, y, transform.position.z);
 	}
 }
