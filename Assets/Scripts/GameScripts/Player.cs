@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Player : MonoBehaviour {
 
@@ -62,8 +63,23 @@ public class Player : MonoBehaviour {
 
     public AudioSource SoundManager;
 
+    private Action CheckInput;
+
 	public void Start () 
 	{
+        switch (Application.platform)
+        {
+            case RuntimePlatform.Android:
+            case RuntimePlatform.IPhonePlayer:
+            case RuntimePlatform.WP8Player:
+                CheckInput = CheckTouchInput;
+                break;
+
+            default:
+                CheckInput = CheckKeyboardInput;
+                break;
+        }
+
 		Init();
 	}
 
@@ -126,8 +142,7 @@ public class Player : MonoBehaviour {
 
 		distanceTraveled += speed * Time.deltaTime;
 
-        checkInput();
-        GetTouchInput();
+        CheckInput();
 		
 		if(State == PlayerState.BOOSTING) 
 		{
@@ -242,7 +257,7 @@ public class Player : MonoBehaviour {
 		Application.LoadLevel("Menu");	
 	}
 	
-	private void checkInput() 
+	private void CheckKeyboardInput() 
     {
 		//don't check input when the players is boosting.
 		if(State == PlayerState.BOOSTING) return;
@@ -269,7 +284,7 @@ public class Player : MonoBehaviour {
         }
 	}
 
-	private void GetTouchInput ()
+	private void CheckTouchInput ()
 	{
 		//don't check input when the players is boosting.
 		if(State == PlayerState.BOOSTING) { return; }
