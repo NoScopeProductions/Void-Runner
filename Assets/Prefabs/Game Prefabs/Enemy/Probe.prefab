@@ -149,8 +149,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400016}
-  - 135: {fileID: 13500000}
-  - 114: {fileID: 11400000}
   m_Layer: 2
   m_Name: Probe
   m_TagString: Enemy
@@ -169,9 +167,11 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 111: {fileID: 11100000}
+  - 114: {fileID: 11400000}
+  - 135: {fileID: 13500000}
   m_Layer: 2
   m_Name: probe
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -960,28 +960,25 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100016}
+  m_GameObject: {fileID: 100018}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12544e3fda1dbe14eae4c53d57470ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
-  toggle: 1
-  travelDistance: 13
-  localX: 0
+  TravelSpeed: 5
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100016}
+  m_GameObject: {fileID: 100018}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.29999995
-  m_Center: {x: 0, y: -33.4300003, z: 0}
+  m_Center: {x: 0, y: -20.7999992, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

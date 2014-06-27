@@ -4,38 +4,21 @@ using System.Collections.Generic;
 
 public class EnemyMovement : MonoBehaviour 
 {
-    public float Speed;
+    public float TravelSpeed;
 
-    public bool toggle = true;
+    private Vector3[] path;
 
-    public float travelDistance = 13f;
+    public void Start()
+    {
+        path = new[] { 
+                       new Vector3(-13f, transform.localPosition.y, transform.localPosition.z), 
+                       new Vector3( 13f, transform.localPosition.y, transform.localPosition.z) 
+                     };
 
-    public float localX;
-
+        TravelSpeed = Random.Range(1f, 3f);
+    }
 	void Update () 
     {
-        if (toggle)
-        {
-            transform.Translate(Vector3.right * Speed * Time.deltaTime, Space.Self);
-
-        }
-        else
-        {
-            transform.Translate(Vector3.left * Speed * Time.deltaTime, Space.Self);
-        }
-        CheckBounds();
-
-        localX = transform.localPosition.x;
+        transform.localPosition = Vector3.Lerp(path[0], path[1], (Mathf.Sin(TravelSpeed * Time.time) + 1.0f) / 2.0f);
 	}
-
-    private void CheckBounds()
-    {
-        if (transform.localPosition.x >= 13f ||
-            transform.localPosition.x <= -13f)
-        {
-            toggle = !toggle;
-        }
-
-        transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, -travelDistance, travelDistance), transform.localPosition.y, transform.localPosition.z);
-    }
 }
