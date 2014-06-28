@@ -23,7 +23,7 @@ public class Button_Play_Script : MonoBehaviour
 	{
 		SelectionMenu.SetActive (true);
         MainMenu.SetActive(false);
-        DebrisManager.active = false;
+        DebrisManager.IsActive = false;
         
 	}
 }

@@ -3,7 +3,6 @@ using System.Collections;
 
 public class HUDManager : MonoBehaviour 
 {
-	private float score;
 	private int maxFuel = 100;
 	private float currentFuel = 100;
 	private float fuelBarLength;
@@ -18,8 +17,6 @@ public class HUDManager : MonoBehaviour
 
     public Player PlayerObject;
 
-    private bool TutorialEnabled = true;
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -30,7 +27,6 @@ public class HUDManager : MonoBehaviour
 	void Update () 
 	{
         currentFuel = PlayerObject.Fuel;
-        score = PlayerObject.Score;
 	}
 	
 	void OnGUI()

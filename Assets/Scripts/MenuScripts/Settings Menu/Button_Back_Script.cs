@@ -19,7 +19,7 @@ public class Button_Back_Script : MonoBehaviour
 		SettingsMenu.SetActive(false);
         SelectionMenu.SetActive(false);
 
-        DebrisManager.active = true;
+        DebrisManager.IsActive = true;
 	}
 
 }

@@ -8,7 +8,7 @@ public class DebrisSpawner : MonoBehaviour
 	public Transform[] prefabs;
 	public float distance;
 
-    public bool active = true;
+    public bool IsActive = true;
 	// Use this for initialization
 	void Start () 
 	{
@@ -17,7 +17,7 @@ public class DebrisSpawner : MonoBehaviour
 	
 	void SpawnDebris()
 	{
-        if (!active) { return; }
+        if (!IsActive) { return; }
 		Vector3 newPosition = Camera.main.transform.position + Camera.main.transform.forward * distance;
 
         float angle = Random.Range(0, 2 * Mathf.PI);
