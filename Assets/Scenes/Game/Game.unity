@@ -416,7 +416,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 121929926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31abfeaa10b37a04192d576d42a988e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 11a7f035d675be044a8dc15db13dc24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Messages:
@@ -2140,8 +2140,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 314233212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .200000003, y: .550000012, z: 0}
-  m_LocalScale: {x: .400000006, y: .400000006, z: 1}
+  m_LocalPosition: {x: .25, y: .5, z: 0}
+  m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 1724252768}
   m_RootOrder: 1
@@ -2389,7 +2389,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 346326983}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31abfeaa10b37a04192d576d42a988e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 11a7f035d675be044a8dc15db13dc24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Messages:
@@ -2587,7 +2587,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: e153222f9f97c86468c90db7771a9425, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 24
+  m_FontSize: 36
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -3438,7 +3438,7 @@ MonoBehaviour:
   - {fileID: 400000, guid: 6d74e4ae8b0d3d84e93308777bb43da6, type: 2}
   - {fileID: 400000, guid: 83060483dd200e14bbea6335519c4272, type: 2}
   distance: 300
-  active: 1
+  IsActive: 1
 --- !u!1 &730814067
 GameObject:
   m_ObjectHideFlags: 0
@@ -8908,7 +8908,7 @@ Transform:
   m_GameObject: {fileID: 1016121730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .5, y: .800000012, z: -37.3878021}
-  m_LocalScale: {x: .5, y: .550000012, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1724252768}
   m_RootOrder: 0
@@ -8928,7 +8928,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: e153222f9f97c86468c90db7771a9425, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 24
+  m_FontSize: 36
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -9044,7 +9044,7 @@ Transform:
   m_GameObject: {fileID: 1060039195}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .5, y: .800000012, z: -37.3878021}
-  m_LocalScale: {x: .5, y: .550000012, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 346326984}
   m_RootOrder: 0
@@ -9064,7 +9064,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: e153222f9f97c86468c90db7771a9425, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 24
+  m_FontSize: 34
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -13428,7 +13428,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: e153222f9f97c86468c90db7771a9425, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 24
+  m_FontSize: 36
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -14868,7 +14868,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: e153222f9f97c86468c90db7771a9425, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 24
+  m_FontSize: 48
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -14953,8 +14953,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1491753133}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .800000012, y: .550000012, z: 0}
-  m_LocalScale: {x: .400000006, y: .400000006, z: 1}
+  m_LocalPosition: {x: .800000012, y: .5, z: 0}
+  m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 346326984}
   m_RootOrder: 1
@@ -16732,7 +16732,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1724252767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31abfeaa10b37a04192d576d42a988e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 11a7f035d675be044a8dc15db13dc24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Messages:
