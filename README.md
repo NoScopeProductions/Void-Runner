@@ -1,6 +1,6 @@
 Void Runner
 ===========
-Team NoScope's Imagine Cup 2013/2014 Entry
+ NEED TO UPDATE THIS
 
 Introduction
 ------------
