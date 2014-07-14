@@ -359,7 +359,7 @@ MonoBehaviour:
   MainMenu: {fileID: 255055519}
   SettingsMenu: {fileID: 406403775}
   SelectionMenu: {fileID: 406403775}
-  DebrisManager: {fileID: 0}
+  DebrisManager: {fileID: 953264529}
 --- !u!1 &223582981
 GameObject:
   m_ObjectHideFlags: 0
