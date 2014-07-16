@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
     public enum PlayerState { ALIVE, DEAD, FALLING, BOOSTING, DEACTIVATING_BOOST };
     public enum PowerUps { NONE, SHIELD };
 
+    public HUDManager HudManager;
+
     private const float LANDING_DISTANCE = 32f;
     public const float BOOST_TIME = 3f;
     public const float TUTORIAL_DISTANCE = 750f;
@@ -62,6 +64,15 @@ public class Player : MonoBehaviour {
     public AudioClip Sound_ShieldActivate;
 
     public AudioSource SoundManager;
+
+    [HideInInspector]
+    public int redPickupCount = 0;
+
+    [HideInInspector]
+    public int greenPickupCount = 0;
+
+    [HideInInspector]
+    public int bluePickupCount = 0 ;
 
     private Action CheckInput;
 
@@ -249,8 +260,7 @@ public class Player : MonoBehaviour {
 		Destroy(SelectedShipBody);
 		
 		//TEMP - return to main menu after 2 seconds, to be replaced with end game menu.
-		//TODO - Invoke end game menu here.
-		Invoke("loadMenu", 3f);
+		Invoke("ShowGameOverMenu", 3f);
 
         SoundManager.PlayOneShot(Sound_Explode);
 
@@ -258,10 +268,10 @@ public class Player : MonoBehaviour {
         return PlayerState.DEAD;
 		
 	}
-	
-	private void loadMenu() 
+
+    private void ShowGameOverMenu() 
 	{
-		Application.LoadLevel("Menu");	
+        HudManager.ShowGameOverMenu();
 	}
 	
 	private void CheckKeyboardInput() 
@@ -364,15 +374,18 @@ public class Player : MonoBehaviour {
 		{
 			Fuel += CollectibleRewards.FUEL_GAIN;
 			Score += CollectibleRewards.SCORE_FUEL;
+            greenPickupCount += 1; //TODO refactor this into its own function
 		}
 		else if (type == "Collectible_Speed") 
 		{
 			ActivateBoost();
+            redPickupCount += 1; //TODO refactor this into its own function
 		}
 		else if (type == "Collectible_Shield") 
 		{
 			ActivateShield();
 			Score += CollectibleRewards.SCORE_SHIELD;
+            bluePickupCount += 1; //TODO refactor this into its own function
 		}
 	}
 

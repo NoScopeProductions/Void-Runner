@@ -17,6 +17,8 @@ public class HUDManager : MonoBehaviour
 
     public Player PlayerObject;
 
+    public GameOverMenu endGameMenu;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -28,6 +30,15 @@ public class HUDManager : MonoBehaviour
 	{
         currentFuel = PlayerObject.Fuel;
 	}
+
+    public void ShowGameOverMenu()
+    {
+        endGameMenu.score = PlayerObject.Score;
+        endGameMenu.redPickupCount = PlayerObject.redPickupCount;
+        endGameMenu.greenPickupCount = PlayerObject.greenPickupCount;
+        endGameMenu.bluePickupCount = PlayerObject.bluePickupCount;
+        endGameMenu.gameObject.SetActive(true);
+    }
 	
 	void OnGUI()
 	{
