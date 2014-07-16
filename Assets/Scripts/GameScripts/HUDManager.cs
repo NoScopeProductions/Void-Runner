@@ -52,8 +52,8 @@ public class HUDManager : MonoBehaviour
 			fuelBarStyle.normal.background = fuelBarRED;
 		}
 		
-		GUI.Box(new Rect(10, 10, fuelBarLength, 50), "", fuelBarStyle);
-        GUI.DrawTexture(new Rect(13, 14, 61, 42), energyIcon);
+		GUI.Box(new Rect(10, 10, fuelBarLength, 70), "", fuelBarStyle);
+        GUI.DrawTexture(new Rect(13, 14, 85, 60), energyIcon);
         
 		fuelBarLength = (Screen.width - 20) * (currentFuel / (float)maxFuel);
 	}

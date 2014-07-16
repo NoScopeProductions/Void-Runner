@@ -228,7 +228,14 @@ public class Player : MonoBehaviour {
 	
 	private PlayerState Kill() 
     {
-        if (EnableGodMode) return PlayerState.ALIVE;
+        if (EnableGodMode) 
+		{
+			return PlayerState.ALIVE;
+		}
+		if (Time.timeScale != 1.0f) 
+		{
+			Time.timeScale = 1.0f;
+		}
 
 		iTween.Stop();
 		
