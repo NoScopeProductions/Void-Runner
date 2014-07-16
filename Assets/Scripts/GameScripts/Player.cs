@@ -243,6 +243,7 @@ public class Player : MonoBehaviour {
 		{
 			return PlayerState.ALIVE;
 		}
+
 		if (Time.timeScale != 1.0f) 
 		{
 			Time.timeScale = 1.0f;

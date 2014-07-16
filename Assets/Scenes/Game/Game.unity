@@ -398,6 +398,15 @@ Transform:
   m_LocalPosition: {x: 7.50583649, y: 8.52041721, z: 379.285461}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1997272523}
+  - {fileID: 1469423746}
+  - {fileID: 953188227}
+  - {fileID: 1239078049}
+  - {fileID: 1238720219}
+  - {fileID: 1527808276}
+  - {fileID: 852491388}
+  - {fileID: 1201254796}
+  - {fileID: 847246370}
   - {fileID: 1817347091}
   - {fileID: 1834502798}
   - {fileID: 1492249159}
@@ -410,15 +419,6 @@ Transform:
   - {fileID: 1409360795}
   - {fileID: 797604403}
   - {fileID: 758002615}
-  - {fileID: 1997272523}
-  - {fileID: 1469423746}
-  - {fileID: 953188227}
-  - {fileID: 1239078049}
-  - {fileID: 1238720219}
-  - {fileID: 1527808276}
-  - {fileID: 852491388}
-  - {fileID: 1201254796}
-  - {fileID: 847246370}
   m_Father: {fileID: 321638883}
   m_RootOrder: 3
 --- !u!1 &145522839
@@ -692,7 +692,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 7
+  m_RootOrder: 16
 --- !u!199 &248436123
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -1897,11 +1897,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HudManager: {fileID: 1659674347}
   distanceTraveled: 0
-  speedUpRate: 2
+  speedUpRate: 1
   turnRate: 10
   SCORE_PER_SECOND: 20
   speed: 40
-  turnSpeed: 30
+  turnSpeed: 35
   ShipBody_Remaker: {fileID: 335952523}
   ShipBody_Default: {fileID: 97095053}
   ShipBody_DSK: {fileID: 1788308364}
@@ -3864,7 +3864,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 11
+  m_RootOrder: 20
 --- !u!199 &758002616
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -5024,7 +5024,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 8
+  m_RootOrder: 17
 --- !u!199 &765294933
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -7310,7 +7310,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 10
+  m_RootOrder: 19
 --- !u!1 &797772560
 GameObject:
   m_ObjectHideFlags: 0
@@ -7440,7 +7440,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 6
+  m_RootOrder: 15
 --- !u!199 &844513143
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -9726,7 +9726,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 20
+  m_RootOrder: 8
 --- !u!1 &852491380
 GameObject:
   m_ObjectHideFlags: 0
@@ -10886,7 +10886,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 18
+  m_RootOrder: 6
 --- !u!1001 &875509431
 Prefab:
   m_ObjectHideFlags: 0
@@ -12508,7 +12508,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 14
+  m_RootOrder: 2
 --- !u!1001 &958058884
 Prefab:
   m_ObjectHideFlags: 0
@@ -14647,7 +14647,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 19
+  m_RootOrder: 7
 --- !u!1 &1203790641
 GameObject:
   m_ObjectHideFlags: 0
@@ -16002,7 +16002,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 16
+  m_RootOrder: 4
 --- !u!1 &1239078041
 GameObject:
   m_ObjectHideFlags: 0
@@ -17162,7 +17162,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 15
+  m_RootOrder: 3
 --- !u!1 &1245064547
 GameObject:
   m_ObjectHideFlags: 0
@@ -17877,7 +17877,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 9
+  m_RootOrder: 18
 --- !u!199 &1409360796
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -19115,7 +19115,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 13
+  m_RootOrder: 1
 --- !u!199 &1469423747
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -20349,7 +20349,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 2
+  m_RootOrder: 11
 --- !u!199 &1492249160
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -22742,7 +22742,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 17
+  m_RootOrder: 5
 --- !u!1001 &1528103625
 Prefab:
   m_ObjectHideFlags: 0
@@ -24292,7 +24292,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 3
+  m_RootOrder: 12
 --- !u!1 &1654367583
 GameObject:
   m_ObjectHideFlags: 0
@@ -24933,7 +24933,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 5
+  m_RootOrder: 14
 --- !u!199 &1782867067
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -26401,7 +26401,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 0
+  m_RootOrder: 9
 --- !u!199 &1817347092
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -27616,7 +27616,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 1
+  m_RootOrder: 10
 --- !u!199 &1834502799
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -28831,7 +28831,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 4
+  m_RootOrder: 13
 --- !u!199 &1840892210
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -30717,7 +30717,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 12
+  m_RootOrder: 0
 --- !u!199 &1997272524
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
