@@ -378,18 +378,15 @@ public class Player : MonoBehaviour {
 		{
 			Fuel += CollectibleRewards.FUEL_GAIN;
 			Score += CollectibleRewards.SCORE_FUEL;
-            greenPickupCount += 1; //TODO refactor this into its own function
 		}
 		else if (type == "Collectible_Speed") 
 		{
 			ActivateBoost();
-            redPickupCount += 1; //TODO refactor this into its own function
 		}
 		else if (type == "Collectible_Shield") 
 		{
 			ActivateShield();
 			Score += CollectibleRewards.SCORE_SHIELD;
-            bluePickupCount += 1; //TODO refactor this into its own function
 		}
 	}
 
