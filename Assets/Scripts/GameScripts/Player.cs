@@ -372,6 +372,8 @@ public class Player : MonoBehaviour {
 
 	private void CheckCollectibleType (string type) 
     {
+        IncreasePickupCount(type);
+
 		if (type == "Collectible_Fuel") 
 		{
 			Fuel += CollectibleRewards.FUEL_GAIN;
@@ -390,6 +392,22 @@ public class Player : MonoBehaviour {
             bluePickupCount += 1; //TODO refactor this into its own function
 		}
 	}
+
+    private void IncreasePickupCount(string type)
+    {
+        switch (type)
+        {
+            case "Collectible_Fuel":
+                greenPickupCount++;
+                break;
+            case "Collectible_Speed":
+                redPickupCount++;
+                break;
+            case "Collectible_Shield":
+                bluePickupCount++;
+                break;
+        }
+    }
 
     private void ActivateShield()
     {
