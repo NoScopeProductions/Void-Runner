@@ -363,6 +363,7 @@ public class Player : MonoBehaviour {
                     DeactivateShield();
                     return;
                 }
+
                 State = Kill();
             }
         }
