@@ -456,10 +456,6 @@ public class Player : MonoBehaviour {
             {
                 return true;
             }
-            else
-            {
-                Debug.Log(hit.collider.gameObject.tag);
-            }
 		}
 
 		return false;
