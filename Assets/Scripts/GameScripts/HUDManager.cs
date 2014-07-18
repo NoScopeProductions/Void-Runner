@@ -19,6 +19,8 @@ public class HUDManager : MonoBehaviour
 
     public GameOverMenu endGameMenu;
 
+    public GameObject DisableOnDeath;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -34,10 +36,13 @@ public class HUDManager : MonoBehaviour
     public void ShowGameOverMenu()
     {
         endGameMenu.score = PlayerObject.Score;
-        endGameMenu.redPickupCount = PlayerObject.redPickupCount;
-        endGameMenu.greenPickupCount = PlayerObject.greenPickupCount;
-        endGameMenu.bluePickupCount = PlayerObject.bluePickupCount;
+        endGameMenu.boostPickupCount = PlayerObject.redPickupCount;
+        endGameMenu.fuelPickupCount = PlayerObject.greenPickupCount;
+        endGameMenu.shieldPickupCount = PlayerObject.bluePickupCount;
         endGameMenu.gameObject.SetActive(true);
+        GUI_scoreText.gameObject.SetActive(false);
+
+        DisableOnDeath.SetActive(false);
     }
 	
 	void OnGUI()
