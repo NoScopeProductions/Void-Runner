@@ -382,6 +382,7 @@ public class Player : MonoBehaviour {
 		else if (type == "Collectible_Speed") 
 		{
 			ActivateBoost();
+            Score += CollectibleRewards.SCORE_SPEED;
 		}
 		else if (type == "Collectible_Shield") 
 		{
@@ -444,8 +445,6 @@ public class Player : MonoBehaviour {
 		BoostInitialPos = transform.position;
 		BoostInitialCameraPos = PlayerCamera.transform.localPosition;
 		
-		Score += CollectibleRewards.SCORE_SPEED;
-
 		iTween.ShakeRotation(PlayerCamera, BoostIntensity, 5.5f); //Maybe not needed after particles are implemented
 	}
 
