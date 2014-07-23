@@ -12,7 +12,8 @@ public class TimedTextTrigger : MonoBehaviour {
     {
         if (col.tag != "Player") { return; }
 
-        Time.timeScale = 0.2f;
+        PlayerPreferences.SetTimeScale(0.2f);
+
         foreach (GameObject gameObj in Messages)
         {
             gameObj.SetActive(true);
@@ -23,7 +24,8 @@ public class TimedTextTrigger : MonoBehaviour {
     {
         if (col.tag != "Player") { return; }
 
-        Time.timeScale = 1f;
+        PlayerPreferences.SetTimeScale(1f);
+
         foreach (GameObject gameObj in Messages)
         {
             gameObj.SetActive(false);

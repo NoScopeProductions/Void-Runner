@@ -4,7 +4,7 @@ using System;
 
 public class Player : MonoBehaviour {
 
-    public enum PlayerState { ALIVE, DEAD, FALLING, BOOSTING, DEACTIVATING_BOOST };
+    public enum PlayerState { ALIVE, DEAD, OVER_GAP, BOOSTING, DEACTIVATING_BOOST };
     public enum PowerUps { NONE, SHIELD };
 
     public HUDManager HudManager;
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
     public const float BOOST_TIME = 3f;
     public const float TUTORIAL_DISTANCE = 750f;
 	
-	public float distanceTraveled;
+	public float DistanceTraveled;
 
     public float speedUpRate;
     public float turnRate;
@@ -91,13 +91,15 @@ public class Player : MonoBehaviour {
                 break;
         }
 
+        PlayerPreferences.SetDefaultTimeScale();
+
 		Init();
 	}
 
 	private void Init() {
 		Score = 0;
 		State = PlayerState.ALIVE;
-        distanceTraveled = 0;
+        DistanceTraveled = 0;
         BoostTimeTraveled = 0;
 		ActivePowerUp = PowerUps.NONE;
 
@@ -149,9 +151,7 @@ public class Player : MonoBehaviour {
             speed = MAX_SPEED;
         }
 
-		transform.Translate(0f,0f, speed * Time.deltaTime);
-
-		distanceTraveled += speed * Time.deltaTime;
+        MovePlayerForward();
 
         CheckInput();
 		
@@ -178,7 +178,7 @@ public class Player : MonoBehaviour {
 		{
 			Fuel += 2 * FuelDrain * Time.deltaTime;
 		}
-		else if (State == PlayerState.FALLING) 
+		else if (State == PlayerState.OVER_GAP) 
 		{
             Fuel -= FuelDrainWhenFalling * Time.deltaTime;
 		}
@@ -192,10 +192,9 @@ public class Player : MonoBehaviour {
 	
 	private PlayerState CheckAlive() 
 	{
-		//don't need to check the state while we're boosting.
 		if(State == PlayerState.BOOSTING) return PlayerState.BOOSTING;
 		if(State == PlayerState.DEACTIVATING_BOOST) return PlayerState.DEACTIVATING_BOOST;
-        if (State == PlayerState.DEAD) return PlayerState.DEAD;
+        if(State == PlayerState.DEAD) return PlayerState.DEAD;
 		
 		if(Fuel <= 0) 
 		{
@@ -212,29 +211,8 @@ public class Player : MonoBehaviour {
 		}
 		else 
 		{
-			if (IsInTube()) 
-			{
-				//transform.Translate(-transform.up, Space.World);
-				return PlayerState.FALLING;
-			}
-			else 
-			{
-				return Kill();
-			}
+            return PlayerState.OVER_GAP;
 		}
-	}
-	
-	private bool IsInTube() {
-        if (transform.localPosition.x > 50 || transform.localPosition.x < -50)
-		{
-			return false;
-		}
-        else if (transform.localPosition.y > 50 || transform.localPosition.y < -50)
-		{
-			return false;
-		}
-
-		return true;
 	}
 	
 	private PlayerState Kill() 
@@ -421,11 +399,13 @@ public class Player : MonoBehaviour {
         Shield.SetActive(false);
     }
 
-    private void Boost()
+    private void Boost() 
     {
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 0, transform.position.z), speed * Time.deltaTime);
         BoostTimeTraveled -= Time.deltaTime;
-        transform.Translate(0f, 0f, 1.75f * speed * Time.deltaTime);
+
+        MovePlayerForward(1.75f);
+
         WobbleCamera();
 
         if (BoostTimeTraveled <= 0 && CanLand())
@@ -433,6 +413,12 @@ public class Player : MonoBehaviour {
             State = PlayerState.DEACTIVATING_BOOST;
             SoundManager.PlayOneShot(Sound_DeactivateBoost);
         }
+    }
+
+    private void MovePlayerForward(float speedFactor = 1f)
+    {
+        transform.Translate(0f, 0f, speedFactor * speed * Time.deltaTime);
+        DistanceTraveled += 1.75f * speed * Time.deltaTime;
     }
 
 	private void ActivateBoost() 
@@ -445,7 +431,8 @@ public class Player : MonoBehaviour {
 		BoostInitialPos = transform.position;
 		BoostInitialCameraPos = PlayerCamera.transform.localPosition;
 		
-		iTween.ShakeRotation(PlayerCamera, BoostIntensity, 5.5f); //Maybe not needed after particles are implemented
+		//iTween.ShakeRotation(PlayerCamera, BoostIntensity, 5.5f); //Maybe not needed after particles are implemented
+        //iTween.ShakeRotation(PlayerCamera, iTween.Hash("amount", BoostIntensity, "time", 5.5f));
 	}
 
 	private void DeactivateBoost() 

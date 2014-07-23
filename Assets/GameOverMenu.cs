@@ -15,6 +15,9 @@ public class GameOverMenu : MonoBehaviour
     [HideInInspector]
     public int shieldPickupCount;
 
+    [HideInInspector]
+    public float DistanceTraveled;
+
     public GUIText ScoreLabel;
     public GUIText FuelLabel;
     public GUIText ShieldLabel;
@@ -37,6 +40,7 @@ public class GameOverMenu : MonoBehaviour
         SetFuelCount();
         SetShieldCount();
         SetBoostCount();
+        SetDistanceTraveled();
 
         PlayerPrefs.Save();
     }
@@ -89,6 +93,18 @@ public class GameOverMenu : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt("BoostPickups", boostPickupCount);
+        }
+    }
+
+    private void SetDistanceTraveled()
+    {
+        if (PlayerPrefs.HasKey("DistanceTraveled"))
+        {
+            PlayerPrefs.SetFloat("DistanceTraveled", PlayerPrefs.GetFloat("DistanceTraveled") + DistanceTraveled);
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("DistanceTraveled", DistanceTraveled);
         }
     }
 }

@@ -25,7 +25,7 @@ public class EngineGlowChanger : MonoBehaviour {
     {
         if (player.State == Player.PlayerState.BOOSTING ||
             player.State == Player.PlayerState.DEACTIVATING_BOOST ||
-            player.State == Player.PlayerState.FALLING)
+            player.State == Player.PlayerState.OVER_GAP)
         {
             if (Current != BoostGlow)
             {

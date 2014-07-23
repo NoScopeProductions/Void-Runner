@@ -19,7 +19,7 @@ public class HUDManager : MonoBehaviour
 
     public GameOverMenu endGameMenu;
 
-    public GameObject DisableOnDeath;
+    public GameObject[] DisableOnDeath;
 
 	// Use this for initialization
 	void Start () 
@@ -39,10 +39,16 @@ public class HUDManager : MonoBehaviour
         endGameMenu.boostPickupCount = PlayerObject.redPickupCount;
         endGameMenu.fuelPickupCount = PlayerObject.greenPickupCount;
         endGameMenu.shieldPickupCount = PlayerObject.bluePickupCount;
+        endGameMenu.DistanceTraveled = PlayerObject.DistanceTraveled;
+
         endGameMenu.gameObject.SetActive(true);
         GUI_scoreText.gameObject.SetActive(false);
 
-        DisableOnDeath.SetActive(false);
+        foreach (var obj in DisableOnDeath)
+        {
+            obj.SetActive(false);
+        }
+
     }
 	
 	void OnGUI()
