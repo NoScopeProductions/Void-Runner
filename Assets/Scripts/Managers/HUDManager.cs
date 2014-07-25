@@ -25,7 +25,7 @@ public class HUDManager : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-        FuelBarPosition = new Vector3(0.5f, 1f, 0f);
+        FuelBarPosition = new Vector3(0.5f, 1f, -1f);
         FuelBarColor = FuelBarColors.GREEN;
         
 	}
