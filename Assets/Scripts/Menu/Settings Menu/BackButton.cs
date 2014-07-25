@@ -12,9 +12,9 @@ public class BackButton : MonoBehaviour
 	{
         DebrisManager.IsActive = true;
         MainMenu.SetActive(true);
-        iTween.FadeTo(MainMenu, 1f, 0.7f);
+        iTween.FadeTo(MainMenu, 1f, 0.4f);
 
-        iTween.FadeTo(SelectionMenu, iTween.Hash("time", 0.7f, "alpha", 0f, "oncomplete", "HideSelectionMenu", "oncompletetarget", gameObject));
+        iTween.FadeTo(SelectionMenu, iTween.Hash("time", 0.3f, "alpha", 0f, "oncomplete", "HideSelectionMenu", "oncompletetarget", gameObject));
 	}
 
     private void HideSelectionMenu()
