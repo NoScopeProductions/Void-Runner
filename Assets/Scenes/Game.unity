@@ -398,6 +398,8 @@ Transform:
   m_LocalPosition: {x: 7.50583649, y: 8.52041721, z: 379.285461}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 953188227}
+  - {fileID: 1239078049}
   - {fileID: 1238720219}
   - {fileID: 1527808276}
   - {fileID: 852491388}
@@ -417,8 +419,6 @@ Transform:
   - {fileID: 758002615}
   - {fileID: 1997272523}
   - {fileID: 1469423746}
-  - {fileID: 953188227}
-  - {fileID: 1239078049}
   m_Father: {fileID: 321638883}
   m_RootOrder: 3
 --- !u!1 &145522839
@@ -739,7 +739,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 12
+  m_RootOrder: 14
 --- !u!199 &248436123
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -3975,7 +3975,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 16
+  m_RootOrder: 18
 --- !u!199 &758002616
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -5135,7 +5135,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 13
+  m_RootOrder: 15
 --- !u!199 &765294933
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -7421,7 +7421,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 15
+  m_RootOrder: 17
 --- !u!1 &797772560
 GameObject:
   m_ObjectHideFlags: 0
@@ -7551,7 +7551,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 11
+  m_RootOrder: 13
 --- !u!199 &844513143
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -9837,7 +9837,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!1 &852491380
 GameObject:
   m_ObjectHideFlags: 0
@@ -10997,7 +10997,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!1001 &875509431
 Prefab:
   m_ObjectHideFlags: 0
@@ -12626,7 +12626,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 19
+  m_RootOrder: 0
 --- !u!1001 &958058884
 Prefab:
   m_ObjectHideFlags: 0
@@ -13335,6 +13335,53 @@ EllipsoidParticleEmitter:
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
+--- !u!1 &1119097887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1119097888}
+  - 131: {fileID: 1119097889}
+  m_Layer: 0
+  m_Name: Fuel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1119097888
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1119097887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .5, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: .239999995, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1659674346}
+  m_RootOrder: 10
+--- !u!131 &1119097889
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1119097887}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 52a132de950c8fc4f9690f3c4bad3a3b, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
 --- !u!1 &1119587440
 GameObject:
   m_ObjectHideFlags: 0
@@ -14816,7 +14863,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!1 &1203790641
 GameObject:
   m_ObjectHideFlags: 0
@@ -14929,6 +14976,53 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 80, y: 80, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1207457907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1207457908}
+  - 131: {fileID: 1207457909}
+  m_Layer: 0
+  m_Name: EnergyIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207457908
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207457907}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .0599999987, y: .939999998, z: 2}
+  m_LocalScale: {x: .100000001, y: .100000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1659674346}
+  m_RootOrder: 9
+--- !u!131 &1207457909
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207457907}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 6911b2ccff157614fadfd8593c3df4b0, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
 --- !u!1 &1209502286
 GameObject:
   m_ObjectHideFlags: 0
@@ -16231,7 +16325,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!1 &1239078041
 GameObject:
   m_ObjectHideFlags: 0
@@ -17391,7 +17485,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 20
+  m_RootOrder: 1
 --- !u!1 &1245064547
 GameObject:
   m_ObjectHideFlags: 0
@@ -18138,7 +18232,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 14
+  m_RootOrder: 16
 --- !u!199 &1409360796
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -19436,7 +19530,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 18
+  m_RootOrder: 20
 --- !u!199 &1469423747
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -20682,7 +20776,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 7
+  m_RootOrder: 9
 --- !u!199 &1492249160
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -23126,7 +23220,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!1001 &1528103625
 Prefab:
   m_ObjectHideFlags: 0
@@ -24726,7 +24820,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 8
+  m_RootOrder: 10
 --- !u!1 &1654367583
 GameObject:
   m_ObjectHideFlags: 0
@@ -24882,6 +24976,8 @@ Transform:
   - {fileID: 1692459686}
   - {fileID: 1404898148}
   - {fileID: 1209502287}
+  - {fileID: 1207457908}
+  - {fileID: 1119097888}
   m_Father: {fileID: 993108446}
   m_RootOrder: 2
 --- !u!114 &1659674347
@@ -24895,11 +24991,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548cdd4418308df42a888982215170c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuelBarGREEN: {fileID: 2800000, guid: 52a132de950c8fc4f9690f3c4bad3a3b, type: 3}
-  fuelBarORANGE: {fileID: 2800000, guid: 2e4a14cf6a50e9c479652c4b37659433, type: 3}
-  fuelBarRED: {fileID: 2800000, guid: 9815887e86ae4604bb5a490b608244ce, type: 3}
-  energyIcon: {fileID: 2800000, guid: 6911b2ccff157614fadfd8593c3df4b0, type: 3}
-  GUI_scoreText: {fileID: 1396784069}
+  FuelBarGreen: {fileID: 2800000, guid: 52a132de950c8fc4f9690f3c4bad3a3b, type: 3}
+  FuelBarOrange: {fileID: 2800000, guid: 2e4a14cf6a50e9c479652c4b37659433, type: 3}
+  FuelBarRed: {fileID: 2800000, guid: 9815887e86ae4604bb5a490b608244ce, type: 3}
+  FuelBar: {fileID: 1119097889}
+  ScoreText: {fileID: 1396784069}
   PlayerObject: {fileID: 261040504}
   endGameMenu: {fileID: 952533833}
   DisableOnDeath:
@@ -25401,7 +25497,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 10
+  m_RootOrder: 12
 --- !u!199 &1782867067
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -26905,7 +27001,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 5
+  m_RootOrder: 7
 --- !u!199 &1817347092
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -28120,7 +28216,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 6
+  m_RootOrder: 8
 --- !u!199 &1834502799
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -29335,7 +29431,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 9
+  m_RootOrder: 11
 --- !u!199 &1840892210
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -31281,7 +31377,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 17
+  m_RootOrder: 19
 --- !u!199 &1997272524
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -32433,7 +32529,7 @@ Transform:
   m_GameObject: {fileID: 2015129440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .0700000003, y: .109999999, z: 0}
-  m_LocalScale: {x: .119999997, y: .209999993, z: 1}
+  m_LocalScale: {x: .0900000036, y: .170000002, z: 1}
   m_Children: []
   m_Father: {fileID: 1404898148}
   m_RootOrder: 0
