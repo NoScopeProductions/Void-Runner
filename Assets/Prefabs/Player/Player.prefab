@@ -2160,7 +2160,7 @@ AudioSource:
   m_GameObject: {fileID: 100016}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 6ed00f016ed751d4bb931f3e136c6d30, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 37f676a59190fcc418e7de7e3eed027f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2315,6 +2315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HudManager: {fileID: 0}
+  dangerFlash: {fileID: 0}
   DistanceTraveled: 0
   speedUpRate: 1
   turnRate: 10
@@ -2337,12 +2338,12 @@ MonoBehaviour:
   State: 0
   ActivePowerUp: 0
   BoostIntensity: {x: 1, y: 1, z: 1}
-  Sound_PickUp: {fileID: 8300000, guid: 80d642884b5cc514984cf7e31b7bdc98, type: 3}
+  Sound_PickUp: {fileID: 8300000, guid: 6b1c7e5af004853429e8f43ed2ebec56, type: 3}
   Sound_DeactivateBoost: {fileID: 8300000, guid: c074d722282d29e458bc8e5de6367942,
     type: 3}
-  Sound_ActivateBoost: {fileID: 8300000, guid: 3e44db7a2e0051e45afe4e3d307992a6, type: 3}
-  Sound_Explode: {fileID: 8300000, guid: 3c0c25d853659ce4da9fa4ede21954a3, type: 3}
-  Sound_ShieldExplode: {fileID: 8300000, guid: 2dddfea203c60aa45888eaf6aec0e55c, type: 3}
+  Sound_ActivateBoost: {fileID: 8300000, guid: b89e0a8c994631d439d3002896cf1083, type: 3}
+  Sound_Explode: {fileID: 8300000, guid: a684c5c91bcd9224ba7b5add8cc0a727, type: 3}
+  Sound_ShieldExplode: {fileID: 8300000, guid: c36f61a32cec93343a24524ec5e5c7ef, type: 3}
   Sound_ShieldActivate: {fileID: 8300000, guid: f6f7eb46c5c965a4c80234f0e21ee4f6,
     type: 3}
   SoundManager: {fileID: 8200002}

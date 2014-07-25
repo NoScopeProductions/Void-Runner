@@ -1082,8 +1082,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b97180c6db47f74894514aa15d3f45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuMusicBegin: {fileID: 8300000, guid: 7179a73ef104441e39ccc359b712ec06, type: 3}
-  MenuMusicLoop: {fileID: 8300000, guid: f0bde064277704846a49739064c7a932, type: 3}
+  MenuMusicBegin: {fileID: 8300000, guid: 0905ca1942f2a5d439b41742f4d59de1, type: 3}
+  MenuMusicLoop: {fileID: 8300000, guid: 199334bb83f555f498a4f6c03411258e, type: 3}
   SoundManager: {fileID: 1197523054}
 --- !u!82 &1197523054
 AudioSource:
