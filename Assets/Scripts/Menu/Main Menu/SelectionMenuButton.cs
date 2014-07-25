@@ -6,9 +6,17 @@ public class SelectionMenuButton : MonoBehaviour {
 
     public GlobalPreferences.SHIP WhichShip;
 
+    public CameraFade cameraFade;
+
     private void Activate()
     {
         GlobalPreferences.shipSelected = WhichShip;
+        cameraFade.FadeOut();
+        Invoke("LoadGame", 1.5f);
+    }
+
+    private void LoadGame()
+    {
         Application.LoadLevel("Game");
     }
 
