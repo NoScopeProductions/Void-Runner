@@ -10,9 +10,9 @@ public class PlayButton : MonoBehaviour
 	void Activate()
 	{
         SelectionMenu.SetActive(true);
-        iTween.FadeTo(SelectionMenu, 1f, 0.7f);
+        iTween.FadeTo(SelectionMenu, 1f, 0.4f);
 
-        iTween.FadeTo(MainMenu, iTween.Hash("time", 0.7f, "alpha", 0f, "oncomplete", "HideMainMenu", "oncompletetarget", gameObject));
+        iTween.FadeTo(MainMenu, iTween.Hash("time", 0.3f, "alpha", 0f, "oncomplete", "HideMainMenu", "oncompletetarget", gameObject));
         DebrisManager.IsActive = false;
 	}
 
