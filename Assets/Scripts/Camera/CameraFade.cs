@@ -18,7 +18,7 @@ public class CameraFade : MonoBehaviour {
 
     public void FadeIn()
     {
-        iTween.FadeTo(gameObject, iTween.Hash("time", FadeTime, "amount", 0f, "oncomplete", "SetActive", "oncompleteparams", false));
+        iTween.FadeTo(gameObject, iTween.Hash("time", FadeTime, "amount", 0f, "oncomplete", "ToggleEnabled", "oncompleteparams", gameObject));
     }
 
     private void ToggleEnabled()
