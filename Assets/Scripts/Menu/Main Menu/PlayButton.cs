@@ -7,15 +7,20 @@ public class PlayButton : MonoBehaviour
     public GameObject MainMenu;
     public AsteroidManager DebrisManager;
 
+    //public GUITexture[] SelectionMenu;
 	void Activate()
 	{
-        //TODO: I REALLY want to figure this out...
-        //iTween.FadeTo(SelectionMenu, 1f, 0.7f);
-        //iTween.FadeTo(MainMenu, iTween.Hash("time", 0.7f, "alpha", 0f, "oncomplete", "SetActive", "oncompleteparams", false));
-		SelectionMenu.SetActive (true);
-        MainMenu.SetActive(false);
+        SelectionMenu.SetActive(true);
+        iTween.FadeTo(SelectionMenu, 1f, 0.7f);
+
+        iTween.FadeTo(MainMenu, iTween.Hash("time", 0.7f, "alpha", 0f, "oncomplete", "HideMainMenu", "oncompletetarget", gameObject));
         DebrisManager.IsActive = false;
 	}
+
+    private void HideMainMenu()
+    {
+        MainMenu.SetActive(false);
+    }
 
     #if UNITY_ANDROID
     public void Update()
