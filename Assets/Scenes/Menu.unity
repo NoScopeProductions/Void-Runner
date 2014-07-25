@@ -1767,7 +1767,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainMenu: {fileID: 255055519}
-  SettingsMenu: {fileID: 0}
   SelectionMenu: {fileID: 323385609}
   DebrisManager: {fileID: 953264529}
 --- !u!131 &1980591659

@@ -4,7 +4,6 @@ using System.Collections;
 public class BackButton : MonoBehaviour 
 {
 	public GameObject MainMenu;
-	public GameObject SettingsMenu;
     public GameObject SelectionMenu;
 
     public AsteroidManager DebrisManager;
@@ -16,7 +15,6 @@ public class BackButton : MonoBehaviour
 	void OnMouseUp()
 	{
 		MainMenu.SetActive(true);
-		SettingsMenu.SetActive(false);
         SelectionMenu.SetActive(false);
 
         DebrisManager.IsActive = true;
