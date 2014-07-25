@@ -3,14 +3,15 @@ using System.Collections;
 
 public class ReplayLevel : MonoBehaviour
 {
-#if UNITY_EDITOR
+
+    #if UNITY_EDITOR
     void OnMouseUp()
     {
         Application.LoadLevel(Application.loadedLevel);
     }
-#endif
+    #endif
 
-#if UNITY_ANDROID
+    #if UNITY_ANDROID
     public void Update()
     {
         if (Input.touchCount <= 0) return;
@@ -34,6 +35,5 @@ public class ReplayLevel : MonoBehaviour
             }
         }
     }
-#endif
-
+    #endif
 }
