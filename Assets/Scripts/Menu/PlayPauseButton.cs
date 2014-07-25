@@ -11,6 +11,7 @@ public class PlayPauseButton : MonoBehaviour
 
     private bool Paused = false;
 
+#if UNITY_EDITOR
     void OnMouseUp()
     {
         Paused = !Paused;
@@ -28,4 +29,5 @@ public class PlayPauseButton : MonoBehaviour
             SoundMenu.SetActive(false);
         }
     }
+#endif
 }
