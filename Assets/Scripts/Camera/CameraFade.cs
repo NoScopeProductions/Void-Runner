@@ -4,14 +4,26 @@ using System.Collections.Generic;
 
 public class CameraFade : MonoBehaviour {
 
-    private float AlphaFadeValue = 1f;
-    public Texture BlackTexture;
-
-    public void OnGUI()
+    public float FadeTime;
+    public void Start()
     {
-        AlphaFadeValue -= Mathf.Clamp01(Time.deltaTime / 5);
+        FadeIn();
+    }
 
-        GUI.color = new Color(0, 0, 0, AlphaFadeValue);
-        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), BlackTexture);
+    public void FadeOut()
+    {
+        gameObject.SetActive(true);
+        iTween.FadeTo(gameObject, 1f, FadeTime);
+    }
+
+    public void FadeIn()
+    {
+        iTween.FadeTo(gameObject, iTween.Hash("time", FadeTime, "amount", 0f, "oncomplete", "SetActive", "oncompleteparams", false));
+    }
+
+    private void ToggleEnabled()
+    {
+        if (gameObject.activeSelf) gameObject.SetActive(false);
+        else gameObject.SetActive(true);
     }
 }
