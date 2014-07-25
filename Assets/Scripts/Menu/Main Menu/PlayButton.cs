@@ -12,8 +12,8 @@ public class PlayButton : MonoBehaviour
         //TODO: I REALLY want to figure this out...
         //iTween.FadeTo(SelectionMenu, 1f, 0.7f);
         //iTween.FadeTo(MainMenu, iTween.Hash("time", 0.7f, "alpha", 0f, "oncomplete", "SetActive", "oncompleteparams", false));
-		SelectionMenu.SetActive (true);
-        MainMenu.SetActive(false);
+		//SelectionMenu.SetActive (true);
+        //MainMenu.SetActive(false);
         DebrisManager.IsActive = false;
 	}
 
@@ -28,7 +28,6 @@ public class PlayButton : MonoBehaviour
                 switch (touch.phase)
                 {
                     case TouchPhase.Began: //OnMouseDown
-                        //Don't think we need this phase
                         break;
                     case TouchPhase.Stationary: //OnMouseEnter
                         //Switch to active guitexture here
@@ -41,6 +40,4 @@ public class PlayButton : MonoBehaviour
             }
         }
     }
-
-
 }

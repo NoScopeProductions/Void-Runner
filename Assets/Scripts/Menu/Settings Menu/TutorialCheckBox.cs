@@ -12,9 +12,31 @@ public class TutorialCheckBox : MonoBehaviour
         gameObject.guiTexture.texture = GlobalPreferences.SkipTutorial ? Checked : Unchecked;
     }
 
-	void OnMouseUp()
+	public void Toggle()
 	{
         GlobalPreferences.SkipTutorial = !GlobalPreferences.SkipTutorial;
         gameObject.guiTexture.texture = GlobalPreferences.SkipTutorial ? Checked : Unchecked;
 	}
+
+    public void Update()
+    {
+        if (Input.touchCount <= 0) return;
+
+        foreach (var touch in Input.touches)
+        {
+            if (guiTexture.HitTest(touch.position))
+            {
+                switch (touch.phase)
+                {
+                    case TouchPhase.Began: //OnMouseDown
+                        break;
+                    case TouchPhase.Stationary: //OnMouseEnter
+                        break;
+                    case TouchPhase.Ended: //OnMouseUp
+                        Toggle();
+                        break;
+                }
+            }
+        }
+    }
 }
