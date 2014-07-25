@@ -442,8 +442,7 @@ public class Player : MonoBehaviour {
 		BoostInitialPos = transform.position;
 		BoostInitialCameraPos = PlayerCamera.transform.localPosition;
 		
-		//iTween.ShakeRotation(PlayerCamera, BoostIntensity, 5.5f); //Maybe not needed after particles are implemented
-        //iTween.ShakeRotation(PlayerCamera, iTween.Hash("amount", BoostIntensity, "time", 5.5f));
+		iTween.ShakeRotation(PlayerCamera, BoostIntensity, 5.5f); //Maybe not needed after particles are implemented
 	}
 
 	private void DeactivateBoost() 
