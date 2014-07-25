@@ -6,6 +6,7 @@ public class SelectionMenuButton : MonoBehaviour {
 
     public GlobalPreferences.SHIP WhichShip;
 
+    #if UNITY_ANDROID
     public void Update()
     {
         if (Input.touchCount <= 0) return;
@@ -30,4 +31,14 @@ public class SelectionMenuButton : MonoBehaviour {
             }
         }
     }
+    #endif
+
+    #if UNITY_EDITOR
+    public void OnMouseUp() 
+    {
+        GlobalPreferences.shipSelected = WhichShip;
+        Application.LoadLevel("Game");
+    }
+    #endif
+
 }
