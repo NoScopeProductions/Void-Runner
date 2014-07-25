@@ -4,8 +4,8 @@ using System.Collections;
 public class TutorialCheckBox : MonoBehaviour 
 {
 
-    public Texture Unchecked;
-    public Texture Checked;
+    public Texture2D Unchecked;
+    public Texture2D Checked;
 
     public void Start()
     {
