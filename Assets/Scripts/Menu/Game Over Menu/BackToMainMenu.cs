@@ -4,13 +4,13 @@ using System.Collections;
 public class BackToMainMenu : MonoBehaviour 
 {
     #if UNITY_EDITOR
-    void OnMouseUp()
+    public void OnMouseUp()
     {
         Application.LoadLevel("Menu");
     }
     #endif
 
-#if UNITY_ANDROID
+    #if UNITY_ANDROID
     public void Update()
     {
         if (Input.touchCount <= 0) return;
@@ -34,6 +34,6 @@ public class BackToMainMenu : MonoBehaviour
             }
         }
     }
-#endif
+    #endif
 
 }
