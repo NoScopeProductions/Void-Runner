@@ -1,26 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class TutorialCheckBox : MonoBehaviour 
-{
+public class SelectionMenuButton : MonoBehaviour {
 
-    public Texture2D Unchecked;
-    public Texture2D Checked;
+    public GlobalPreferences.SHIP WhichShip;
 
-    public void Start()
+    private void Activate()
     {
-        gameObject.guiTexture.texture = GlobalPreferences.SkipTutorial ? Checked : Unchecked;
+        GlobalPreferences.shipSelected = WhichShip;
+        Application.LoadLevel("Game");
     }
 
-	public void Toggle()
-	{
-        GlobalPreferences.SkipTutorial = !GlobalPreferences.SkipTutorial;
-        gameObject.guiTexture.texture = GlobalPreferences.SkipTutorial ? Checked : Unchecked;
-	}
+    #if UNITY_ANDROID
     public void Update()
     {
-
-        #if UNITY_ANDROID
         if (Input.touchCount <= 0) return;
 
         foreach (var touch in Input.touches)
@@ -32,20 +26,22 @@ public class TutorialCheckBox : MonoBehaviour
                     case TouchPhase.Began: //OnMouseDown
                         break;
                     case TouchPhase.Stationary: //OnMouseEnter
+                        //Switch to active guitexture here
+                        // guiTexture = PlayButtonDown
                         break;
                     case TouchPhase.Ended: //OnMouseUp
-                        Toggle();
+                        Activate();
                         break;
                 }
             }
         }
-        #endif
     }
+    #endif
 
     #if UNITY_EDITOR
     public void OnMouseUp() 
     {
-        Toggle();
+        Activate();
     }
     #endif
 

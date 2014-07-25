@@ -1,26 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TutorialCheckBox : MonoBehaviour 
+public class BackToMainMenu : MonoBehaviour 
 {
-
-    public Texture2D Unchecked;
-    public Texture2D Checked;
-
-    public void Start()
+    #if UNITY_EDITOR
+    void OnMouseUp()
     {
-        gameObject.guiTexture.texture = GlobalPreferences.SkipTutorial ? Checked : Unchecked;
+        Application.LoadLevel("Menu");
     }
+    #endif
 
-	public void Toggle()
-	{
-        GlobalPreferences.SkipTutorial = !GlobalPreferences.SkipTutorial;
-        gameObject.guiTexture.texture = GlobalPreferences.SkipTutorial ? Checked : Unchecked;
-	}
+#if UNITY_ANDROID
     public void Update()
     {
-
-        #if UNITY_ANDROID
         if (Input.touchCount <= 0) return;
 
         foreach (var touch in Input.touches)
@@ -32,21 +24,16 @@ public class TutorialCheckBox : MonoBehaviour
                     case TouchPhase.Began: //OnMouseDown
                         break;
                     case TouchPhase.Stationary: //OnMouseEnter
+                        //Switch to active guitexture here
+                        // guiTexture = PlayButtonDown
                         break;
                     case TouchPhase.Ended: //OnMouseUp
-                        Toggle();
+                        Application.LoadLevel("Menu");
                         break;
                 }
             }
         }
-        #endif
     }
-
-    #if UNITY_EDITOR
-    public void OnMouseUp() 
-    {
-        Toggle();
-    }
-    #endif
+#endif
 
 }

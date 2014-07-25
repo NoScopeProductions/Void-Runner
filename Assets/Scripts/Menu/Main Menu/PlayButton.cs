@@ -1,25 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BackButton : MonoBehaviour 
+public class PlayButton : MonoBehaviour 
 {
-	public GameObject MainMenu;
-    public GameObject SelectionMenu;
-
+	public GameObject SelectionMenu;
+    public GameObject MainMenu;
     public AsteroidManager DebrisManager;
-	
-	private void Activate()
-	{
-        DebrisManager.IsActive = true;
-        MainMenu.SetActive(true);
-        iTween.FadeTo(MainMenu, 1f, 0.7f);
 
-        iTween.FadeTo(SelectionMenu, iTween.Hash("time", 0.7f, "alpha", 0f, "oncomplete", "HideSelectionMenu", "oncompletetarget", gameObject));
+	void Activate()
+	{
+        SelectionMenu.SetActive(true);
+        iTween.FadeTo(SelectionMenu, 1f, 0.7f);
+
+        iTween.FadeTo(MainMenu, iTween.Hash("time", 0.7f, "alpha", 0f, "oncomplete", "HideMainMenu", "oncompletetarget", gameObject));
+        DebrisManager.IsActive = false;
 	}
 
-    private void HideSelectionMenu()
+    private void HideMainMenu()
     {
-        SelectionMenu.SetActive(false);
+        MainMenu.SetActive(false);
     }
 
     #if UNITY_ANDROID
@@ -51,8 +50,7 @@ public class BackButton : MonoBehaviour
     #if UNITY_EDITOR
     public void OnMouseUp()
     {
-        Activate();
+       Activate();
     }
     #endif
-
 }
