@@ -113,67 +113,67 @@ public class CameraRotate : MonoBehaviour {
 	//The following functions tween the camera to the proper position
 	/************************/
 	private void ToBottomLeft() {
-		iTween.RotateTo (gameObject, iTween.Hash ("z", -45, "time", tweenTime));
+		iTween.RotateTo (gameObject, iTween.Hash ("z", -45, "time", tweenTime, "ignoretimescale", true));
 		if (rotation == RotationState.BOTTOM) PlayerObject.setPos (-14f, -34.5f);
 		else if (rotation == RotationState.LEFT) PlayerObject.setPos (-34.5f, -14f);
 		rotation = RotationState.BOTTOM_LEFT;
-		iTween.RotateTo (PlayerObject.gameObject, iTween.Hash ("time", rotateTime, "z", -45));
+        iTween.RotateTo(PlayerObject.gameObject, iTween.Hash("time", rotateTime, "z", -45, "ignoretimescale", true));
 	}
 
 	private void ToBottomRight() {
-		iTween.RotateTo (gameObject, iTween.Hash ("z", 45, "time", tweenTime));
+        iTween.RotateTo(gameObject, iTween.Hash("z", 45, "time", tweenTime, "ignoretimescale", true));
 		if (rotation == RotationState.BOTTOM) PlayerObject.setPos (14f, -34.5f);
 		else if (rotation == RotationState.RIGHT) PlayerObject.setPos (34.5f, -14f);
 		rotation = RotationState.BOTTOM_RIGHT;
-		iTween.RotateTo (PlayerObject.gameObject, iTween.Hash ("time", rotateTime, "z", 45));
+        iTween.RotateTo(PlayerObject.gameObject, iTween.Hash("time", rotateTime, "z", 45, "ignoretimescale", true));
 	}
 
 	private void ToBottom() {
-		iTween.RotateTo (gameObject, iTween.Hash ("z", 0, "time", tweenTime));
+        iTween.RotateTo(gameObject, iTween.Hash("z", 0, "time", tweenTime, "ignoretimescale", true));
 		if (rotation == RotationState.BOTTOM_LEFT) PlayerObject.setPos (-14f, -34.5f);
 		else if (rotation == RotationState.BOTTOM_RIGHT) PlayerObject.setPos (14f, -34.5f);
 		rotation = RotationState.BOTTOM;
-		iTween.RotateTo (PlayerObject.gameObject, iTween.Hash ("time", rotateTime, "z", 0));
+        iTween.RotateTo(PlayerObject.gameObject, iTween.Hash("time", rotateTime, "z", 0, "ignoretimescale", true));
 	}
 
 	private void ToLeft() {
-		iTween.RotateTo (gameObject, iTween.Hash ("z", -90, "time", tweenTime));
+        iTween.RotateTo(gameObject, iTween.Hash("z", -90, "time", tweenTime, "ignoretimescale", true));
 		if (rotation == RotationState.BOTTOM_LEFT) PlayerObject.setPos (-34.5f, -14f);
 		else if (rotation == RotationState.TOP_LEFT) PlayerObject.setPos (-34.5f, 14f);
 		rotation = RotationState.LEFT;
-		iTween.RotateTo (PlayerObject.gameObject, iTween.Hash ("time", rotateTime, "z", -90));
+        iTween.RotateTo(PlayerObject.gameObject, iTween.Hash("time", rotateTime, "z", -90, "ignoretimescale", true));
 	}
 
 	private void ToRight() {
-		iTween.RotateTo (gameObject, iTween.Hash ("z", 90, "time", tweenTime));
+        iTween.RotateTo(gameObject, iTween.Hash("z", 90, "time", tweenTime, "ignoretimescale", true));
 		if (rotation == RotationState.BOTTOM_RIGHT) PlayerObject.setPos (34.5f, -14f);
 		else if (rotation == RotationState.TOP_RIGHT) PlayerObject.setPos (34.5f, 14f);
 		rotation = RotationState.RIGHT;
-		iTween.RotateTo (PlayerObject.gameObject, iTween.Hash ("time", rotateTime, "z", 90));
+        iTween.RotateTo(PlayerObject.gameObject, iTween.Hash("time", rotateTime, "z", 90, "ignoretimescale", true));
 	}
 
 	private void ToTopRight () {
-		iTween.RotateTo (gameObject, iTween.Hash ("z", 135, "time", tweenTime));
+        iTween.RotateTo(gameObject, iTween.Hash("z", 135, "time", tweenTime, "ignoretimescale", true));
 		if (rotation == RotationState.RIGHT) PlayerObject.setPos (34.5f, 14f);
 		else if (rotation == RotationState.TOP) PlayerObject.setPos (14f, 34.5f);
 		rotation = RotationState.TOP_RIGHT;
-		iTween.RotateTo (PlayerObject.gameObject, iTween.Hash ("time", rotateTime, "z", 135));
+        iTween.RotateTo(PlayerObject.gameObject, iTween.Hash("time", rotateTime, "z", 135, "ignoretimescale", true));
 	}
 
 	private void ToTopLeft(){
-		iTween.RotateTo (gameObject, iTween.Hash ("z", -135, "time", tweenTime));
+        iTween.RotateTo(gameObject, iTween.Hash("z", -135, "time", tweenTime, "ignoretimescale", true));
 		if (rotation == RotationState.TOP) PlayerObject.setPos (-14f, 34.5f);
 		else if (rotation == RotationState.LEFT) PlayerObject.setPos (-34.5f, 14f);
 		rotation = RotationState.TOP_LEFT;
-		iTween.RotateTo (PlayerObject.gameObject, iTween.Hash ("time", rotateTime, "z", -135));
+        iTween.RotateTo(PlayerObject.gameObject, iTween.Hash("time", rotateTime, "z", -135, "ignoretimescale", true));
 	}
 
 	private void ToTop() {
-		iTween.RotateTo (gameObject, iTween.Hash ("z", 180, "time", tweenTime));
+        iTween.RotateTo(gameObject, iTween.Hash("z", 180, "time", tweenTime, "ignoretimescale", true));
 		if (rotation == RotationState.TOP_LEFT) PlayerObject.setPos (-14f, 34.5f);
 		else if (rotation == RotationState.TOP_RIGHT) PlayerObject.setPos (14f, 34.5f);
 		rotation = RotationState.TOP;
-		iTween.RotateTo (PlayerObject.gameObject, iTween.Hash ("time", rotateTime, "z", 180));
+        iTween.RotateTo(PlayerObject.gameObject, iTween.Hash("time", rotateTime, "z", 180, "ignoretimescale", true));
 	}
 
 }
