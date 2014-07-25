@@ -6,6 +6,12 @@ public class SelectionMenuButton : MonoBehaviour {
 
     public GlobalPreferences.SHIP WhichShip;
 
+    private void Activate()
+    {
+        GlobalPreferences.shipSelected = WhichShip;
+        Application.LoadLevel("Game");
+    }
+
     #if UNITY_ANDROID
     public void Update()
     {
@@ -24,8 +30,7 @@ public class SelectionMenuButton : MonoBehaviour {
                         // guiTexture = PlayButtonDown
                         break;
                     case TouchPhase.Ended: //OnMouseUp
-                        GlobalPreferences.shipSelected = WhichShip;
-                        Application.LoadLevel("Game");
+                        Activate();
                         break;
                 }
             }
@@ -36,8 +41,7 @@ public class SelectionMenuButton : MonoBehaviour {
     #if UNITY_EDITOR
     public void OnMouseUp() 
     {
-        GlobalPreferences.shipSelected = WhichShip;
-        Application.LoadLevel("Game");
+        Activate();
     }
     #endif
 

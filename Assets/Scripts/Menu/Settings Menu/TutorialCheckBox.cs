@@ -17,9 +17,10 @@ public class TutorialCheckBox : MonoBehaviour
         GlobalPreferences.SkipTutorial = !GlobalPreferences.SkipTutorial;
         gameObject.guiTexture.texture = GlobalPreferences.SkipTutorial ? Checked : Unchecked;
 	}
-
     public void Update()
     {
+
+        #if UNITY_ANDROID
         if (Input.touchCount <= 0) return;
 
         foreach (var touch in Input.touches)
@@ -38,5 +39,14 @@ public class TutorialCheckBox : MonoBehaviour
                 }
             }
         }
+        #endif
     }
+
+    #if UNITY_EDITOR
+    public void OnMouseUp() 
+    {
+        Toggle();
+    }
+    #endif
+
 }

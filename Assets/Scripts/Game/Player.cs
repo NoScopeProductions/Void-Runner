@@ -238,29 +238,28 @@ public class Player : MonoBehaviour {
 			Time.timeScale = 1.0f;
 		}
 
-		iTween.Stop();
-		
 		//create the explosion effects
 		for(int i = 0; i < DeathExplosions.Length; i++) 
 		{
-			Instantiate(DeathExplosions[i], SelectedShipBody.transform.parent.position, Quaternion.identity);
+			Transform explosion = (Transform)Instantiate(DeathExplosions[i], SelectedShipBody.transform.parent.position, Quaternion.identity);
+            explosion.parent = transform;
 		}
 
 		//stop rendering the ship model
 		Destroy(SelectedShipBody);
 		
-		//TEMP - return to main menu after 2 seconds, to be replaced with end game menu.
-		Invoke("ShowGameOverMenu", 3f);
-
         SoundManager.PlayOneShot(Sound_Explode);
 
         DeactivateShield(false);
+
+        Invoke("ShowGameOverMenu", 3f);
         return PlayerState.DEAD;
 		
 	}
 
     private void ShowGameOverMenu() 
 	{
+        iTween.Stop();
         HudManager.ShowGameOverMenu();
 	}
 	

@@ -14,8 +14,7 @@ public class SoundMuteButton : MonoBehaviour {
             gameObject.guiTexture.texture = SoundDisabled;
         }
     }
-
-    void OnMouseUp()
+    private void Toggle()
     {
         AudioListener.pause = !AudioListener.pause;
         AudioListener.volume = 1 - AudioListener.volume;
@@ -30,4 +29,38 @@ public class SoundMuteButton : MonoBehaviour {
             gameObject.guiTexture.texture = SoundEnabled;
         }
     }
+
+#if UNITY_EDITOR
+    void OnMouseUp()
+    {
+        Toggle();
+    }
+#endif
+
+#if UNITY_ANDROID
+    public void Update()
+    {
+        if (Input.touchCount <= 0) return;
+
+        foreach (var touch in Input.touches)
+        {
+            if (guiTexture.HitTest(touch.position))
+            {
+                switch (touch.phase)
+                {
+                    case TouchPhase.Began: //OnMouseDown
+                        break;
+                    case TouchPhase.Stationary: //OnMouseEnter
+                        //Switch to active guitexture here
+                        // guiTexture = PlayButtonDown
+                        break;
+                    case TouchPhase.Ended: //OnMouseUp
+                        Toggle();
+                        break;
+                }
+            }
+        }
+    }
+#endif
+
 }

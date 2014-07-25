@@ -1,27 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayButton : MonoBehaviour 
+public class BackToMainMenu : MonoBehaviour 
 {
-	public GameObject SelectionMenu;
-    public GameObject MainMenu;
-    public AsteroidManager DebrisManager;
-
-	void Activate()
-	{
-        SelectionMenu.SetActive(true);
-        iTween.FadeTo(SelectionMenu, 1f, 0.7f);
-
-        iTween.FadeTo(MainMenu, iTween.Hash("time", 0.7f, "alpha", 0f, "oncomplete", "HideMainMenu", "oncompletetarget", gameObject));
-        DebrisManager.IsActive = false;
-	}
-
-    private void HideMainMenu()
+    #if UNITY_EDITOR
+    void OnMouseUp()
     {
-        MainMenu.SetActive(false);
+        Application.LoadLevel("Menu");
     }
+    #endif
 
-    #if UNITY_ANDROID
+#if UNITY_ANDROID
     public void Update()
     {
         if (Input.touchCount <= 0) return;
@@ -39,18 +28,12 @@ public class PlayButton : MonoBehaviour
                         // guiTexture = PlayButtonDown
                         break;
                     case TouchPhase.Ended: //OnMouseUp
-                        Activate();
+                        Application.LoadLevel("Menu");
                         break;
                 }
             }
         }
     }
-    #endif
+#endif
 
-    #if UNITY_EDITOR
-    public void OnMouseUp()
-    {
-       Activate();
-    }
-    #endif
 }

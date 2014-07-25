@@ -7,12 +7,8 @@ public class BackButton : MonoBehaviour
     public GameObject SelectionMenu;
 
     public AsteroidManager DebrisManager;
-	// Use this for initialization
-	void Start () 
-	{
-	}
-
-	void Activate()
+	
+	private void Activate()
 	{
         DebrisManager.IsActive = true;
         MainMenu.SetActive(true);
@@ -26,7 +22,7 @@ public class BackButton : MonoBehaviour
         SelectionMenu.SetActive(false);
     }
 
-#if UNITY_ANDROID
+    #if UNITY_ANDROID
     public void Update()
     {
         if (Input.touchCount <= 0) return;
@@ -50,13 +46,13 @@ public class BackButton : MonoBehaviour
             }
         }
     }
-#endif
+    #endif
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     public void OnMouseUp()
     {
         Activate();
     }
-#endif
+    #endif
 
 }
