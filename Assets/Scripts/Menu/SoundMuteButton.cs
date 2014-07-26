@@ -41,7 +41,7 @@ public class SoundMuteButton : MonoBehaviour {
     public void Update()
     {
         if (Input.touchCount <= 0) return;
-
+        Debug.Log("update");
         foreach (var touch in Input.touches)
         {
             if (guiTexture.HitTest(touch.position))
