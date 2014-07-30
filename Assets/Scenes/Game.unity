@@ -369,16 +369,6 @@ Transform:
   m_LocalPosition: {x: 7.50583649, y: 8.52041721, z: 379.285461}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 953188227}
-  - {fileID: 1239078049}
-  - {fileID: 1238720219}
-  - {fileID: 1527808276}
-  - {fileID: 852491388}
-  - {fileID: 1201254796}
-  - {fileID: 847246370}
-  - {fileID: 1817347091}
-  - {fileID: 1834502798}
-  - {fileID: 1492249159}
   - {fileID: 1650291297}
   - {fileID: 1840892209}
   - {fileID: 1782867066}
@@ -390,6 +380,16 @@ Transform:
   - {fileID: 758002615}
   - {fileID: 1997272523}
   - {fileID: 1469423746}
+  - {fileID: 953188227}
+  - {fileID: 1239078049}
+  - {fileID: 1238720219}
+  - {fileID: 1527808276}
+  - {fileID: 852491388}
+  - {fileID: 1201254796}
+  - {fileID: 847246370}
+  - {fileID: 1817347091}
+  - {fileID: 1834502798}
+  - {fileID: 1492249159}
   m_Father: {fileID: 321638883}
   m_RootOrder: 3
 --- !u!1 &135663164
@@ -428,7 +428,7 @@ GUITexture:
   m_GameObject: {fileID: 135663164}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: 98120331e42cff64285601725b915438, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_Color: {r: .5, g: .5, b: .5, a: 0}
   m_PixelInset:
     serializedVersion: 2
     x: 0
@@ -757,7 +757,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 14
+  m_RootOrder: 4
 --- !u!199 &248436123
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -3389,7 +3389,7 @@ GUITexture:
   m_GameObject: {fileID: 549043465}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: 2608c2eb8eaa13c4b84a55c446b6810f, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .501960814}
+  m_Color: {r: .5, g: .5, b: .5, a: 0}
   m_PixelInset:
     serializedVersion: 2
     x: 0
@@ -3632,7 +3632,7 @@ GUITexture:
   m_GameObject: {fileID: 619230539}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: 43ececdc91152254fa0fadb985ced200, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_Color: {r: .5, g: .5, b: .5, a: 0}
   m_PixelInset:
     serializedVersion: 2
     x: 0
@@ -4009,7 +4009,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 18
+  m_RootOrder: 8
 --- !u!199 &758002616
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -5169,7 +5169,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 15
+  m_RootOrder: 5
 --- !u!199 &765294933
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -6332,7 +6332,7 @@ GUITexture:
   m_GameObject: {fileID: 773273701}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: 75fc171d42bf98e4a945e7905a521881, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .392156869}
+  m_Color: {r: .5, g: .5, b: .5, a: 0}
   m_PixelInset:
     serializedVersion: 2
     x: 0
@@ -7502,7 +7502,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 17
+  m_RootOrder: 7
 --- !u!1 &797772560
 GameObject:
   m_ObjectHideFlags: 0
@@ -7632,7 +7632,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 13
+  m_RootOrder: 3
 --- !u!199 &844513143
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -9918,7 +9918,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 6
+  m_RootOrder: 17
 --- !u!1 &852491380
 GameObject:
   m_ObjectHideFlags: 0
@@ -11078,7 +11078,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 4
+  m_RootOrder: 15
 --- !u!1001 &875509431
 Prefab:
   m_ObjectHideFlags: 0
@@ -12655,7 +12655,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 0
+  m_RootOrder: 11
 --- !u!1001 &958058884
 Prefab:
   m_ObjectHideFlags: 0
@@ -12926,6 +12926,9 @@ MonoBehaviour:
   FuelLabel: {fileID: 1214155930}
   ShieldLabel: {fileID: 1866543588}
   BoostLabel: {fileID: 1263508561}
+  ScoreBox: {fileID: 1393245345}
+  HighScoreBox: {fileID: 2800000, guid: 0fbd63116764049468f14ab464cc878f, type: 3}
+  ClearHighScore: 0
 --- !u!1 &1013074669
 GameObject:
   m_ObjectHideFlags: 0
@@ -13176,7 +13179,7 @@ GUITexture:
   m_GameObject: {fileID: 1032029554}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: 4d8b5ec68cefb824cb78bb23cd2e387d, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_Color: {r: .5, g: .5, b: .5, a: 0}
   m_PixelInset:
     serializedVersion: 2
     x: 0
@@ -13333,7 +13336,7 @@ GUITexture:
   m_GameObject: {fileID: 1065933075}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: c77abfc9c983bfd49b55913512bcfea2, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_Color: {r: .5, g: .5, b: .5, a: 0}
   m_PixelInset:
     serializedVersion: 2
     x: 0
@@ -15038,7 +15041,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 5
+  m_RootOrder: 16
 --- !u!1 &1203790641
 GameObject:
   m_ObjectHideFlags: 0
@@ -16551,7 +16554,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 2
+  m_RootOrder: 13
 --- !u!1 &1239078041
 GameObject:
   m_ObjectHideFlags: 0
@@ -17711,7 +17714,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 1
+  m_RootOrder: 12
 --- !u!1 &1245064547
 GameObject:
   m_ObjectHideFlags: 0
@@ -18374,7 +18377,7 @@ GUITexture:
   m_GameObject: {fileID: 1390463559}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: fdf8137e8acffff4da2931c4a1f12568, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_Color: {r: .5, g: .5, b: .5, a: 0}
   m_PixelInset:
     serializedVersion: 2
     x: 0
@@ -18421,7 +18424,7 @@ GUITexture:
   m_GameObject: {fileID: 1393245343}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: 5c02abd8962722646990165ffe613931, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_Color: {r: .5, g: .5, b: .5, a: 0}
   m_PixelInset:
     serializedVersion: 2
     x: 0
@@ -18516,7 +18519,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 16
+  m_RootOrder: 6
 --- !u!199 &1409360796
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -19754,7 +19757,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 20
+  m_RootOrder: 10
 --- !u!199 &1469423747
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -21032,7 +21035,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 9
+  m_RootOrder: 20
 --- !u!199 &1492249160
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -23366,7 +23369,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 3
+  m_RootOrder: 14
 --- !u!1001 &1528103625
 Prefab:
   m_ObjectHideFlags: 0
@@ -24915,7 +24918,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 10
+  m_RootOrder: 0
 --- !u!1 &1654367583
 GameObject:
   m_ObjectHideFlags: 0
@@ -25587,7 +25590,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 12
+  m_RootOrder: 2
 --- !u!199 &1782867067
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -27040,7 +27043,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 7
+  m_RootOrder: 18
 --- !u!199 &1817347092
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -28204,7 +28207,7 @@ GUITexture:
   m_GameObject: {fileID: 1820078297}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: 82c3e56a6a0a5254283a2f87fbbce31d, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_Color: {r: .5, g: .5, b: .5, a: 0}
   m_PixelInset:
     serializedVersion: 2
     x: 0
@@ -28317,7 +28320,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 8
+  m_RootOrder: 19
 --- !u!199 &1834502799
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -29532,7 +29535,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 11
+  m_RootOrder: 1
 --- !u!199 &1840892210
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -30896,7 +30899,7 @@ GUITexture:
   m_GameObject: {fileID: 1888416099}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: 40f253b213d6aa749b5a138fee9a36f5, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_Color: {r: .5, g: .5, b: .5, a: 0}
   m_PixelInset:
     serializedVersion: 2
     x: 0
@@ -31637,7 +31640,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 129681441}
-  m_RootOrder: 19
+  m_RootOrder: 9
 --- !u!199 &1997272524
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0

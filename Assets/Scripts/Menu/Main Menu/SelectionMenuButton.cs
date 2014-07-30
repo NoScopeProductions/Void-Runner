@@ -19,6 +19,7 @@ public class SelectionMenuButton : MonoBehaviour {
     {
         Application.LoadLevel("Game");
     }
+
     public void Update()
     {
         if (Input.touchCount <= 0) return;

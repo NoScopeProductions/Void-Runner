@@ -24,13 +24,22 @@ public class GameOverMenu : MonoBehaviour
     public GUIText ShieldLabel;
     public GUIText BoostLabel;
 
+    public GUITexture ScoreBox;
+    public Texture2D HighScoreBox;
+
+    public bool ClearHighScore;
+
 	void OnEnable () 
     {
+        iTween.FadeTo(gameObject, 1f, 0.5f);
+
         ScoreLabel.text = Mathf.Round(score).ToString();
         DistanceLabel.text = Mathf.Round(DistanceTraveled).ToString();
         FuelLabel.text = fuelPickupCount.ToString();
         ShieldLabel.text = shieldPickupCount.ToString();
         BoostLabel.text = boostPickupCount.ToString();
+
+        //change score text if new high score
 
         WriteToDisk();
 	}
@@ -48,15 +57,23 @@ public class GameOverMenu : MonoBehaviour
 
     private void SetHighScore()
     {
+        if (ClearHighScore)
+        {
+            PlayerPrefs.DeleteKey("HighScore");
+        }
+
         if (PlayerPrefs.HasKey("HighScore"))
         {
             if (score > PlayerPrefs.GetFloat("HighScore"))
             {
+                //change score guitexture
+                ScoreBox.texture = HighScoreBox;
                 PlayerPrefs.SetFloat("HighScore", score);
             }
         }
         else
         {
+            ScoreBox.texture = HighScoreBox;
             PlayerPrefs.SetFloat("HighScore", score);
         }
     }
