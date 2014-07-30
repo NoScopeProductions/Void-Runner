@@ -7,6 +7,9 @@ public class BackButton : MonoBehaviour
     public GameObject SelectionMenu;
 
     public AsteroidManager DebrisManager;
+
+    public Texture2D BackButton_Down;
+    public Texture2D BackButton_Normal;
 	
 	private void Activate()
 	{
@@ -21,8 +24,6 @@ public class BackButton : MonoBehaviour
     {
         SelectionMenu.SetActive(false);
     }
-
-    #if UNITY_ANDROID
     public void Update()
     {
         if (Input.touchCount <= 0) return;
@@ -37,21 +38,27 @@ public class BackButton : MonoBehaviour
                         break;
                     case TouchPhase.Stationary: //OnMouseEnter
                         //Switch to active guitexture here
-                        // guiTexture = PlayButtonDown
+                        guiTexture.texture = BackButton_Down;
                         break;
                     case TouchPhase.Ended: //OnMouseUp
+                        guiTexture.texture = BackButton_Normal;
                         Activate();
                         break;
                 }
             }
         }
     }
-    #endif
 
     #if UNITY_EDITOR
     public void OnMouseUp()
     {
+        guiTexture.texture = BackButton_Normal;
         Activate();
+    }
+
+    public void OnMouseDown()
+    {
+        guiTexture.texture = BackButton_Down;
     }
     #endif
 

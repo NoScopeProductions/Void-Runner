@@ -7,6 +7,9 @@ public class PlayButton : MonoBehaviour
     public GameObject MainMenu;
     public AsteroidManager DebrisManager;
 
+    public Texture2D PlayButton_Down;
+    public Texture2D PlayButton_Normal;
+
 	void Activate()
 	{
         SelectionMenu.SetActive(true);
@@ -20,8 +23,6 @@ public class PlayButton : MonoBehaviour
     {
         MainMenu.SetActive(false);
     }
-
-    #if UNITY_ANDROID
     public void Update()
     {
         if (Input.touchCount <= 0) return;
@@ -36,21 +37,27 @@ public class PlayButton : MonoBehaviour
                         break;
                     case TouchPhase.Stationary: //OnMouseEnter
                         //Switch to active guitexture here
-                        // guiTexture = PlayButtonDown
+                        guiTexture.texture = PlayButton_Down;
                         break;
                     case TouchPhase.Ended: //OnMouseUp
+                        guiTexture.texture = PlayButton_Normal;
                         Activate();
                         break;
                 }
             }
         }
     }
-    #endif
 
     #if UNITY_EDITOR
     public void OnMouseUp()
     {
+       guiTexture.texture = PlayButton_Normal;
        Activate();
+    }
+
+    public void OnMouseDown()
+    {
+        guiTexture.texture = PlayButton_Down;
     }
     #endif
 }

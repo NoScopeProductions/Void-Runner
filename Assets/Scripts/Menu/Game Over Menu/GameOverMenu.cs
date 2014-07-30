@@ -19,6 +19,7 @@ public class GameOverMenu : MonoBehaviour
     public float DistanceTraveled;
 
     public GUIText ScoreLabel;
+    public GUIText DistanceLabel;
     public GUIText FuelLabel;
     public GUIText ShieldLabel;
     public GUIText BoostLabel;
@@ -26,10 +27,11 @@ public class GameOverMenu : MonoBehaviour
 	// Use this for initialization
 	void OnEnable () 
     {
-        ScoreLabel.text = "Score: " + Mathf.Round(score).ToString();
-        FuelLabel.text = "Fuel: " + fuelPickupCount;
-        ShieldLabel.text = "Shields: " + shieldPickupCount;
-        BoostLabel.text = "Boosts: " + boostPickupCount;
+        ScoreLabel.text = Mathf.Round(score).ToString();
+        DistanceLabel.text = Mathf.Round(DistanceTraveled).ToString();
+        FuelLabel.text = fuelPickupCount.ToString();
+        ShieldLabel.text = shieldPickupCount.ToString();
+        BoostLabel.text = boostPickupCount.ToString();
 
         WriteToDisk();
 	}

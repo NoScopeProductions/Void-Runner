@@ -29,7 +29,7 @@ public class DangerFlash : MonoBehaviour {
         if (Enabled)
         {
             Enabled = false;
-            iTween.StopByName("danger_tween");
+           // iTween.StopByName("danger_tween");
             iTween.FadeTo(gameObject, iTween.Hash("alpha", 0f,
                                                   "time", FadeTime / 2,
                                                   "transition", "linear",
