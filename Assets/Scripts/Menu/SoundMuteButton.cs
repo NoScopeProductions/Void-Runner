@@ -36,8 +36,6 @@ public class SoundMuteButton : MonoBehaviour {
         Toggle();
     }
 #endif
-
-#if UNITY_ANDROID
     public void Update()
     {
         if (Input.touchCount <= 0) return;
@@ -61,6 +59,4 @@ public class SoundMuteButton : MonoBehaviour {
             }
         }
     }
-#endif
-
 }

@@ -628,7 +628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayButton: {fileID: 2800000, guid: 5cbf9d5765a697042a5571e5b41c4436, type: 3}
   PauseButton: {fileID: 2800000, guid: 276bda3bd95e4154c9d0f2be47dcd272, type: 3}
-  SoundMenu: {fileID: 1866891318}
+  SoundMenu: {fileID: 1801313551}
 --- !u!131 &156008589
 GUITexture:
   m_ObjectHideFlags: 0
@@ -12904,7 +12904,7 @@ Transform:
   - {fileID: 1065933076}
   - {fileID: 1136456400}
   m_Father: {fileID: 1659674346}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!114 &1000975405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25068,8 +25068,8 @@ Transform:
   - {fileID: 1692459686}
   - {fileID: 589760412}
   - {fileID: 603441675}
-  - {fileID: 1866891319}
   - {fileID: 1000975404}
+  - {fileID: 1801313552}
   m_Father: {fileID: 993108446}
   m_RootOrder: 2
 --- !u!114 &1659674347
@@ -26954,6 +26954,67 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1794029263}
   m_Mesh: {fileID: 4300000, guid: 89bcceaea55f8104abaaa1a3a35b1642, type: 3}
+--- !u!1 &1801313551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1801313552}
+  - 114: {fileID: 1801313554}
+  - 131: {fileID: 1801313553}
+  m_Layer: 0
+  m_Name: SoundMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1801313552
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1801313551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .0700000003, y: .109999999, z: 0}
+  m_LocalScale: {x: .0900000036, y: .150000006, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1659674346}
+  m_RootOrder: 4
+--- !u!131 &1801313553
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1801313551}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 81d54ad698735b44b97e1a7590afb038, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!114 &1801313554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1801313551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b5171413d1e2e4fb272d036b154aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundEnabled: {fileID: 2800000, guid: 81d54ad698735b44b97e1a7590afb038, type: 3}
+  SoundDisabled: {fileID: 2800000, guid: 36742f8a0ce5e4644b4b775fba559515, type: 3}
 --- !u!1001 &1804157284
 Prefab:
   m_ObjectHideFlags: 0
@@ -30802,67 +30863,6 @@ GUIText:
     rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
---- !u!1 &1866891318
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1866891319}
-  - 131: {fileID: 1866891321}
-  - 114: {fileID: 1866891320}
-  m_Layer: 0
-  m_Name: SoundMenu
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1866891319
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1866891318}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0700000003, y: .109999999, z: 0}
-  m_LocalScale: {x: .0900000036, y: .150000006, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1659674346}
-  m_RootOrder: 3
---- !u!114 &1866891320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1866891318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b5171413d1e2e4fb272d036b154aad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SoundEnabled: {fileID: 2800000, guid: 81d54ad698735b44b97e1a7590afb038, type: 3}
-  SoundDisabled: {fileID: 2800000, guid: 36742f8a0ce5e4644b4b775fba559515, type: 3}
---- !u!131 &1866891321
-GUITexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1866891318}
-  m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 81d54ad698735b44b97e1a7590afb038, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
-  m_PixelInset:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  m_LeftBorder: 0
-  m_RightBorder: 0
-  m_TopBorder: 0
-  m_BottomBorder: 0
 --- !u!1 &1888416099
 GameObject:
   m_ObjectHideFlags: 0
