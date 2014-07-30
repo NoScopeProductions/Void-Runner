@@ -24,7 +24,6 @@ public class GameOverMenu : MonoBehaviour
     public GUIText ShieldLabel;
     public GUIText BoostLabel;
 
-	// Use this for initialization
 	void OnEnable () 
     {
         ScoreLabel.text = Mathf.Round(score).ToString();

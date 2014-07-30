@@ -2737,7 +2737,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 151eb6b33013b4249adab9488a0d0933, type: 2}
       propertyPath: m_LocalPosition.z
-      value: .119999997
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 151eb6b33013b4249adab9488a0d0933, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2761,7 +2761,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 151eb6b33013b4249adab9488a0d0933, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 151eb6b33013b4249adab9488a0d0933, type: 2}
       propertyPath: m_IsActive
@@ -3131,7 +3131,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 497584544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .689999998, y: .665000021, z: 5}
+  m_LocalPosition: {x: .689999998, y: .670000017, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1136456400}
@@ -3558,7 +3558,7 @@ Transform:
   m_PrefabInternal: {fileID: 409628992}
   m_GameObject: {fileID: 603441674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .5, y: .5, z: .119999997}
+  m_LocalPosition: {x: .5, y: .5, z: 10}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1659674346}
@@ -13332,7 +13332,7 @@ GUITexture:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1065933075}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: ab6e1305f177aa640b4e24b155c1a363, type: 3}
+  m_Texture: {fileID: 2800000, guid: c77abfc9c983bfd49b55913512bcfea2, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .5}
   m_PixelInset:
     serializedVersion: 2
@@ -13355,6 +13355,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff62c3f75e6954b9ea0e1b3ac90498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MenuButton_Down: {fileID: 2800000, guid: 8627aa0f6059a55429f83776f88c11b4, type: 3}
+  MenuButton_Normal: {fileID: 2800000, guid: c77abfc9c983bfd49b55913512bcfea2, type: 3}
 --- !u!1 &1085243845
 GameObject:
   m_ObjectHideFlags: 0
@@ -18453,13 +18455,13 @@ GUIText:
   m_GameObject: {fileID: 1396784068}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 'Score: 0'
+  m_Text: 'SCORE: 0'
   m_Anchor: 3
   m_Alignment: 2
   m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 4
-  m_Font: {fileID: 12800000, guid: e153222f9f97c86468c90db7771a9425, type: 3}
+  m_Font: {fileID: 12800000, guid: 4a7e06f315a93704c83845c540db9dbf, type: 3}
   m_Material: {fileID: 0}
   m_FontSize: 30
   m_FontStyle: 0
@@ -25246,7 +25248,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1692459685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 234.051971}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 156008587}
@@ -28200,7 +28202,7 @@ GUITexture:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1820078297}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 23ce889e8cf12634cb5f2c4e8577afc3, type: 3}
+  m_Texture: {fileID: 2800000, guid: 82c3e56a6a0a5254283a2f87fbbce31d, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .5}
   m_PixelInset:
     serializedVersion: 2
@@ -28223,6 +28225,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6ab978094b66640b8cf4b8193e00ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReplayButton_Down: {fileID: 2800000, guid: e1c8c3a9cd18cf149bf2618bb5861737, type: 3}
+  ReplayButton_Normal: {fileID: 2800000, guid: 82c3e56a6a0a5254283a2f87fbbce31d, type: 3}
+  cameraFade: {fileID: 603441676}
 --- !u!1 &1827892212
 GameObject:
   m_ObjectHideFlags: 0

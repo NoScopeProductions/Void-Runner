@@ -35,9 +35,6 @@ public class BackButton : MonoBehaviour
                 switch (touch.phase)
                 {
                     case TouchPhase.Began: //OnMouseDown
-                        break;
-                    case TouchPhase.Stationary: //OnMouseEnter
-                        //Switch to active guitexture here
                         guiTexture.texture = BackButton_Down;
                         break;
                     case TouchPhase.Ended: //OnMouseUp

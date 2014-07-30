@@ -19,8 +19,6 @@ public class SelectionMenuButton : MonoBehaviour {
     {
         Application.LoadLevel("Game");
     }
-
-    #if UNITY_ANDROID
     public void Update()
     {
         if (Input.touchCount <= 0) return;
@@ -33,10 +31,6 @@ public class SelectionMenuButton : MonoBehaviour {
                 {
                     case TouchPhase.Began: //OnMouseDown
                         break;
-                    case TouchPhase.Stationary: //OnMouseEnter
-                        //Switch to active guitexture here
-                        // guiTexture = PlayButtonDown
-                        break;
                     case TouchPhase.Ended: //OnMouseUp
                         Activate();
                         break;
@@ -44,7 +38,6 @@ public class SelectionMenuButton : MonoBehaviour {
             }
         }
     }
-    #endif
 
     #if UNITY_EDITOR
     public void OnMouseUp() 
