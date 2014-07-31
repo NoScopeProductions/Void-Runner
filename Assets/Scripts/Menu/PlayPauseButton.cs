@@ -11,23 +11,68 @@ public class PlayPauseButton : MonoBehaviour
 
     private bool Paused = false;
 
+	void SetTimeScaleToZeroAndEnableSoundMenu()
+	{
+		Time.timeScale = 0f;
+		SoundMenu.SetActive(true);
+	}
+
+	void SetTimeScaleToCurrentAndDisableSoundMenu()
+	{
+		Time.timeScale = GlobalPreferences.CurrentTimeScale;
+		SoundMenu.SetActive(false);
+	}
+
+	void TogglePauseAndTexture()
+	{
+		Paused = !Paused;
+		gameObject.guiTexture.texture = Paused ? PlayButton : PauseButton;
+	}
+
 #if UNITY_EDITOR
     void OnMouseUp()
     {
-        Paused = !Paused;
-
-        gameObject.guiTexture.texture = Paused ? PlayButton : PauseButton;
+		TogglePauseAndTexture();
 
         if (Paused)
         {
-            Time.timeScale = 0f;
-            SoundMenu.SetActive(true);
+			SetTimeScaleToZeroAndEnableSoundMenu();
         }
         else
         {
-            Time.timeScale = GlobalPreferences.CurrentTimeScale;
-            SoundMenu.SetActive(false);
+			SetTimeScaleToCurrentAndDisableSoundMenu();
         }
     }
+#endif
+
+#if UNITY_ANDROID
+	public void Update()
+	{
+		if (Input.touchCount <= 0) return;
+		
+		foreach (var touch in Input.touches)
+		{
+			if (guiTexture.HitTest(touch.position))
+			{
+				switch (touch.phase)
+				{
+				case TouchPhase.Began: //OnMouseDown
+					break;
+				case TouchPhase.Ended: //OnMouseUp
+					TogglePauseAndTexture();
+
+					if (Paused)
+					{
+						SetTimeScaleToZeroAndEnableSoundMenu();
+					}
+					else
+					{
+						SetTimeScaleToCurrentAndDisableSoundMenu();
+					}
+					break;
+				}
+			}
+		}
+	}
 #endif
 }

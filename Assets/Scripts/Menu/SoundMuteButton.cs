@@ -36,10 +36,11 @@ public class SoundMuteButton : MonoBehaviour {
         Toggle();
     }
 #endif
+
+#if UNITY_ANDROID
     public void Update()
     {
         if (Input.touchCount <= 0) return;
-        Debug.Log("update");
         foreach (var touch in Input.touches)
         {
             if (guiTexture.HitTest(touch.position))
@@ -59,4 +60,5 @@ public class SoundMuteButton : MonoBehaviour {
             }
         }
     }
+#endif
 }
