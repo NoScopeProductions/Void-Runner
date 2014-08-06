@@ -39,8 +39,6 @@ public class GameOverMenu : MonoBehaviour
         ShieldLabel.text = shieldPickupCount.ToString();
         BoostLabel.text = boostPickupCount.ToString();
 
-        //change score text if new high score
-
         WriteToDisk();
 	}
 
@@ -50,79 +48,80 @@ public class GameOverMenu : MonoBehaviour
         SetFuelCount();
         SetShieldCount();
         SetBoostCount();
-        SetDistanceTraveled();
+        SetNumberPlaythroughs();
 
         PlayerPrefs.Save();
+    }
+
+    private void SetNumberPlaythroughs()
+    {
+        if (PlayerPrefs.HasKey(GlobalPreferences.PLAYTHROUGHS))
+        {
+            PlayerPrefs.SetInt(GlobalPreferences.PLAYTHROUGHS, PlayerPrefs.GetInt(GlobalPreferences.PLAYTHROUGHS) + 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(GlobalPreferences.PLAYTHROUGHS, 1);
+        }
+
     }
 
     private void SetHighScore()
     {
         if (ClearHighScore)
         {
-            PlayerPrefs.DeleteKey("HighScore");
+            PlayerPrefs.DeleteKey(GlobalPreferences.HIGH_SCORE);
         }
 
-        if (PlayerPrefs.HasKey("HighScore"))
+        if (PlayerPrefs.HasKey(GlobalPreferences.HIGH_SCORE))
         {
-            if (score > PlayerPrefs.GetFloat("HighScore"))
+            if (score > PlayerPrefs.GetFloat(GlobalPreferences.HIGH_SCORE))
             {
                 //change score guitexture
                 ScoreBox.texture = HighScoreBox;
-                PlayerPrefs.SetFloat("HighScore", score);
+                PlayerPrefs.SetFloat(GlobalPreferences.HIGH_SCORE, score);
             }
         }
         else
         {
             ScoreBox.texture = HighScoreBox;
-            PlayerPrefs.SetFloat("HighScore", score);
+            PlayerPrefs.SetFloat(GlobalPreferences.HIGH_SCORE, score);
         }
     }
 
     private void SetFuelCount()
     {
-        if (PlayerPrefs.HasKey("FuelPickups"))
+        if (PlayerPrefs.HasKey(GlobalPreferences.FUEL_PICKUPS))
         {
-            PlayerPrefs.SetInt("FuelPickups", PlayerPrefs.GetInt("Fuelpickups") + fuelPickupCount);
+            PlayerPrefs.SetInt(GlobalPreferences.FUEL_PICKUPS, PlayerPrefs.GetInt(GlobalPreferences.FUEL_PICKUPS) + fuelPickupCount);
         }
         else
         {
-            PlayerPrefs.SetInt("FuelPickups", fuelPickupCount);
+            PlayerPrefs.SetInt(GlobalPreferences.FUEL_PICKUPS, fuelPickupCount);
         }
     }
 
     private void SetShieldCount()
     {
-        if (PlayerPrefs.HasKey("ShieldPickups"))
+        if (PlayerPrefs.HasKey(GlobalPreferences.SHIELD_PICKUPS))
         {
-            PlayerPrefs.SetInt("ShieldPickups", PlayerPrefs.GetInt("ShieldPickups") + shieldPickupCount);
+            PlayerPrefs.SetInt(GlobalPreferences.SHIELD_PICKUPS, PlayerPrefs.GetInt(GlobalPreferences.SHIELD_PICKUPS) + shieldPickupCount);
         }
         else
         {
-            PlayerPrefs.SetInt("ShieldPickups", shieldPickupCount);
+            PlayerPrefs.SetInt(GlobalPreferences.SHIELD_PICKUPS, shieldPickupCount);
         }
     }
 
     private void SetBoostCount()
     {
-        if (PlayerPrefs.HasKey("BoostPickups"))
+        if (PlayerPrefs.HasKey(GlobalPreferences.BOOST_PICKUPS))
         {
-            PlayerPrefs.SetInt("BoostPickups", PlayerPrefs.GetInt("BoostPickups") + boostPickupCount);
+            PlayerPrefs.SetInt(GlobalPreferences.BOOST_PICKUPS, PlayerPrefs.GetInt(GlobalPreferences.BOOST_PICKUPS) + boostPickupCount);
         }
         else
         {
-            PlayerPrefs.SetInt("BoostPickups", boostPickupCount);
-        }
-    }
-
-    private void SetDistanceTraveled()
-    {
-        if (PlayerPrefs.HasKey("DistanceTraveled"))
-        {
-            PlayerPrefs.SetFloat("DistanceTraveled", PlayerPrefs.GetFloat("DistanceTraveled") + DistanceTraveled);
-        }
-        else
-        {
-            PlayerPrefs.SetFloat("DistanceTraveled", DistanceTraveled);
+            PlayerPrefs.SetInt(GlobalPreferences.BOOST_PICKUPS, boostPickupCount);
         }
     }
 }

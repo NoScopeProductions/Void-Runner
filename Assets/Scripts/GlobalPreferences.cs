@@ -11,6 +11,14 @@ public class GlobalPreferences : MonoBehaviour
 
     public static float CurrentTimeScale = 1f;
 
+    //PlayerPref Keys
+
+    public static string HIGH_SCORE = "HighScore";
+    public static string FUEL_PICKUPS = "FuelPickups";
+    public static string SHIELD_PICKUPS = "ShieldPickups";
+    public static string BOOST_PICKUPS = "BoostPickups";
+    public static string PLAYTHROUGHS = "NumberOfPlaythroughs";
+
 	void Awake()
 	{
 		DontDestroyOnLoad (this);
