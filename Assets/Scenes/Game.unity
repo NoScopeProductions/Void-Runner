@@ -3472,9 +3472,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lights:
-  - {fileID: 400000, guid: d354d380bf716fb47aec9f7b7aa02fde, type: 2}
   - {fileID: 400000, guid: 0177b603d72dffe459a2011288e513e0, type: 2}
   - {fileID: 400000, guid: 9d80e8069b2c4604d83463ec5aca4212, type: 2}
+  - {fileID: 400000, guid: 265821ef1b0466a45ae9b8039f657e0b, type: 2}
+  - {fileID: 400000, guid: d354d380bf716fb47aec9f7b7aa02fde, type: 2}
   PlayerObject: {fileID: 261040504}
 --- !u!1 &596462203
 GameObject:
@@ -27022,6 +27023,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 993108446}
     m_Modifications:
+    - target: {fileID: 11400000, guid: 3eade881e2939064e8e6a1a5eff4dccc, type: 2}
+      propertyPath: lights.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3eade881e2939064e8e6a1a5eff4dccc, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -27066,6 +27071,22 @@ Prefab:
       propertyPath: PlayerObject
       value: 
       objectReference: {fileID: 261040504}
+    - target: {fileID: 11400000, guid: 3eade881e2939064e8e6a1a5eff4dccc, type: 2}
+      propertyPath: lights.Array.data[0]
+      value: 
+      objectReference: {fileID: 400000, guid: 0177b603d72dffe459a2011288e513e0, type: 2}
+    - target: {fileID: 11400000, guid: 3eade881e2939064e8e6a1a5eff4dccc, type: 2}
+      propertyPath: lights.Array.data[1]
+      value: 
+      objectReference: {fileID: 400000, guid: 9d80e8069b2c4604d83463ec5aca4212, type: 2}
+    - target: {fileID: 11400000, guid: 3eade881e2939064e8e6a1a5eff4dccc, type: 2}
+      propertyPath: lights.Array.data[2]
+      value: 
+      objectReference: {fileID: 400000, guid: 265821ef1b0466a45ae9b8039f657e0b, type: 2}
+    - target: {fileID: 11400000, guid: 3eade881e2939064e8e6a1a5eff4dccc, type: 2}
+      propertyPath: lights.Array.data[3]
+      value: 
+      objectReference: {fileID: 400000, guid: d354d380bf716fb47aec9f7b7aa02fde, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3eade881e2939064e8e6a1a5eff4dccc, type: 2}
   m_RootGameObject: {fileID: 593373720}
