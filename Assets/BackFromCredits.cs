@@ -1,27 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NavigationButton : MonoBehaviour 
-{
+public class BackFromCredits : MonoBehaviour {
+
 	public GameObject FadeTo;
 	public GameObject FadeFrom;
-	
-	public Texture2D ButtonDown;
-	public Texture2D ButtonNormal;
-	
-	void Activate()
+
+	private void Activate()
 	{
 		FadeTo.SetActive(true);
 		iTween.FadeTo(FadeTo, 1f, 0.4f);
 		
 		iTween.FadeTo(FadeFrom, iTween.Hash("time", 0.3f, "alpha", 0f, "oncomplete", "HideFrom", "oncompletetarget", gameObject));
 	}
-	
+
 	private void HideFrom()
 	{
 		FadeFrom.SetActive(false);
 	}
-
+	
 	#if UNITY_ANDROID
 	public void Update()
 	{
@@ -29,18 +26,18 @@ public class NavigationButton : MonoBehaviour
 		
 		foreach (var touch in Input.touches)
 		{
-			if (guiTexture.HitTest(touch.position))
+			switch (touch.phase)
 			{
-				switch (touch.phase)
-				{
-				case TouchPhase.Began: //OnMouseDown
-					guiTexture.texture = ButtonDown;
-					break;
-				case TouchPhase.Ended: //OnMouseUp
-					guiTexture.texture = ButtonNormal;
-					Activate();
-					break;
+			case TouchPhase.Began: //OnMouseDown
+				break;
+			case TouchPhase.Ended: //OnMouseUp
+				Ray ray = Camera.main.ScreenPointToRay(touch.position);
+				RaycastHit hit ;
+				if (Physics.Raycast (ray, out hit)) {
+					Debug.Log(hit.collider.name);
 				}
+				//Activate();
+				break;
 			}
 		}
 	}
@@ -49,13 +46,7 @@ public class NavigationButton : MonoBehaviour
 	#if UNITY_EDITOR
 	public void OnMouseUp()
 	{
-		guiTexture.texture = ButtonNormal;
 		Activate();
-	}
-	
-	public void OnMouseDown()
-	{
-		guiTexture.texture = ButtonDown;
 	}
 	#endif
 }
