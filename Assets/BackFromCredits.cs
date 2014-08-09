@@ -31,12 +31,14 @@ public class BackFromCredits : MonoBehaviour {
 			case TouchPhase.Began: //OnMouseDown
 				break;
 			case TouchPhase.Ended: //OnMouseUp
-				Ray ray = Camera.main.ScreenPointToRay(touch.position);
-				RaycastHit hit ;
-				if (Physics.Raycast (ray, out hit)) {
-					Debug.Log(hit.collider.name);
-				}
-				//Activate();
+//				Ray ray = Camera.main.ScreenPointToRay(touch.position);
+//				RaycastHit hit ;
+//				if (Physics.Raycast (ray, out hit)) 
+//				{
+//					Debug.Log(hit.collider.name);
+//					Activate();
+//				}
+				Activate();
 				break;
 			}
 		}
