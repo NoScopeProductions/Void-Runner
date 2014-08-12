@@ -12798,6 +12798,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 993108446}
+  - 114: {fileID: 993108447}
   m_Layer: 0
   m_Name: TheManager
   m_TagString: Untagged
@@ -12823,6 +12824,21 @@ Transform:
   - {fileID: 1840049069}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &993108447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 993108445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b67674721a4604ea538b13399814e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectionBackButton: {fileID: 0}
+  statsBackButton: {fileID: 0}
+  creditsBackButton: {fileID: 0}
+  pauseButton: {fileID: 156008586}
 --- !u!1001 &996085423
 Prefab:
   m_ObjectHideFlags: 0

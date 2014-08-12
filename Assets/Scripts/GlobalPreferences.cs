@@ -5,6 +5,10 @@ public class GlobalPreferences : MonoBehaviour
 {
     public enum SHIP { REMAKER, DSK, DEFAULT };
 
+	public enum GameState { MAIN_MENU, SELECTION, PLAYING, PAUSED, GAME_OVER, CREDITS, STATS };
+
+	public static GameState currentState = GameState.MAIN_MENU;
+
 	public static SHIP shipSelected = SHIP.DEFAULT;
 
     public static bool SkipTutorial = false;

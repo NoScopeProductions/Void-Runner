@@ -137,6 +137,7 @@ MonoBehaviour:
   FadeFrom: {fileID: 255055519}
   ButtonDown: {fileID: 2800000, guid: eaf0d6ffe0e246c40b03b7b59615f83e, type: 3}
   ButtonNormal: {fileID: 2800000, guid: 25d8f9621c864e344abf74ee29e5da3f, type: 3}
+  nextGameState: 6
 --- !u!1 &15992671
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +456,7 @@ MonoBehaviour:
   FadeFrom: {fileID: 1137057791}
   ButtonDown: {fileID: 2800000, guid: d33221ceb773b1c4abf3056e4bbe28e4, type: 3}
   ButtonNormal: {fileID: 2800000, guid: 393cb6dc0a05a4644a878b8af74aa1ab, type: 3}
+  nextGameState: 0
 --- !u!131 &334853858
 GUITexture:
   m_ObjectHideFlags: 0
@@ -537,6 +539,7 @@ MonoBehaviour:
   FadeFrom: {fileID: 255055519}
   ButtonDown: {fileID: 2800000, guid: 3731cfc3663431444b2758d7d9c0493d, type: 3}
   ButtonNormal: {fileID: 2800000, guid: 2730bd84345cc9b4fa6dd08c5b78eaf0, type: 3}
+  nextGameState: 1
 --- !u!1 &509018196
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +548,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 509018197}
+  - 114: {fileID: 509018198}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -569,6 +573,21 @@ Transform:
   - {fileID: 1650172198}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &509018198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509018196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b67674721a4604ea538b13399814e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectionBackButton: {fileID: 1980591656}
+  statsBackButton: {fileID: 334853855}
+  creditsBackButton: {fileID: 601669363}
+  pauseButton: {fileID: 0}
 --- !u!1 &549231744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,6 +1743,7 @@ MonoBehaviour:
   FadeFrom: {fileID: 255055519}
   ButtonDown: {fileID: 2800000, guid: 55130795dd248d342bf52d3bada2296a, type: 3}
   ButtonNormal: {fileID: 2800000, guid: 02ecb5e11c6d58c43afa3d015296d100, type: 3}
+  nextGameState: 5
 --- !u!131 &1587922627
 GUITexture:
   m_ObjectHideFlags: 0
@@ -2246,6 +2266,7 @@ MonoBehaviour:
   FadeFrom: {fileID: 323385609}
   ButtonDown: {fileID: 2800000, guid: d33221ceb773b1c4abf3056e4bbe28e4, type: 3}
   ButtonNormal: {fileID: 2800000, guid: 393cb6dc0a05a4644a878b8af74aa1ab, type: 3}
+  nextGameState: 0
 --- !u!131 &1980591659
 GUITexture:
   m_ObjectHideFlags: 0

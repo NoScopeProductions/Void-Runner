@@ -23,7 +23,7 @@ public class PlayPauseButton : MonoBehaviour
 		SoundMenu.SetActive(false);
 	}
 
-	void TogglePauseAndTexture()
+	public void TogglePauseAndTexture()
 	{
 		Paused = !Paused;
 		gameObject.guiTexture.texture = Paused ? PlayButton : PauseButton;

@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class StatisticsMenu : MonoBehaviour {
+public class StatisticsMenu : MonoBehaviour 
+{
 
     public GUIText HighScore;
     public GUIText NumberOfGames;
@@ -12,7 +13,8 @@ public class StatisticsMenu : MonoBehaviour {
 
 
 	// Use this for initialization
-	void OnEnable () {
+	void OnEnable () 
+	{
         iTween.FadeTo(gameObject, 1f, 0.5f);
 
         ReadFromDisk();

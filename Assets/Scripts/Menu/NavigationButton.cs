@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using GameState = GlobalPreferences.GameState;
 
 public class NavigationButton : MonoBehaviour 
 {
@@ -8,13 +9,16 @@ public class NavigationButton : MonoBehaviour
 	
 	public Texture2D ButtonDown;
 	public Texture2D ButtonNormal;
-	
-	void Activate()
+
+	public GameState nextGameState;
+
+	public void Activate()
 	{
 		FadeTo.SetActive(true);
 		iTween.FadeTo(FadeTo, 1f, 0.4f);
 		
 		iTween.FadeTo(FadeFrom, iTween.Hash("time", 0.3f, "alpha", 0f, "oncomplete", "HideFrom", "oncompletetarget", gameObject));
+		GlobalPreferences.currentState = nextGameState;
 	}
 	
 	private void HideFrom()
@@ -25,7 +29,7 @@ public class NavigationButton : MonoBehaviour
 	#if UNITY_ANDROID
 	public void Update()
 	{
-		if (Input.touchCount <= 0) return;
+		if (Input.touchCount <= 0) { return; }
 		
 		foreach (var touch in Input.touches)
 		{
