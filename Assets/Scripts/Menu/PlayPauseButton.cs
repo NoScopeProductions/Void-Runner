@@ -11,37 +11,40 @@ public class PlayPauseButton : MonoBehaviour
 
     private bool Paused = false;
 
-	void SetTimeScaleToZeroAndEnableSoundMenu()
+	private void SetTimeScaleToZeroAndEnableSoundMenu()
 	{
 		Time.timeScale = 0f;
 		SoundMenu.SetActive(true);
 	}
 
-	void SetTimeScaleToCurrentAndDisableSoundMenu()
+	private void SetTimeScaleToCurrentAndDisableSoundMenu()
 	{
 		Time.timeScale = GlobalPreferences.CurrentTimeScale;
 		SoundMenu.SetActive(false);
 	}
 
-	public void TogglePauseAndTexture()
+	private void TogglePauseAndTexture()
 	{
 		Paused = !Paused;
 		gameObject.guiTexture.texture = Paused ? PlayButton : PauseButton;
 	}
 
+	public void Activate ()
+	{
+		TogglePauseAndTexture ();
+		if (Paused) {
+			SetTimeScaleToZeroAndEnableSoundMenu ();
+		}
+		else {
+			SetTimeScaleToCurrentAndDisableSoundMenu ();
+		}
+	}
+
 #if UNITY_EDITOR
     void OnMouseUp()
     {
-		TogglePauseAndTexture();
+		Activate ();
 
-        if (Paused)
-        {
-			SetTimeScaleToZeroAndEnableSoundMenu();
-        }
-        else
-        {
-			SetTimeScaleToCurrentAndDisableSoundMenu();
-        }
     }
 #endif
 
@@ -59,16 +62,7 @@ public class PlayPauseButton : MonoBehaviour
 				case TouchPhase.Began: //OnMouseDown
 					break;
 				case TouchPhase.Ended: //OnMouseUp
-					TogglePauseAndTexture();
-
-					if (Paused)
-					{
-						SetTimeScaleToZeroAndEnableSoundMenu();
-					}
-					else
-					{
-						SetTimeScaleToCurrentAndDisableSoundMenu();
-					}
+					Activate();
 					break;
 				}
 			}

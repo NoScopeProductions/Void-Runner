@@ -9,9 +9,10 @@ public class BackKeyListener : MonoBehaviour
 	public GameObject creditsBackButton;
 	public GameObject pauseButton;
 
-	void OnLevelWasLoaded(int scene) 
+	void Awake()
 	{
-		switch (scene)
+		Debug.Log ("Level " + Application.loadedLevel + " Was Loaded!");
+		switch (Application.loadedLevel)
 		{
 			case 1:
 				GlobalPreferences.currentState = GameState.MAIN_MENU;
@@ -33,6 +34,7 @@ public class BackKeyListener : MonoBehaviour
 			{
 				case GameState.MAIN_MENU: 
 				{
+					Debug.Log("Quitting!");
 					Application.Quit();
 					break;
 				}
@@ -109,17 +111,19 @@ public class BackKeyListener : MonoBehaviour
 	{
 		if(!pauseButton)
 		{
+			Debug.Log("No Pause Button Found!!");
 			return;
 		}
 
 		PlayPauseButton button = pauseButton.GetComponent<PlayPauseButton> ();
-		button.TogglePauseAndTexture ();
+		button.Activate ();
 
 		GlobalPreferences.currentState = GameState.PAUSED;
 	}
 
 	void LoadMenu ()
 	{
+		GlobalPreferences.SetDefaultTimeScale ();
 		Application.LoadLevel ("Menu");
 		GlobalPreferences.currentState = GameState.MAIN_MENU;
 	}
