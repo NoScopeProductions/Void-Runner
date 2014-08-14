@@ -25,4 +25,6 @@ public class CreditsMenu : MonoBehaviour
 		CreditsPlane.transform.position = DefaultPosition;
         asteroidManager.IsActive = true;
     }
+
+
 }
