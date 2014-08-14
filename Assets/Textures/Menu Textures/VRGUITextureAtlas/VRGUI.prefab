@@ -1,0 +1,279 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: VRGUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f514313262e3d141ad017b60809752a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 33e22aef77f65094fae0c906cb138988, type: 2}
+  items:
+  - name: Background
+    region:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: .314453125
+      height: .7265625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 644, y: 744}
+    textureGUID: 9da63e51dc708ba40b60de5a1002ddcb
+    deleted: 0
+    texture: {fileID: 0}
+  - name: Button_Normal
+    region:
+      serializedVersion: 2
+      x: .451660156
+      y: .83203125
+      width: .179199219
+      height: .1015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 367, y: 104}
+    textureGUID: 3989821ce45a5c543b88eb929e9f3950
+    deleted: 0
+    texture: {fileID: 0}
+  - name: Button_Pressed
+    region:
+      serializedVersion: 2
+      x: .271484375
+      y: .83203125
+      width: .179199219
+      height: .1015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 367, y: 104}
+    textureGUID: f43c72adcf2f14646ba0a789bc821ef5
+    deleted: 0
+    texture: {fileID: 0}
+  - name: PlayPause__Pause
+    region:
+      serializedVersion: 2
+      x: .3671875
+      y: 0
+      width: .05078125
+      height: .1015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 104, y: 104}
+    textureGUID: a1f70791f82b54a44b13f1d94e639199
+    deleted: 0
+    texture: {fileID: 0}
+  - name: PlayPause__Play
+    region:
+      serializedVersion: 2
+      x: .315429688
+      y: 0
+      width: .05078125
+      height: .1015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 104, y: 104}
+    textureGUID: 07a49330de30441468357d5e630ff2c8
+    deleted: 0
+    texture: {fileID: 0}
+  - name: SoundDisabled__Down
+    region:
+      serializedVersion: 2
+      x: .470703125
+      y: 0
+      width: .05078125
+      height: .1015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 104, y: 104}
+    textureGUID: 23b491ce6625dce4aad5f2e711e44254
+    deleted: 0
+    texture: {fileID: 0}
+  - name: SoundEnabled__Down
+    region:
+      serializedVersion: 2
+      x: .418945312
+      y: 0
+      width: .05078125
+      height: .1015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 104, y: 104}
+    textureGUID: 1b7b685bced0be9408cfb166935a63b4
+    deleted: 0
+    texture: {fileID: 0}
+  - name: Stats_Boosts
+    region:
+      serializedVersion: 2
+      x: .631835938
+      y: 0
+      width: .0620117188
+      height: .124023438
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 127, y: 127}
+    textureGUID: 6296d467e85cc5f4ab60c7e7b218fa75
+    deleted: 0
+    texture: {fileID: 0}
+  - name: Stats_Fuel
+    region:
+      serializedVersion: 2
+      x: .54296875
+      y: .122070312
+      width: .0620117188
+      height: .120117188
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 127, y: 123}
+    textureGUID: 5c68449a904b21c4fa11634e73c7eb53
+    deleted: 0
+    texture: {fileID: 0}
+  - name: Stats_HighScore
+    region:
+      serializedVersion: 2
+      x: 0
+      y: .728515625
+      width: .270507812
+      height: .1015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 554, y: 104}
+    textureGUID: b9633a6130db6d74188d349cf2f7536e
+    deleted: 0
+    texture: {fileID: 0}
+  - name: Stats_Playthroughs
+    region:
+      serializedVersion: 2
+      x: 0
+      y: .83203125
+      width: .270507812
+      height: .1015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 554, y: 104}
+    textureGUID: 48509ed6d05889542a117656c950bebb
+    deleted: 0
+    texture: {fileID: 0}
+  - name: Stats_Score
+    region:
+      serializedVersion: 2
+      x: .271484375
+      y: .728515625
+      width: .270507812
+      height: .1015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 554, y: 104}
+    textureGUID: 6581e327a0f6ef546a22875ece555a72
+    deleted: 0
+    texture: {fileID: 0}
+  - name: Stats_Shields
+    region:
+      serializedVersion: 2
+      x: .54296875
+      y: 0
+      width: .0620117188
+      height: .120117188
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 127, y: 123}
+    textureGUID: 9acdef2edcde622419808625ab748441
+    deleted: 0
+    texture: {fileID: 0}
+  generator: 0
+  imageFileGUID: 
+  dataFileGUID: 
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1
