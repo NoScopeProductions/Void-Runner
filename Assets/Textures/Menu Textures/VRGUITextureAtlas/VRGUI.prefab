@@ -58,10 +58,27 @@ MonoBehaviour:
     textureGUID: 9da63e51dc708ba40b60de5a1002ddcb
     deleted: 0
     texture: {fileID: 0}
+  - name: BLANK
+    region:
+      serializedVersion: 2
+      x: .522460938
+      y: 0
+      width: .0009765625
+      height: .001953125
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 2, y: 2}
+    textureGUID: a66c93d93b84e7b46a6f3fac8bd17c78
+    deleted: 0
+    texture: {fileID: 0}
   - name: Button_Normal
     region:
       serializedVersion: 2
-      x: .451660156
+      x: .271484375
       y: .83203125
       width: .179199219
       height: .1015625
@@ -78,7 +95,7 @@ MonoBehaviour:
   - name: Button_Pressed
     region:
       serializedVersion: 2
-      x: .271484375
+      x: .451660156
       y: .83203125
       width: .179199219
       height: .1015625
@@ -129,7 +146,7 @@ MonoBehaviour:
   - name: SoundDisabled__Down
     region:
       serializedVersion: 2
-      x: .470703125
+      x: .418945312
       y: 0
       width: .05078125
       height: .1015625
@@ -146,7 +163,7 @@ MonoBehaviour:
   - name: SoundEnabled__Down
     region:
       serializedVersion: 2
-      x: .418945312
+      x: .470703125
       y: 0
       width: .05078125
       height: .1015625

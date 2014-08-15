@@ -1,0 +1,107 @@
+
+<font size="72">Programming</font>
+	<br>
+	Daniel Semac
+	<br>
+	Stefano Fiumara
+	<br>
+	<br>
+<font size="72">3D Modeling</font>
+	<br>
+	<font size="48">Ships</font>
+		<br>
+		Kevin Huynh
+		<br>
+		<br>
+	<font size="48">Tube</font>
+		<br>
+		Daniel Semac
+		<br>
+		<br>
+	<font size="48">Asteroids</font>
+		<br>
+		Nobiax
+		<br>
+		<font size="24">Opengameart.org/users/yughues</font>
+		<br>
+		<br>
+
+<font size="72">User Interface</font>
+	<br>
+	Kevin Huynh
+	<br>
+	<br>
+
+<font size="72">Music</font>
+	<br>
+	<font size="48">Space Chase (Gameplay)</font>
+		<br>
+		Szymon Matuszewski
+		<br>
+		<font size="24">Opengameart.org/users/szymon-matuszewski</font>
+		<br>
+		<br>
+
+<font size="72">Sound Effects</font>
+	<br>
+	Michael Kurinnoy 
+	<br>
+	<font size ="24">AstroMenace Artwork ver 1.2 Assets Copyright (c) 2006-2007 Michael Kurinnoy, Viewizard</font>
+	<br>
+	<br>
+	dklon
+	<br>
+	<font size ="24">opengameart.org/users/dklon</font>
+	<br>
+	<br>
+	yd 
+	<br>
+	<font size ="24">opengameart.org/users/yd</font>
+	<br>
+	<br>
+	Jesús Lastra
+	<br>
+	<font size ="24">opengameart.org/users/jalastram</font>
+<br>
+<br>
+<font size="72">Playtesters</font>
+	<br>
+	Bassem Elghetany
+	<br>
+	Chris Cook
+	<br>
+	Christy Huynh
+	<br>
+	Faysal Sharif
+	<br>
+	Joseph Hart
+	<br>
+	Lucas Leavell
+	<br>
+	Matt Phillips
+	<br>
+	Muhammad Naviwala
+	<br>
+	Nicholas Holbert
+	<br>
+	<br>
+
+<font size="72">Mentorship</font>
+	<br>
+	Dr. Chang Yun
+	<br>
+	Paul Decarlo
+	<br>
+	<br>
+
+<font size="72">Special Thanks</font>
+	<br>
+	Rosana Sicilia
+	<br>
+	Andrea Fiumara
+	<br>
+	Chad Van Roekel
+	<br>
+	Kat Phelps
+	<br>
+	<br>

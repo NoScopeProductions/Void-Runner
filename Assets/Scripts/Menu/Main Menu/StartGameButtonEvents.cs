@@ -9,7 +9,6 @@ public class StartGameButtonEvents : MonoBehaviour
 
 	public void OnClick( dfControl control, dfMouseEventArgs mouseEvent )
 	{
-        //GlobalPreferences.shipSelected = WhichShip;
         switch (selectionMenu.selectedIndex)
         {
             case 0:
