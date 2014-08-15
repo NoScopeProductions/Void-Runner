@@ -9,7 +9,7 @@ Material:
   m_Name: TechBlue Skin
   m_Shader: {fileID: 4800000, guid: f0158d23026963f4ba301b99ab9b050a, type: 3}
   m_ShaderKeywords: []
-  m_CustomRenderQueue: 3001
+  m_CustomRenderQueue: 3000
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
