@@ -687,7 +687,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 98948521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .00138888892, y: .00138888892, z: -1.7320509}
+  m_LocalPosition: {x: .00138888892, y: 0, z: -1.7320509}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1248305424}
@@ -1498,7 +1498,7 @@ MonoBehaviour:
   outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  shadow: 0
+  shadow: 1
   shadowColor:
     serializedVersion: 2
     rgba: 4278190080
@@ -2053,7 +2053,7 @@ MonoBehaviour:
   cursorWidth: 1
   maxLength: 1024
   selectOnFocus: 0
-  shadow: 0
+  shadow: 1
   shadowColor:
     serializedVersion: 2
     rgba: 4278190080
@@ -2453,7 +2453,7 @@ MonoBehaviour:
   outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  shadow: 0
+  shadow: 1
   shadowColor:
     serializedVersion: 2
     rgba: 4278190080
@@ -3537,7 +3537,7 @@ MonoBehaviour:
   zindex: 3
   color:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   disabledColor:
     serializedVersion: 2
     rgba: 4294967295
@@ -3580,13 +3580,13 @@ MonoBehaviour:
   charSpacing: 0
   colorizeSymbols: 0
   processMarkup: 0
-  outline: 1
+  outline: 0
   outlineWidth: 1
   enableGradient: 0
   outlineColor:
     serializedVersion: 2
-    rgba: 4294967295
-  shadow: 0
+    rgba: 4278190080
+  shadow: 1
   shadowColor:
     serializedVersion: 2
     rgba: 4278190080
@@ -3838,7 +3838,7 @@ MonoBehaviour:
   outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  shadow: 0
+  shadow: 1
   shadowColor:
     serializedVersion: 2
     rgba: 4278190080
@@ -4007,7 +4007,7 @@ MonoBehaviour:
   outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  shadow: 0
+  shadow: 1
   shadowColor:
     serializedVersion: 2
     rgba: 4278190080
@@ -4544,7 +4544,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  textShadow: 0
+  textShadow: 1
   shadowColor:
     serializedVersion: 2
     rgba: 4278190080
@@ -5399,7 +5399,7 @@ MonoBehaviour:
   cursorWidth: 1
   maxLength: 1024
   selectOnFocus: 0
-  shadow: 0
+  shadow: 1
   shadowColor:
     serializedVersion: 2
     rgba: 4278190080
@@ -6206,7 +6206,7 @@ MonoBehaviour:
   outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  shadow: 0
+  shadow: 1
   shadowColor:
     serializedVersion: 2
     rgba: 4278190080
@@ -6605,7 +6605,7 @@ MonoBehaviour:
   outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  shadow: 0
+  shadow: 1
   shadowColor:
     serializedVersion: 2
     rgba: 4278190080

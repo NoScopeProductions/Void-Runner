@@ -14,6 +14,7 @@ public class SoundMuteButton : MonoBehaviour {
             gameObject.guiTexture.texture = SoundDisabled;
         }
     }
+    
     private void Toggle()
     {
         AudioListener.pause = !AudioListener.pause;

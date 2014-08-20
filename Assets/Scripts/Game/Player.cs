@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     public enum PowerUps { NONE, SHIELD };
 
     public HUDManager HudManager;
+    public dfPanel GameOverMenu;
     public DangerFlash dangerFlash;
 
     private const float LANDING_DISTANCE = 32f;
@@ -263,7 +264,8 @@ public class Player : MonoBehaviour {
     private void ShowGameOverMenu() 
 	{
         iTween.Stop();
-        HudManager.ShowGameOverMenu();
+        //HudManager.ShowGameOverMenu();
+        GameOverMenu.Show();
 	}
 	
 	private void CheckKeyboardInput() 
