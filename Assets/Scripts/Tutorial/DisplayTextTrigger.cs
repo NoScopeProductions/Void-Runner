@@ -4,24 +4,24 @@ using System.Collections;
 public class DisplayTextTrigger : MonoBehaviour {
 
 
-    public GameObject[] Messages;
+    public dfLabel[] Messages;
 
 
     void OnTriggerEnter(Collider col) 
     {
         if (col.tag != "Player") { return; }
-        foreach (GameObject gameObj in Messages)
+        foreach (dfLabel label in Messages)
         {
-            gameObj.SetActive(true);
+            label.IsVisible = true;
         }
     }
 
     void OnTriggerExit(Collider col)
     {
         if (col.tag != "Player") { return; }
-        foreach (GameObject gameObj in Messages)
+        foreach (dfLabel label in Messages)
         {
-            gameObj.SetActive(false);
+            label.IsVisible = false;
         }
     }
 }

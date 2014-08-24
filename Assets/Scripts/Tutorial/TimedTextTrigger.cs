@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class TimedTextTrigger : MonoBehaviour {
 
 
-    public GameObject[] Messages;
+    public dfLabel[] Messages;
 
 
     void OnTriggerEnter(Collider col)
@@ -14,9 +14,9 @@ public class TimedTextTrigger : MonoBehaviour {
 
         GlobalPreferences.SetTimeScale(0.2f);
 
-        foreach (GameObject gameObj in Messages)
+        foreach (dfLabel label in Messages)
         {
-            gameObj.SetActive(true);
+            label.IsVisible = true;
         }
     }
 
@@ -26,9 +26,9 @@ public class TimedTextTrigger : MonoBehaviour {
 
         GlobalPreferences.SetTimeScale(1f);
 
-        foreach (GameObject gameObj in Messages)
+        foreach (dfLabel label in Messages)
         {
-            gameObj.SetActive(false);
+            label.IsVisible = false;
         }
     }
 }
