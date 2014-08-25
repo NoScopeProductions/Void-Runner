@@ -2192,15 +2192,6 @@ Renderer:
   m_Materials:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -3564,7 +3555,7 @@ BoxCollider:
   m_GameObject: {fileID: 442489616}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .475000024, y: .141666666, z: .00100000005}
   m_Center: {x: -.237500012, y: 0, z: 0}
@@ -3582,7 +3573,7 @@ MonoBehaviour:
   anchorStyle: 8
   isEnabled: 1
   isVisible: 1
-  isInteractive: 1
+  isInteractive: 0
   tooltip: 
   pivot: 5
   zindex: 0
@@ -3837,7 +3828,7 @@ BoxCollider:
   m_GameObject: {fileID: 485811115}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .622222245, y: .188888893, z: .00100000005}
   m_Center: {x: .311111122, y: -.0944444463, z: 0}
@@ -4224,7 +4215,7 @@ BoxCollider:
   m_GameObject: {fileID: 525641943}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .622222245, y: .188888893, z: .00100000005}
   m_Center: {x: .311111122, y: -.0944444463, z: 0}
@@ -5261,7 +5252,7 @@ BoxCollider:
   m_GameObject: {fileID: 726023544}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .672222257, y: .166666672, z: .00100000005}
   m_Center: {x: 0, y: 0, z: 0}
@@ -14643,7 +14634,7 @@ BoxCollider:
   m_GameObject: {fileID: 975635449}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .337500006, y: .337500006, z: .00100000005}
   m_Center: {x: 0, y: 0, z: 0}
@@ -15994,7 +15985,7 @@ BoxCollider:
   m_GameObject: {fileID: 1170759572}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .337500006, y: .337500006, z: .00100000005}
   m_Center: {x: 0, y: 0, z: 0}
@@ -25861,7 +25852,7 @@ BoxCollider:
   m_GameObject: {fileID: 1532427317}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .337500006, y: .337500006, z: .00100000005}
   m_Center: {x: 0, y: 0, z: 0}
@@ -26274,7 +26265,7 @@ BoxCollider:
   m_GameObject: {fileID: 1590540592}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.39861119, y: 1.76805556, z: .00100000005}
   m_Center: {x: .699305594, y: -.884027779, z: 0}
@@ -26291,7 +26282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorStyle: 192
   isEnabled: 1
-  isVisible: 1
+  isVisible: 0
   isInteractive: 1
   tooltip: 
   pivot: 0
@@ -26410,7 +26401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1590621873
 Transform:
   m_ObjectHideFlags: 0
@@ -26587,7 +26578,7 @@ MonoBehaviour:
   anchorStyle: 5
   isEnabled: 1
   isVisible: 1
-  isInteractive: 1
+  isInteractive: 0
   tooltip: 
   pivot: 0
   zindex: 3
@@ -26612,7 +26603,7 @@ MonoBehaviour:
       right: -11
       bottom: 0
     owner: {fileID: 1590621879}
-  renderOrder: 21
+  renderOrder: 30
   isLocalized: 0
   hotZoneScale: {x: 1, y: 1}
   allowSignalEvents: 1
@@ -26683,7 +26674,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
       propertyPath: renderOrder
-      value: 21
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
       propertyPath: layout.margins.left
@@ -26695,6 +26686,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
+      propertyPath: isInteractive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -26761,7 +26756,7 @@ BoxCollider:
   m_GameObject: {fileID: 1602479243}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .675000012, y: .141666666, z: .00100000005}
   m_Center: {x: -.337500006, y: 0, z: 0}
@@ -26779,7 +26774,7 @@ MonoBehaviour:
   anchorStyle: 8
   isEnabled: 1
   isVisible: 1
-  isInteractive: 1
+  isInteractive: 0
   tooltip: 
   pivot: 5
   zindex: 0
@@ -26970,7 +26965,7 @@ BoxCollider:
   m_GameObject: {fileID: 1628661378}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .675000012, y: .141666666, z: .00100000005}
   m_Center: {x: .337500006, y: -.0708333328, z: 0}
@@ -29037,7 +29032,7 @@ BoxCollider:
   m_GameObject: {fileID: 1759460828}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .838888884, y: .141666666, z: .00100000005}
   m_Center: {x: 0, y: 0, z: 0}
@@ -35026,7 +35021,7 @@ BoxCollider:
   m_GameObject: {fileID: 1907183726}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.39999998, y: .219444454, z: .00100000005}
   m_Center: {x: 0, y: 0, z: 0}

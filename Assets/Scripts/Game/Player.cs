@@ -268,9 +268,9 @@ public class Player : MonoBehaviour {
     private void ShowGameOverMenu() 
 	{
         iTween.Stop();
-        //Update Save File
-        GlobalPreferences.SaveScoresToDisk(this, true);
+        GlobalPreferences.SaveScoresToDisk(this, false);
 
+        //Update Score label
         if (Score > HighScore)
         {
             dfLabel ScoreLabel = (dfLabel) GameOverMenu.Find("ScoreLabel");
