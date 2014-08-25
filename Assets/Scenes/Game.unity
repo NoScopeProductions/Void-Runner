@@ -2192,6 +2192,15 @@ Renderer:
   m_Materials:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -3506,6 +3515,7 @@ GameObject:
   - 114: {fileID: 442489620}
   - 65: {fileID: 442489619}
   - 114: {fileID: 442489618}
+  - 114: {fileID: 442489621}
   m_Layer: 5
   m_Name: Data
   m_TagString: Untagged
@@ -3520,7 +3530,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 442489616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0291748, y: .000541687012, z: 0}
+  m_LocalPosition: {x: .897224426, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1759460829}
@@ -3554,7 +3564,7 @@ BoxCollider:
   m_GameObject: {fileID: 442489616}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: .475000024, y: .141666666, z: .00100000005}
   m_Center: {x: -.237500012, y: 0, z: 0}
@@ -3592,10 +3602,10 @@ MonoBehaviour:
   layout:
     anchorStyle: 8
     margins:
-      left: 281.503906
-      top: -.1953125
-      right: -288.503906
-      bottom: .1953125
+      left: 303
+      top: -0
+      right: -172
+      bottom: 0
     owner: {fileID: 442489620}
   renderOrder: 26
   isLocalized: 0
@@ -3639,6 +3649,18 @@ MonoBehaviour:
     m_Bottom: 0
   tabSize: 48
   tabStops: 
+--- !u!114 &442489621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 442489616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 293a9ec65d507c4439d9d9adce3ef755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreLabel: {fileID: 1759460831}
 --- !u!1 &456200090
 GameObject:
   m_ObjectHideFlags: 0
@@ -3815,7 +3837,7 @@ BoxCollider:
   m_GameObject: {fileID: 485811115}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: .622222245, y: .188888893, z: .00100000005}
   m_Center: {x: .311111122, y: -.0944444463, z: 0}
@@ -4202,7 +4224,7 @@ BoxCollider:
   m_GameObject: {fileID: 525641943}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: .622222245, y: .188888893, z: .00100000005}
   m_Center: {x: .311111122, y: -.0944444463, z: 0}
@@ -5239,7 +5261,7 @@ BoxCollider:
   m_GameObject: {fileID: 726023544}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: .672222257, y: .166666672, z: .00100000005}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5257,7 +5279,7 @@ MonoBehaviour:
   anchorStyle: 65
   isEnabled: 1
   isVisible: 1
-  isInteractive: 1
+  isInteractive: 0
   tooltip: 
   pivot: 4
   zindex: 8
@@ -14530,7 +14552,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 958880957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .00138888892, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 276246224}
@@ -14608,7 +14630,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 975635449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .274116516, y: -1.26502991, z: 0}
+  m_LocalPosition: {x: .30397135, y: -1.29490018, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1590540593}
@@ -14621,9 +14643,9 @@ BoxCollider:
   m_GameObject: {fileID: 975635449}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .277777791, y: .277777791, z: .00100000005}
+  m_Size: {x: .337500006, y: .337500006, z: .00100000005}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &975635452
 MonoBehaviour:
@@ -14639,7 +14661,7 @@ MonoBehaviour:
   anchorStyle: 5
   isEnabled: 1
   isVisible: 1
-  isInteractive: 1
+  isInteractive: 0
   tooltip: 
   pivot: 4
   zindex: 5
@@ -14649,7 +14671,7 @@ MonoBehaviour:
   disabledColor:
     serializedVersion: 2
     rgba: 4294967295
-  size: {x: 100, y: 100}
+  size: {x: 121.5, y: 121.5}
   minSize: {x: 0, y: 0}
   maxSize: {x: 0, y: 0}
   clipChildren: 0
@@ -15959,7 +15981,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1170759572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .691665649, y: -1.2638855, z: 0}
+  m_LocalPosition: {x: .72151947, y: -1.29374695, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1590540593}
@@ -15972,9 +15994,9 @@ BoxCollider:
   m_GameObject: {fileID: 1170759572}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .277777791, y: .277777791, z: .00100000005}
+  m_Size: {x: .337500006, y: .337500006, z: .00100000005}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1170759575
 MonoBehaviour:
@@ -15990,7 +16012,7 @@ MonoBehaviour:
   anchorStyle: 5
   isEnabled: 1
   isVisible: 1
-  isInteractive: 1
+  isInteractive: 0
   tooltip: 
   pivot: 4
   zindex: 4
@@ -16000,7 +16022,7 @@ MonoBehaviour:
   disabledColor:
     serializedVersion: 2
     rgba: 4294967295
-  size: {x: 100, y: 100}
+  size: {x: 121.5, y: 121.5}
   minSize: {x: 0, y: 0}
   maxSize: {x: 0, y: 0}
   clipChildren: 0
@@ -16012,8 +16034,8 @@ MonoBehaviour:
     margins:
       left: 198.996094
       top: 405
-      right: 204.503906
-      bottom: 131.5
+      right: 183.003906
+      bottom: 110
     owner: {fileID: 1170759575}
   renderOrder: 23
   isLocalized: 0
@@ -25826,7 +25848,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1532427317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.10832977, y: -1.2638855, z: 0}
+  m_LocalPosition: {x: 1.13818359, y: -1.29374695, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1590540593}
@@ -25839,9 +25861,9 @@ BoxCollider:
   m_GameObject: {fileID: 1532427317}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .277777791, y: .277777791, z: .00100000005}
+  m_Size: {x: .337500006, y: .337500006, z: .00100000005}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1532427320
 MonoBehaviour:
@@ -25857,7 +25879,7 @@ MonoBehaviour:
   anchorStyle: 5
   isEnabled: 1
   isVisible: 1
-  isInteractive: 1
+  isInteractive: 0
   tooltip: 
   pivot: 4
   zindex: 3
@@ -25867,7 +25889,7 @@ MonoBehaviour:
   disabledColor:
     serializedVersion: 2
     rgba: 4294967295
-  size: {x: 100, y: 100}
+  size: {x: 121.5, y: 121.5}
   minSize: {x: 0, y: 0}
   maxSize: {x: 0, y: 0}
   clipChildren: 0
@@ -25879,8 +25901,8 @@ MonoBehaviour:
     margins:
       left: 348.996094
       top: 405
-      right: 54.5039062
-      bottom: 131.5
+      right: 33.0039062
+      bottom: 110
     owner: {fileID: 1532427320}
   renderOrder: 22
   isLocalized: 0
@@ -26252,7 +26274,7 @@ BoxCollider:
   m_GameObject: {fileID: 1590540592}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.39861119, y: 1.76805556, z: .00100000005}
   m_Center: {x: .699305594, y: -.884027779, z: 0}
@@ -26269,7 +26291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorStyle: 192
   isEnabled: 1
-  isVisible: 0
+  isVisible: 1
   isInteractive: 1
   tooltip: 
   pivot: 0
@@ -26388,7 +26410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1590621873
 Transform:
   m_ObjectHideFlags: 0
@@ -26590,7 +26612,7 @@ MonoBehaviour:
       right: -11
       bottom: 0
     owner: {fileID: 1590621879}
-  renderOrder: 30
+  renderOrder: 21
   isLocalized: 0
   hotZoneScale: {x: 1, y: 1}
   allowSignalEvents: 1
@@ -26671,6 +26693,10 @@ Prefab:
       propertyPath: zindex
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
   m_RootGameObject: {fileID: 1590621872}
@@ -26701,7 +26727,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1602479243}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.25556183, y: -.0730667114, z: 0}
+  m_LocalPosition: {x: 1.31666565, y: -.069442749, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1628661379}
@@ -26735,7 +26761,7 @@ BoxCollider:
   m_GameObject: {fileID: 1602479243}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: .675000012, y: .141666666, z: .00100000005}
   m_Center: {x: -.337500006, y: 0, z: 0}
@@ -26773,10 +26799,10 @@ MonoBehaviour:
   layout:
     anchorStyle: 8
     margins:
-      left: 209.003906
-      top: .8046875
-      right: -209.003906
-      bottom: -.8046875
+      left: 231
+      top: -.5
+      right: -231
+      bottom: .5
     owner: {fileID: 1602479247}
   renderOrder: 28
   isLocalized: 0
@@ -26930,7 +26956,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1628661378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0833282471, y: -.642204285, z: 0}
+  m_LocalPosition: {x: .0444412231, y: -.638885498, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1602479244}
@@ -26944,7 +26970,7 @@ BoxCollider:
   m_GameObject: {fileID: 1628661378}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: .675000012, y: .141666666, z: .00100000005}
   m_Center: {x: .337500006, y: -.0708333328, z: 0}
@@ -26962,7 +26988,7 @@ MonoBehaviour:
   anchorStyle: 5
   isEnabled: 1
   isVisible: 1
-  isInteractive: 1
+  isInteractive: 0
   tooltip: 
   pivot: 0
   zindex: 7
@@ -26982,10 +27008,10 @@ MonoBehaviour:
   layout:
     anchorStyle: 5
     margins:
-      left: 29.9960938
-      top: 231.195312
-      right: 230.503906
-      bottom: 354.304688
+      left: 15.9960938
+      top: 230
+      right: 244.503906
+      bottom: 355.5
     owner: {fileID: 1628661381}
   renderOrder: 27
   isLocalized: 0
@@ -27006,7 +27032,7 @@ MonoBehaviour:
   bottomColor:
     serializedVersion: 2
     rgba: 4294967295
-  align: 1
+  align: 0
   vertAlign: 1
   textScale: 3.375
   textScaleMode: 0
@@ -28997,7 +29023,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1759460828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .311103821, y: -.472763062, z: 0}
+  m_LocalPosition: {x: .463882446, y: -.472221375, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 442489617}
@@ -29011,9 +29037,9 @@ BoxCollider:
   m_GameObject: {fileID: 1759460828}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .455555558, y: .141666666, z: .00100000005}
+  m_Size: {x: .838888884, y: .141666666, z: .00100000005}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1759460831
 MonoBehaviour:
@@ -29029,7 +29055,7 @@ MonoBehaviour:
   anchorStyle: 5
   isEnabled: 1
   isVisible: 1
-  isInteractive: 1
+  isInteractive: 0
   tooltip: 
   pivot: 4
   zindex: 6
@@ -29039,7 +29065,7 @@ MonoBehaviour:
   disabledColor:
     serializedVersion: 2
     rgba: 4294967295
-  size: {x: 164, y: 51}
+  size: {x: 302, y: 51}
   minSize: {x: 0, y: 0}
   maxSize: {x: 0, y: 0}
   clipChildren: 0
@@ -29049,10 +29075,10 @@ MonoBehaviour:
   layout:
     anchorStyle: 5
     margins:
-      left: 29.9960938
-      top: 144.695312
-      right: 309.503906
-      bottom: 440.804688
+      left: 15.9960938
+      top: 144.5
+      right: 185.503906
+      bottom: 441
     owner: {fileID: 1759460831}
   renderOrder: 25
   isLocalized: 0
@@ -29071,7 +29097,7 @@ MonoBehaviour:
   bottomColor:
     serializedVersion: 2
     rgba: 4294967295
-  align: 1
+  align: 0
   vertAlign: 1
   textScale: 3.375
   textScaleMode: 0
@@ -29080,7 +29106,7 @@ MonoBehaviour:
   processMarkup: 0
   outline: 0
   outlineWidth: 1
-  enableGradient: 0
+  enableGradient: 1
   outlineColor:
     serializedVersion: 2
     rgba: 4278190080
@@ -35000,7 +35026,7 @@ BoxCollider:
   m_GameObject: {fileID: 1907183726}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.39999998, y: .219444454, z: .00100000005}
   m_Center: {x: 0, y: 0, z: 0}

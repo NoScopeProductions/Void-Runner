@@ -78,6 +78,8 @@ public class Player : MonoBehaviour {
 
     private Action CheckInput;
 
+    private float HighScore;
+
 	public void Start () 
 	{
         switch (Application.platform)
@@ -100,6 +102,8 @@ public class Player : MonoBehaviour {
 
 	private void Init() {
 		Score = 0;
+        HighScore = PlayerPrefs.GetFloat(GlobalPreferences.HIGH_SCORE);
+
 		State = PlayerState.ALIVE;
         DistanceTraveled = 0;
         BoostTimeTraveled = 0;
@@ -265,7 +269,15 @@ public class Player : MonoBehaviour {
 	{
         iTween.Stop();
         //Update Save File
-        GlobalPreferences.SaveScoresToDisk(this, false);
+        GlobalPreferences.SaveScoresToDisk(this, true);
+
+        if (Score > HighScore)
+        {
+            dfLabel ScoreLabel = (dfLabel) GameOverMenu.Find("ScoreLabel");
+            ScoreLabel.BottomColor = Color.yellow;
+            ScoreLabel.Text = "High Score!";
+        }
+        
         GameOverMenu.Show();
 	}
 	
