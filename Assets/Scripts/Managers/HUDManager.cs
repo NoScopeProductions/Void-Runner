@@ -72,12 +72,6 @@ public class HUDManager : MonoBehaviour
 
         endGameMenu.gameObject.SetActive(true);
         ScoreText.gameObject.SetActive(false);
-
-        foreach (var obj in DisableOnDeath)
-        {
-            obj.SetActive(false);
-        }
-
     }
 	
 	void UpdateScore()

@@ -4,10 +4,15 @@ using System.Collections.Generic;
 
 public class MainMenuButtonEvents : MonoBehaviour 
 {
-
+    
 	public void OnClick( dfControl control, dfMouseEventArgs mouseEvent )
 	{
-        Application.LoadLevel("Menu");
+        Invoke("LoadMenu", 1.5f);
 	}
+
+    private void LoadMenu()
+    {
+        Application.LoadLevel("Menu");
+    }
 
 }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class StartGameButtonEvents : MonoBehaviour 
 {
-    public CameraFade cameraFade;
     public dfCoverflow selectionMenu;
 
 	public void OnClick( dfControl control, dfMouseEventArgs mouseEvent )
@@ -22,7 +21,6 @@ public class StartGameButtonEvents : MonoBehaviour
                 break;
         }
 
-        cameraFade.FadeOut();
         Invoke("LoadGame", 1.5f);
 	}
 

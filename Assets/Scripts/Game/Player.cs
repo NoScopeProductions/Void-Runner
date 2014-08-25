@@ -264,7 +264,8 @@ public class Player : MonoBehaviour {
     private void ShowGameOverMenu() 
 	{
         iTween.Stop();
-        //HudManager.ShowGameOverMenu();
+        //Update Save File
+        GlobalPreferences.SaveScoresToDisk(this, false);
         GameOverMenu.Show();
 	}
 	
