@@ -4315,6 +4315,7 @@ Renderer:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -4595,7 +4596,7 @@ BoxCollider:
   m_GameObject: {fileID: 1267376435}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.55555558, y: 2, z: .00100000005}
   m_Center: {x: 1.77777779, y: -1, z: 0}
@@ -4613,7 +4614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorStyle: 5
   isEnabled: 1
-  isVisible: 0
+  isVisible: 1
   isInteractive: 1
   tooltip: 
   pivot: 0
@@ -7086,7 +7087,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
       propertyPath: m_Size.x
@@ -7102,11 +7103,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
       propertyPath: isVisible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
       propertyPath: renderOrder
-      value: 35
+      value: 36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
