@@ -66,6 +66,8 @@
 <br>
 <font size="72">Playtesters</font>
 	<br>
+	Rory Corrigan
+	<br>
 	Bassem Elghetany
 	<br>
 	Chris Cook
