@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Parse;
 
 public class GlobalPreferences : MonoBehaviour 
 {
@@ -84,6 +85,17 @@ public class GlobalPreferences : MonoBehaviour
         {
             PlayerPrefs.SetFloat(GlobalPreferences.HIGH_SCORE, PlayerObject.Score);
         }
+
+        //Use Parse to save this score to the global rankings.
+
+        ParseObject HighScoreObject = new ParseObject("HighScoreObject");
+
+        //TODO: Maybe separate this to an GameOverMenu, and only save if the user wants to upload
+        
+        HighScoreObject["Score"] = PlayerObject.Score;
+        //set HighScoreObject["Name"] here by asking the user to input his name.
+        // HighScoreObject.SaveAsync();
+
     }
 
     private static void SetFuelCount(Player PlayerObject)
