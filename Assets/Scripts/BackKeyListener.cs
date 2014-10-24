@@ -11,7 +11,6 @@ public class BackKeyListener : MonoBehaviour
 
 	void Awake()
 	{
-		Debug.Log ("Level " + Application.loadedLevel + " Was Loaded!");
 		switch (Application.loadedLevel)
 		{
 			case 1:
