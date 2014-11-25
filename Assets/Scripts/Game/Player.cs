@@ -186,7 +186,8 @@ public class Player : MonoBehaviour {
         if (transform.position.z > TUTORIAL_DISTANCE) { Score += SCORE_PER_SECOND * Time.deltaTime; }
 	}
 
-	private void DrainFuel() {
+	private void DrainFuel() 
+    {
 
         if (EnableGodMode) return;
 
@@ -198,6 +199,10 @@ public class Player : MonoBehaviour {
 		{
             Fuel -= FuelDrainWhenFalling * Time.deltaTime;
 		}
+        else if (transform.position.z < TUTORIAL_DISTANCE)
+        {
+            Fuel -= FuelDrain * Time.deltaTime * 0.5f;
+        }
 		else 
 		{
 			Fuel -= FuelDrain * Time.deltaTime;
