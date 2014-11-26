@@ -1,43 +1,76 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using GameState = GlobalPreferences.GameState;
 
 public class BackKeyListener : MonoBehaviour 
 {
     public dfPanel QuitPanel;
-    public bool ShowQuitPanel = false;
+    public bool QuitPanelShowing = false;
+    public List<dfPanel> panelsToDisable;
+    public 
 
-	void Awake()
-	{
-		
-	}
-	
-	// Update is called once per frame
 	void Update () 
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
-		{		 
-		    if (ShowQuitPanel)
+		{
+            QuitPanelShowing = !QuitPanelShowing;
+		    if (QuitPanelShowing)
 		    {
-                QuitPanel.Show();   
+                ShowQuitPanel();
 		    }
 		    else
 		    {
-		        QuitPanel.Hide();
+                HideQuitPanel();
 		    }
-            ShowQuitPanel = !ShowQuitPanel;
 		}
 	}
+
+    public void HideQuitPanel()
+    {
+        QuitPanel.Hide();
+        panelsToDisable.ForEach(panel =>
+        {
+            var children = panel.GetComponentsInChildren<dfControl>();
+
+            foreach (var child in children)
+            {
+                child.IsInteractive = true;
+            }
+        });
+        if (Application.loadedLevelName.Equals("Game"))
+        {
+            UnpauseGame();
+        }
+    }
+
+    public void ShowQuitPanel()
+    {
+        QuitPanel.Show();
+        panelsToDisable.ForEach(panel =>
+        {
+            var children = panel.GetComponentsInChildren<dfControl>();
+
+            foreach (var child in children)
+            {
+                child.IsInteractive = false;
+            }
+
+        });
+
+        if (Application.loadedLevelName.Equals("Game"))
+        {
+            PauseGame();
+        }
+    }
 
 	void PauseGame()
 	{
 		GlobalPreferences.currentState = GameState.PAUSED;
 	}
 
-	void LoadMenu ()
-	{
-		GlobalPreferences.SetDefaultTimeScale ();
-		Application.LoadLevel ("Menu");
-		GlobalPreferences.currentState = GameState.MAIN_MENU;
-	}
+    void UnpauseGame()
+    {
+        GlobalPreferences.currentState = GameState.PLAYING;
+    }
 }

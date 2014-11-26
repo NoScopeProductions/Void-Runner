@@ -4,8 +4,12 @@ using System.Collections.Generic;
 
 public class DontQuitButtonClick : MonoBehaviour
 {
+    public BackKeyListener keyListener;
+    public dfPanel quitPanel;
+
 	public void OnClick( dfControl control, dfMouseEventArgs mouseEvent )
 	{
-    
+        keyListener.HideQuitPanel();
+        keyListener.QuitPanelShowing = false;
 	}
 }
