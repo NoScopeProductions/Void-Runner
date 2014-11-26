@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using GameState = GlobalPreferences.GameState;
 
 public class BackKeyListener : MonoBehaviour 
 {
     public dfPanel QuitPanel;
     public bool QuitPanelShowing = false;
-    public List<dfPanel> panelsToDisable;
+    public List<dfControl> panelsToDisable;
     public 
 
 	void Update () 
@@ -23,6 +22,11 @@ public class BackKeyListener : MonoBehaviour
 		    {
                 HideQuitPanel();
 		    }
+
+            if (Application.loadedLevelName.Equals("Game"))
+            {
+                GlobalPreferences.TogglePause();
+            }
 		}
 	}
 
@@ -38,10 +42,6 @@ public class BackKeyListener : MonoBehaviour
                 child.IsInteractive = true;
             }
         });
-        if (Application.loadedLevelName.Equals("Game"))
-        {
-            UnpauseGame();
-        }
     }
 
     public void ShowQuitPanel()
@@ -55,22 +55,6 @@ public class BackKeyListener : MonoBehaviour
             {
                 child.IsInteractive = false;
             }
-
         });
-
-        if (Application.loadedLevelName.Equals("Game"))
-        {
-            PauseGame();
-        }
-    }
-
-	void PauseGame()
-	{
-		GlobalPreferences.currentState = GameState.PAUSED;
-	}
-
-    void UnpauseGame()
-    {
-        GlobalPreferences.currentState = GameState.PLAYING;
     }
 }

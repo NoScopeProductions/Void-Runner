@@ -247,10 +247,6 @@ public class Player : MonoBehaviour {
 		{
 			Time.timeScale = 1.0f;
 		}
-
-		//set the game state
-		GlobalPreferences.currentState = GlobalPreferences.GameState.GAME_OVER;
-
 		//create the explosion effects
 		for(int i = 0; i < DeathExplosions.Length; i++) 
 		{

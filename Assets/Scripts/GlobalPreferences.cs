@@ -6,13 +6,10 @@ public class GlobalPreferences : MonoBehaviour
 {
     public enum SHIP { REMAKER, DSK, DEFAULT };
 
-	public enum GameState { MAIN_MENU, SELECTION, PLAYING, PAUSED, GAME_OVER, CREDITS, STATS };
-
-	public static GameState currentState = GameState.MAIN_MENU;
-
 	public static SHIP shipSelected = SHIP.DEFAULT;
 
     public static bool SkipTutorial = false;
+    public static bool gamePaused = false;
 
     public static float CurrentTimeScale = 1f;
 
@@ -41,7 +38,26 @@ public class GlobalPreferences : MonoBehaviour
         CurrentTimeScale = newScale;
     }
 
+    public static void TogglePause()
+    {
+        gamePaused = !gamePaused;
 
+        var playPauseButton = GameObject.Find("PlayPauseButton");
+
+        var checkbox = playPauseButton.GetComponent<dfCheckbox>();
+
+        checkbox.IsChecked = gamePaused;
+
+        if (gamePaused)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = GlobalPreferences.CurrentTimeScale;
+            //TODO: Tween timescale
+        }
+    }
 
     public static void SaveScoresToDisk(Player PlayerObject, bool ClearHighScore)
     {

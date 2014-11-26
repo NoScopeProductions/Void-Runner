@@ -12,7 +12,6 @@ public class BackFromCredits : MonoBehaviour {
 		iTween.FadeTo(FadeTo, 1f, 0.4f);
 		
 		iTween.FadeTo(FadeFrom, iTween.Hash("time", 0.3f, "alpha", 0f, "oncomplete", "HideFrom", "oncompletetarget", gameObject));
-		GlobalPreferences.currentState = GlobalPreferences.GameState.MAIN_MENU;
 	}
 
 	private void HideFrom()

@@ -11,5 +11,10 @@ public class DontQuitButtonClick : MonoBehaviour
 	{
         keyListener.HideQuitPanel();
         keyListener.QuitPanelShowing = false;
+        
+        if (Application.loadedLevelName.Equals("Game"))
+        {
+            GlobalPreferences.TogglePause();
+        }
 	}
 }
