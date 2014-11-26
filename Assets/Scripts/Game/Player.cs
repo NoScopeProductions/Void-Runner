@@ -312,8 +312,7 @@ public class Player : MonoBehaviour {
 	private void CheckTouchInput ()
 	{
 		//don't check input when the players is boosting.
-		if(State == PlayerState.BOOSTING) { return; }
-		if (State == PlayerState.DEACTIVATING_BOOST) { return; }
+		if(State == PlayerState.BOOSTING || State == PlayerState.DEACTIVATING_BOOST) { return; }
 				
 		var touchCount = Input.touchCount;
 
@@ -384,17 +383,26 @@ public class Player : MonoBehaviour {
 		if (type == "Collectible_Fuel") 
 		{
 			Fuel += CollectibleRewards.FUEL_GAIN;
-			Score += CollectibleRewards.SCORE_FUEL;
+            if (transform.position.z > TUTORIAL_DISTANCE)
+            {
+                Score += CollectibleRewards.SCORE_FUEL;
+            }
 		}
 		else if (type == "Collectible_Speed") 
 		{
 			ActivateBoost();
-            Score += CollectibleRewards.SCORE_SPEED;
+            if (transform.position.z > TUTORIAL_DISTANCE)
+            {
+                Score += CollectibleRewards.SCORE_SPEED;
+            }
 		}
 		else if (type == "Collectible_Shield") 
 		{
 			ActivateShield();
-			Score += CollectibleRewards.SCORE_SHIELD;
+            if (transform.position.z > TUTORIAL_DISTANCE)
+            {
+                Score += CollectibleRewards.SCORE_SHIELD;
+            }
 		}
 	}
 

@@ -46,8 +46,6 @@ public class GlobalPreferences : MonoBehaviour
 
         var checkbox = playPauseButton.GetComponent<dfCheckbox>();
 
-        checkbox.IsChecked = gamePaused;
-
         if (gamePaused)
         {
             Time.timeScale = 0f;
@@ -55,7 +53,7 @@ public class GlobalPreferences : MonoBehaviour
         else
         {
             Time.timeScale = GlobalPreferences.CurrentTimeScale;
-            //TODO: Tween timescale
+            //TODO: Tween timescale from 0 to current
         }
     }
 
