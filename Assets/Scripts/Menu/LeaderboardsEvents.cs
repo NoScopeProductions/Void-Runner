@@ -16,7 +16,7 @@ public class LeaderboardsEvents : MonoBehaviour
         {
             //it's visible
             RankLabels.Text = "";
-            NameLabels.Text = "";
+            //NameLabels.Text = "";
             ScoreLabels.Text = "";
             StartCoroutine(FillLeaderboard());
         }
@@ -30,6 +30,8 @@ public class LeaderboardsEvents : MonoBehaviour
         while(!query.IsCompleted) { yield return null; }
 
         IEnumerable<ParseObject> Players = query.Result;
+
+        NameLabels.Text = "";
 
         int rank = 1;
         foreach (var p in Players)

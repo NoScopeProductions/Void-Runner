@@ -8,11 +8,6 @@ public class LightSpawner : MonoBehaviour
     public Player PlayerObject;
 
     private bool sendingLights = false;
-	// use this for initialization
-	void Start() 
-	{
-		
-	}
 
     void Update()
     {

@@ -7,7 +7,6 @@ public class Player : MonoBehaviour {
     public enum PlayerState { ALIVE, DEAD, OVER_GAP, BOOSTING, DEACTIVATING_BOOST };
     public enum PowerUps { NONE, SHIELD };
 
-    public HUDManager HudManager;
     public dfPanel GameOverMenu;
     public DangerFlash dangerFlash;
 

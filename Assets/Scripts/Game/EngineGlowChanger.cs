@@ -11,7 +11,6 @@ public class EngineGlowChanger : MonoBehaviour {
 
     private Texture Current;
 	
-	
 	public void Update () {
         CheckTexture();
 	}

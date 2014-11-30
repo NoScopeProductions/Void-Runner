@@ -16,8 +16,6 @@ public class SubmitButtonEvents : MonoBehaviour
 
         HighScoreObject["Name"] = NameEntry.Text;
         HighScoreObject["Score"] = PlayerObject.Score;
-        Task saveScoreTask = HighScoreObject.SaveAsync();
-		
+        HighScoreObject.SaveAsync();
 	}
-
 }

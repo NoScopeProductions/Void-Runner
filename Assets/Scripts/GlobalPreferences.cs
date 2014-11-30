@@ -42,9 +42,9 @@ public class GlobalPreferences : MonoBehaviour
     {
         gamePaused = !gamePaused;
 
-        var playPauseButton = GameObject.Find("PlayPauseButton");
+//        var playPauseButton = GameObject.Find("PlayPauseButton");
 
-        var checkbox = playPauseButton.GetComponent<dfCheckbox>();
+        //var checkbox = playPauseButton.GetComponent<dfCheckbox>();
 
         if (gamePaused)
         {

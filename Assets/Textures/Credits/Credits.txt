@@ -46,7 +46,10 @@
 	<br>
 	Michael Kurinnoy 
 	<br>
-	<font size ="24">AstroMenace Artwork ver 1.2 Assets Copyright (c) 2006-2007 Michael Kurinnoy, Viewizard</font>
+	<font size ="24">AstroMenace Artwork ver 1.2 Assets 
+		<br>
+		Copyright &copy; 2006-2007 Michael Kurinnoy, Viewizard
+	</font>
 	<br>
 	<br>
 	dklon
