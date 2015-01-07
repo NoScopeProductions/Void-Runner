@@ -14774,7 +14774,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 958880957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: .00138888892, y: .00138888892, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 276246224}
@@ -26430,7 +26430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1590621873
 Transform:
   m_ObjectHideFlags: 0
@@ -26581,7 +26581,7 @@ MonoBehaviour:
   direction: 0
 --- !u!65 &1590621878
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500000, guid: 704afb1f3dcc808468ac56ca79098e37,
     type: 2}
   m_PrefabInternal: {fileID: 1592557551}
@@ -26632,7 +26632,7 @@ MonoBehaviour:
       right: -11
       bottom: 0
     owner: {fileID: 1590621879}
-  renderOrder: 35
+  renderOrder: 39
   isLocalized: 0
   hotZoneScale: {x: 1, y: 1}
   allowSignalEvents: 1
@@ -26715,7 +26715,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 704afb1f3dcc808468ac56ca79098e37, type: 2}
       propertyPath: isInteractive
