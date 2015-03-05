@@ -8,7 +8,7 @@ public class AsteroidMovement : MonoBehaviour {
 
         Vector3 moveDirection = target - transform.position;
         moveDirection.Normalize();
-        rigidbody.AddForce(moveDirection * Random.Range(40,60), ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(moveDirection * Random.Range(40,60), ForceMode.Impulse);
 	}
 		
 	void OnBecameInvisible()

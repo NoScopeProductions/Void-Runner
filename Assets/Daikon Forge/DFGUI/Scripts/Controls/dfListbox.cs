@@ -1045,7 +1045,7 @@ public class dfListbox : dfInteractiveBase, IDFMultiRender, IRendersText
 		var ray = args.Ray;
 
 		RaycastHit hitInfo;
-		if( !collider.Raycast( ray, out hitInfo, 1000f ) )
+		if( !GetComponent<Collider>().Raycast( ray, out hitInfo, 1000f ) )
 		{
 			hoverIndex = -1;
 			hoverTweenLocation = 0f;

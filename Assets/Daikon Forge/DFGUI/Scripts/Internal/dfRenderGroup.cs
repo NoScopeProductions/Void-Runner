@@ -109,7 +109,7 @@ internal class dfRenderGroup : MonoBehaviour
 		var debugShowMesh = UnityEditor.EditorPrefs.GetBool( "dfGUIManager.ShowMesh", false );
 		UnityEditor.EditorUtility.SetSelectedWireframeHidden( meshRenderer, !debugShowMesh );
 
-		var controlCollider = attachedControl.collider as BoxCollider;
+		var controlCollider = attachedControl.GetComponent<Collider>() as BoxCollider;
 		if( controlCollider == null )
 			return;
 		else

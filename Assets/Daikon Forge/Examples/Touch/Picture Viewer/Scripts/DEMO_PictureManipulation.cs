@@ -138,7 +138,7 @@ public class DEMO_PictureManipulation : MonoBehaviour
 
 		}
 
-		if( !GeometryUtility.TestPlanesAABB( planes, control.collider.bounds ) )
+		if( !GeometryUtility.TestPlanesAABB( planes, control.GetComponent<Collider>().bounds ) )
 		{
 
 			control.enabled = false;
