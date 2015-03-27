@@ -24,7 +24,7 @@ public class EngineGlowChanger : MonoBehaviour {
             if (Current != BoostGlow)
             {
                 Current = BoostGlow;
-                renderer.material.mainTexture = Current;
+                GetComponent<Renderer>().material.mainTexture = Current;
             }
         }
         else
@@ -32,7 +32,7 @@ public class EngineGlowChanger : MonoBehaviour {
             if (Current != RegularGlow)
             {
                 Current = RegularGlow;
-                renderer.material.mainTexture = Current;
+                GetComponent<Renderer>().material.mainTexture = Current;
             }
         }
     }

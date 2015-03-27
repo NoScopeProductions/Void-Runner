@@ -728,7 +728,7 @@ public class dfGUIManager : MonoBehaviour, IDFControlHost, IComparable<dfGUIMana
 			updateRenderOrder();
 #endif
 
-			var boxCollider = this.collider as BoxCollider;
+			var boxCollider = this.GetComponent<Collider>() as BoxCollider;
 			if( boxCollider != null )
 			{
 				var size = this.GetScreenSize() * PixelsToUnits();
@@ -795,7 +795,7 @@ public class dfGUIManager : MonoBehaviour, IDFControlHost, IComparable<dfGUIMana
 		if( selected != null && selected.transform.IsChildOf( this.transform ) )
 			return true;
 
-		var bounds = this.collider.bounds;
+		var bounds = this.GetComponent<Collider>().bounds;
 
 		var sceneCameras = UnityEditor.SceneView.GetAllSceneCameras();
 		for( int i = 0; i < sceneCameras.Length; i++ )
@@ -822,7 +822,7 @@ public class dfGUIManager : MonoBehaviour, IDFControlHost, IComparable<dfGUIMana
 			UnityEditor.EditorUtility.SetSelectedWireframeHidden( meshRenderer, !debugShowMesh );
 		}
 
-		collider.hideFlags = HideFlags.HideInInspector;
+		GetComponent<Collider>().hideFlags = HideFlags.HideInInspector;
 
 		// Calculate the screen size in "pixels"
 		var screenSize = GetScreenSize() * PixelsToUnits();
@@ -1226,7 +1226,7 @@ public class dfGUIManager : MonoBehaviour, IDFControlHost, IComparable<dfGUIMana
 				continue;
 
 			RaycastHit hitInfo;
-			if( control.collider == null || !control.collider.Raycast( ray, out hitInfo, maxDistance ) )
+			if( control.GetComponent<Collider>() == null || !control.GetComponent<Collider>().Raycast( ray, out hitInfo, maxDistance ) )
 				continue;
 
 			var skipControl =
@@ -2261,7 +2261,7 @@ public class dfGUIManager : MonoBehaviour, IDFControlHost, IComparable<dfGUIMana
 		// and Orthographic views. This also helps the user during initial
 		// setup of the user interface hierarchy.
 		var cameraPosition = Application.isPlaying ? -(Vector3)uiOffset * PixelsToUnits() : Vector3.zero;
-		if( camera.isOrthoGraphic )
+		if( camera.orthographic )
 		{
 			camera.nearClipPlane = Mathf.Min( camera.nearClipPlane, -1f );
 			camera.farClipPlane = Mathf.Max( camera.farClipPlane, 1f );
