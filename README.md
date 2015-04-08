@@ -1,6 +1,6 @@
 Void Runner
 ===========
- NEED TO UPDATE THIS
+ ![Void Runner Gameplay](https://lh3.googleusercontent.com/DVFige35jz7_oXmbegt7arNO_-NL78jolGM3OCjbdUyHqPPjfYn97IVuiE4uaE_RnRg=h900-rw)
 
 Introduction
 ------------
