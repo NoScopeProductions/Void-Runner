@@ -16,6 +16,8 @@ public class SubmitButtonEvents : MonoBehaviour
 
         HighScoreObject["Name"] = NameEntry.Text;
         HighScoreObject["Score"] = PlayerObject.Score;
+
+	    GlobalPreferences.LastHighScoreName = NameEntry.Text;
         HighScoreObject.SaveAsync();
 	}
 }

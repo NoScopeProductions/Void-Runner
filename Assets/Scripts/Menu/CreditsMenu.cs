@@ -13,7 +13,7 @@ public class CreditsMenu : MonoBehaviour
 
 	void OnEnable () 
 	{
-		Vector3[] TweenPath = new Vector3[] {DefaultPosition, EndPosition};
+		Vector3[] TweenPath = {DefaultPosition, EndPosition};
         asteroidManager.IsActive = false;
 		iTween.MoveTo(CreditsPlane, iTween.Hash("path", TweenPath, "easetype", iTween.EaseType.easeInOutSine, "time", 40f));
 

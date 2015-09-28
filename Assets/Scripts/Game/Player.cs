@@ -14,8 +14,6 @@ public class Player : MonoBehaviour {
     public const float BOOST_TIME = 3f;
     public const float TUTORIAL_DISTANCE = 750f;
 	
-	public float DistanceTraveled;
-
     public float speedUpRate;
     public float turnRate;
 
@@ -104,7 +102,6 @@ public class Player : MonoBehaviour {
         HighScore = PlayerPrefs.GetFloat(GlobalPreferences.HIGH_SCORE);
 
 		State = PlayerState.ALIVE;
-        DistanceTraveled = 0;
         BoostTimeTraveled = 0;
 		ActivePowerUp = PowerUps.NONE;
 
@@ -190,21 +187,24 @@ public class Player : MonoBehaviour {
 
         if (EnableGodMode) return;
 
-		if(State == PlayerState.BOOSTING) 
+		switch (State)
 		{
-			Fuel += 3 * FuelDrain * Time.deltaTime;
-		}
-		else if (State == PlayerState.OVER_GAP) 
-		{
-            Fuel -= FuelDrainWhenFalling * Time.deltaTime;
-		}
-        else if (transform.position.z < TUTORIAL_DISTANCE)
-        {
-            Fuel -= FuelDrain * Time.deltaTime * 0.5f;
-        }
-		else 
-		{
-			Fuel -= FuelDrain * Time.deltaTime;
+		    case PlayerState.BOOSTING:
+		        Fuel += 3 * FuelDrain * Time.deltaTime;
+		        break;
+		    case PlayerState.OVER_GAP:
+		        Fuel -= FuelDrainWhenFalling * Time.deltaTime;
+		        break;
+		    default:
+		        if (transform.position.z < TUTORIAL_DISTANCE)
+		        {
+		            Fuel -= FuelDrain * Time.deltaTime * 0.5f;
+		        }
+		        else 
+		        {
+		            Fuel -= FuelDrain * Time.deltaTime;
+		        }
+		        break;
 		}
 
 		if(Fuel > 100) Fuel = 100;
@@ -242,15 +242,15 @@ public class Player : MonoBehaviour {
 			return PlayerState.ALIVE;
 		}
 
-		if (Time.timeScale != 1.0f) 
+		if (Math.Abs(Time.timeScale - 1.0f) > 0.001f) 
 		{
 			Time.timeScale = 1.0f;
 		}
 		//create the explosion effects
-		for(int i = 0; i < DeathExplosions.Length; i++) 
+		foreach (var explosion in DeathExplosions)
 		{
-			Transform explosion = (Transform)Instantiate(DeathExplosions[i], SelectedShipBody.transform.parent.position, Quaternion.identity);
-            explosion.parent = transform;
+		    var ex = (Transform)Instantiate(explosion, SelectedShipBody.transform.parent.position, Quaternion.identity);
+		    ex.parent = transform;
 		}
 
 		//stop rendering the ship model
@@ -375,34 +375,34 @@ public class Player : MonoBehaviour {
         }
     }
 
-	private void CheckCollectibleType (string type) 
-    {
-        IncreasePickupCount(type);
+	private void CheckCollectibleType (string type)
+	{
+	    IncreasePickupCount(type);
 
-		if (type == "Collectible_Fuel") 
-		{
-			Fuel += CollectibleRewards.FUEL_GAIN;
-            if (transform.position.z > TUTORIAL_DISTANCE)
-            {
-                Score += CollectibleRewards.SCORE_FUEL;
-            }
-		}
-		else if (type == "Collectible_Speed") 
-		{
-			ActivateBoost();
-            if (transform.position.z > TUTORIAL_DISTANCE)
-            {
-                Score += CollectibleRewards.SCORE_SPEED;
-            }
-		}
-		else if (type == "Collectible_Shield") 
-		{
-			ActivateShield();
-            if (transform.position.z > TUTORIAL_DISTANCE)
-            {
-                Score += CollectibleRewards.SCORE_SHIELD;
-            }
-		}
+	    switch (type)
+	    {
+	        case "Collectible_Fuel":
+	            Fuel += CollectibleRewards.FUEL_GAIN;
+	            if (transform.position.z > TUTORIAL_DISTANCE)
+	            {
+	                Score += CollectibleRewards.SCORE_FUEL;
+	            }
+	            break;
+	        case "Collectible_Speed":
+	            ActivateBoost();
+	            if (transform.position.z > TUTORIAL_DISTANCE)
+	            {
+	                Score += CollectibleRewards.SCORE_SPEED;
+	            }
+	            break;
+	        case "Collectible_Shield":
+	            ActivateShield();
+	            if (transform.position.z > TUTORIAL_DISTANCE)
+	            {
+	                Score += CollectibleRewards.SCORE_SHIELD;
+	            }
+	            break;
+	    }
 	}
 
     private void IncreasePickupCount(string type)
@@ -454,7 +454,6 @@ public class Player : MonoBehaviour {
     private void MovePlayerForward(float speedFactor = 1f)
     {
         transform.Translate(0f, 0f, speedFactor * speed * Time.deltaTime);
-        DistanceTraveled += 1.75f * speed * Time.deltaTime;
     }
 
 	private void ActivateBoost() 
@@ -488,15 +487,9 @@ public class Player : MonoBehaviour {
 
         RaycastHit hit;
 
-		if(Physics.Raycast(aheadPos, -transform.up, out hit, 100))
-		{
-            if (hit.transform.tag == "Tunnel")
-            {
-                return true;
-            }
-		}
+	    if (!Physics.Raycast(aheadPos, -transform.up, out hit, 100)) return false;
 
-		return false;
+	    return hit.transform.tag == "Tunnel";
 	}
 
 	private void WobbleCamera()
