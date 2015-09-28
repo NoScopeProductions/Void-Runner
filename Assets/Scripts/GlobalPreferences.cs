@@ -20,11 +20,15 @@ public class GlobalPreferences : MonoBehaviour
     public static string SHIELD_PICKUPS = "ShieldPickups";
     public static string BOOST_PICKUPS = "BoostPickups";
     public static string PLAYTHROUGHS = "NumberOfPlaythroughs";
+    public static string LAST_HIGHSCORE_NAME = "LastHighScoreName";
+
+    public static string LastHighScoreName = "";
 
 	void Awake()
 	{
 		DontDestroyOnLoad (this);
-	}
+        LastHighScoreName = PlayerPrefs.HasKey(LAST_HIGHSCORE_NAME) ? PlayerPrefs.GetString(LAST_HIGHSCORE_NAME) : "";
+    }
 
     public static void SetDefaultTimeScale()
     {
@@ -64,8 +68,14 @@ public class GlobalPreferences : MonoBehaviour
         SetShieldCount(PlayerObject);
         SetBoostCount(PlayerObject);
         SetNumberPlaythroughs();
+        SaveLastHighScoreName();
 
         PlayerPrefs.Save();
+    }
+
+    private static void SaveLastHighScoreName()
+    {
+        PlayerPrefs.SetString(LAST_HIGHSCORE_NAME, LastHighScoreName);
     }
 
     private static void SetNumberPlaythroughs()
